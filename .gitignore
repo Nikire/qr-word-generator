@@ -1,0 +1,27 @@
+# Dependencias
+node_modules/
+.venv/
+__pycache__/
+
+# Builds
+dist/
+build/
+out/
+.next/
+
+# Entorno y secretos
+.env
+.env.*
+!.env.example
+
+# Logs
+*.log
+
+# Sistema / editor
+.DS_Store
+Thumbs.db
+.idea/
+.vscode/
+
+# Claude Code (configuración local)
+.claude/settings.local.json
