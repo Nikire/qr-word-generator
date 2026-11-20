@@ -12,6 +12,7 @@
   },
   "dependencies": {
     "@astrojs/sitemap": "^3.7.6",
+    "@fontsource-variable/plus-jakarta-sans": "^5.3.0",
     "astro": "^7.3.8",
     "flag-icons": "^7.6.0",
     "libphonenumber-js": "^1.13.17",
