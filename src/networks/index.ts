@@ -5,7 +5,7 @@ import type { NetworkDef } from './types';
 const modules = import.meta.glob<{ default: NetworkDef }>('./defs/*.ts', { eager: true });
 
 /** Plantilla que se muestra en la portada. */
-export const DEFAULT_NETWORK = 'whatsapp';
+export const DEFAULT_NETWORK = 'url';
 
 export const networks: NetworkDef[] = Object.values(modules).map((module) => module.default);
 
