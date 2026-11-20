@@ -199,7 +199,8 @@ const inputMode = { trim: 'text', handle: 'text', digits: 'numeric', url: 'url' 
   }
 
   const PNG_SIZE = 1200;
-  const MAX_LOGO_BYTES = 1024 * 1024;
+  const MAX_LOGO_BYTES = 5 * 1024 * 1024;
+  const LOGO_PIXELS = 512; // lado máximo del logo PNG dentro del QR
   const PLACEHOLDER_DATA = 'https://qr.example/placeholder';
 
   const root = document.querySelector<HTMLElement>('[data-generator]')!;
@@ -315,6 +316,20 @@ const inputMode = { trim: 'text', handle: 'text', digits: 'numeric', url: 'url' 
     );
   }
 
+  /** Reduce los PNG grandes: el logo ocupa poco en el QR y así el archivo descargado no pesa de más. */
+  async function shrinkPng(dataUrl: string): Promise<string> {
+    const image = new Image();
+    image.src = dataUrl;
+    await image.decode();
+    const scale = Math.min(1, LOGO_PIXELS / Math.max(image.width, image.height));
+    if (scale === 1) return dataUrl;
+    const canvas = document.createElement('canvas');
+    canvas.width = Math.round(image.width * scale);
+    canvas.height = Math.round(image.height * scale);
+    canvas.getContext('2d')!.drawImage(image, 0, 0, canvas.width, canvas.height);
+    return canvas.toDataURL('image/png');
+  }
+
   for (const button of downloads) {
     button.addEventListener('click', async () => {
       if (!current) return;
@@ -363,10 +378,21 @@ const inputMode = { trim: 'text', handle: 'text', digits: 'numeric', url: 'url' 
         return;
       }
       const reader = new FileReader();
-      reader.onload = () => {
-        logoError = false;
+      reader.onload = async () => {
         // Se fuerza el tipo correcto: algunos sistemas no informan el de los SVG.
-        customLogo = String(reader.result).replace(/^data:[^;,]*/, `data:${isSvg ? 'image/svg+xml' : 'image/png'}`);
+        let dataUrl = String(reader.result).replace(/^data:[^;,]*/, `data:${isSvg ? 'image/svg+xml' : 'image/png'}`);
+        if (!isSvg) {
+          try {
+            dataUrl = await shrinkPng(dataUrl);
+          } catch {
+            clearLogo();
+            logoError = true;
+            render();
+            return;
+          }
+        }
+        logoError = false;
+        customLogo = dataUrl;
         logoName.textContent = file.name;
         logoRemove.hidden = false;
         render();
