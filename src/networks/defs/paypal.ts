@@ -1,0 +1,163 @@
+import { siPaypal } from 'simple-icons';
+import type { NetworkDef } from '../types';
+
+const template: NetworkDef = {
+  id: 'paypal',
+  name: 'PayPal',
+  icon: { path: siPaypal.path, color: `#${siPaypal.hex}` },
+  subtitle: {
+    es: 'Creá un código QR para que te paguen con PayPal.',
+    en: 'Create a QR code so people can pay you with PayPal.',
+    pt: 'Crie um QR code para receber pagamentos pelo PayPal.',
+    fr: 'Créez un code QR pour recevoir des paiements via PayPal.',
+    it: 'Crea un codice QR per ricevere pagamenti con PayPal.',
+  },
+  modes: [
+    {
+      id: 'profile',
+      label: {
+        es: 'Monto libre',
+        en: 'Any amount',
+        pt: 'Valor livre',
+        fr: 'Montant libre',
+        it: 'Importo libero',
+      },
+      template: 'https://paypal.me/{username}',
+      fields: [
+        {
+          id: 'username',
+          type: 'text',
+          required: true,
+          maxLength: 20,
+          prefix: 'paypal.me/',
+          sanitize: 'handle',
+          pattern: '^[A-Za-z0-9]{1,20}$',
+          label: {
+            es: 'Usuario',
+            en: 'Username',
+            pt: 'Nome de usuário',
+            fr: 'Nom d\'utilisateur',
+            it: 'Nome utente',
+          },
+          placeholder: {
+            es: 'Ej.: mitienda',
+            en: 'e.g. myshop',
+            pt: 'Ex.: minhaloja',
+            fr: 'Ex. : maboutique',
+            it: 'Es.: mionegozio',
+          },
+          hint: {
+            es: 'Es lo que va después de paypal.me/ en tu enlace.',
+            en: 'It\'s what comes after paypal.me/ in your link.',
+            pt: 'É o que vem depois de paypal.me/ no seu link.',
+            fr: 'C\'est ce qui suit paypal.me/ dans votre lien.',
+            it: 'È ciò che segue paypal.me/ nel tuo link.',
+          },
+        },
+      ],
+    },
+    {
+      id: 'amount',
+      label: {
+        es: 'Con monto',
+        en: 'With amount',
+        pt: 'Com valor',
+        fr: 'Avec montant',
+        it: 'Con importo',
+      },
+      template: 'https://paypal.me/{username}/{amount:raw}{currency:raw}',
+      fields: [
+        {
+          id: 'username',
+          type: 'text',
+          required: true,
+          maxLength: 20,
+          prefix: 'paypal.me/',
+          sanitize: 'handle',
+          pattern: '^[A-Za-z0-9]{1,20}$',
+          label: {
+            es: 'Usuario',
+            en: 'Username',
+            pt: 'Nome de usuário',
+            fr: 'Nom d\'utilisateur',
+            it: 'Nome utente',
+          },
+          placeholder: {
+            es: 'Ej.: mitienda',
+            en: 'e.g. myshop',
+            pt: 'Ex.: minhaloja',
+            fr: 'Ex. : maboutique',
+            it: 'Es.: mionegozio',
+          },
+          hint: {
+            es: 'Es lo que va después de paypal.me/ en tu enlace.',
+            en: 'It\'s what comes after paypal.me/ in your link.',
+            pt: 'É o que vem depois de paypal.me/ no seu link.',
+            fr: 'C\'est ce qui suit paypal.me/ dans votre lien.',
+            it: 'È ciò che segue paypal.me/ nel tuo link.',
+          },
+        },
+        {
+          id: 'amount',
+          type: 'text',
+          required: true,
+          maxLength: 10,
+          sanitize: 'trim',
+          pattern: '^\\d{1,7}(\\.\\d{1,2})?$',
+          label: {
+            es: 'Monto',
+            en: 'Amount',
+            pt: 'Valor',
+            fr: 'Montant',
+            it: 'Importo',
+          },
+          placeholder: {
+            es: 'Ej.: 10.50',
+            en: 'e.g. 10.50',
+            pt: 'Ex.: 10.50',
+            fr: 'Ex. : 10.50',
+            it: 'Es.: 10.50',
+          },
+          hint: {
+            es: 'Solo números, con punto para los decimales.',
+            en: 'Numbers only, use a dot for decimals.',
+            pt: 'Apenas números, use ponto para os decimais.',
+            fr: 'Chiffres uniquement, avec un point pour les décimales.',
+            it: 'Solo numeri, usa il punto per i decimali.',
+          },
+        },
+        {
+          id: 'currency',
+          type: 'text',
+          required: true,
+          maxLength: 3,
+          sanitize: 'trim',
+          pattern: '^[A-Z]{3}$',
+          label: {
+            es: 'Moneda',
+            en: 'Currency',
+            pt: 'Moeda',
+            fr: 'Devise',
+            it: 'Valuta',
+          },
+          placeholder: {
+            es: 'Ej.: USD',
+            en: 'e.g. USD',
+            pt: 'Ex.: BRL',
+            fr: 'Ex. : EUR',
+            it: 'Es.: EUR',
+          },
+          hint: {
+            es: 'Código de 3 letras en mayúsculas (USD, EUR, BRL).',
+            en: '3-letter code in capitals (USD, EUR, GBP).',
+            pt: 'Código de 3 letras maiúsculas (BRL, USD, EUR).',
+            fr: 'Code de 3 lettres en majuscules (EUR, USD, CHF).',
+            it: 'Codice di 3 lettere maiuscole (EUR, USD, CHF).',
+          },
+        },
+      ],
+    },
+  ],
+};
+
+export default template;
