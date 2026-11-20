@@ -83,7 +83,7 @@ const faq = [
           {others.map((item) => (
             <li>
               <a href={networkPath(locale, item.id)}>
-                <NetworkBadge icon={item.icon} />
+                <NetworkBadge id={item.id} />
                 <span>{networkName(item, locale)}</span>
               </a>
             </li>

@@ -75,7 +75,7 @@ export function buildLink(mode: EngineMode, values: Record<string, string | null
       if (field.required) missing = true;
       continue;
     }
-    if (field.pattern && !new RegExp(field.pattern, 'u').test(value)) {
+    if (field.pattern && !new RegExp(field.pattern).test(value)) {
       return { status: 'invalid', field: field.id };
     }
     clean[field.id] = value;

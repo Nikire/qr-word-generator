@@ -29,7 +29,7 @@ const items = sortedNetworks(locale);
     aria-labelledby="tpl-label tpl-button"
     data-dd-button
   >
-    <NetworkBadge icon={current.icon} />
+    <NetworkBadge id={current.id} />
     <span class="dd-name">{networkName(current, locale)}</span>
     <svg class="dd-chevron" viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
       <path d="m6 9 6 6 6-6"></path>
@@ -57,7 +57,7 @@ const items = sortedNetworks(locale);
             data-href={networkPath(locale, network.id)}
             data-search={`${normalize(networkName(network, locale))} ${network.id}`}
           >
-            <NetworkBadge icon={network.icon} />
+            <NetworkBadge id={network.id} />
             <span class="dd-name">{networkName(network, locale)}</span>
           </li>
         ))
