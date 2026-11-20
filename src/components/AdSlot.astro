@@ -1,0 +1,47 @@
+---
+// Espacio de anuncio de AdSense. No renderiza nada hasta que se configuren
+// ADSENSE_CLIENT y el ID del bloque en site.config.mjs.
+import { ADSENSE_CLIENT, ADSENSE_SLOTS } from '../../site.config.mjs';
+
+interface Props {
+  position: keyof typeof ADSENSE_SLOTS;
+  label: string;
+}
+
+const { position, label } = Astro.props;
+const slotId = ADSENSE_SLOTS[position];
+---
+
+{
+  ADSENSE_CLIENT && slotId && (
+    <aside class="ad container" aria-label={label}>
+      <span class="ad-label">{label}</span>
+      <ins
+        class="adsbygoogle"
+        style="display:block"
+        data-ad-client={ADSENSE_CLIENT}
+        data-ad-slot={slotId}
+        data-ad-format="auto"
+        data-full-width-responsive="true"
+      />
+      <script is:inline>(window.adsbygoogle = window.adsbygoogle || []).push({});</script>
+    </aside>
+  )
+}
+
+<style>
+  .ad {
+    margin-top: 32px;
+    min-height: 120px;
+    text-align: center;
+  }
+
+  .ad-label {
+    display: block;
+    margin-bottom: 6px;
+    font-size: 0.7rem;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--muted);
+  }
+</style>

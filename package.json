@@ -1,0 +1,21 @@
+{
+  "name": "qr-word-generator",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "license": "UNLICENSED",
+  "author": "Erik Pastuszek",
+  "scripts": {
+    "dev": "node scripts/astro.mjs dev",
+    "build": "node scripts/astro.mjs build",
+    "preview": "node scripts/astro.mjs preview"
+  },
+  "dependencies": {
+    "@astrojs/sitemap": "^3.7.6",
+    "astro": "^7.3.8",
+    "flag-icons": "^7.6.0",
+    "libphonenumber-js": "^1.13.17",
+    "qrcode-generator": "^2.0.4",
+    "simple-icons": "^16.38.0"
+  }
+}

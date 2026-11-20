@@ -1,0 +1,223 @@
+---
+import { locales, localeNames, localePath, useTranslations, type Locale } from '../i18n/ui';
+
+interface Props {
+  locale: Locale;
+}
+
+const { locale } = Astro.props;
+const t = useTranslations(locale);
+---
+
+<header class="header">
+  <div class="container header-inner">
+    <a class="brand" href={localePath(locale)}>
+      <svg viewBox="0 0 32 32" aria-hidden="true">
+        <rect width="32" height="32" rx="9" fill="#25D366"></rect>
+        <path
+          fill="#fff"
+          d="M7 7h8v8H7zm2.5 2.5v3h3v-3zM17 7h8v8h-8zm2.5 2.5v3h3v-3zM7 17h8v8H7zm2.5 2.5v3h3v-3zM17 17h3v3h-3zm5 0h3v3h-3zm-5 5h3v3h-3zm5 0h3v3h-3z"
+        ></path>
+      </svg>
+      <span>QR Word Generator</span>
+    </a>
+
+    <div class="header-actions">
+      <label class="lang">
+        <span class="visually-hidden">{t('lang.label')}</span>
+        <svg viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.8">
+          <circle cx="12" cy="12" r="9"></circle>
+          <path d="M3 12h18M12 3a14 14 0 0 1 0 18M12 3a14 14 0 0 0 0 18"></path>
+        </svg>
+        <select data-lang-select>
+          {
+            locales.map((code) => (
+              <option value={localePath(code)} selected={code === locale} lang={code}>
+                {localeNames[code]}
+              </option>
+            ))
+          }
+        </select>
+      </label>
+
+      <button
+        type="button"
+        class="theme"
+        role="switch"
+        aria-checked="false"
+        aria-label={t('theme.toggle')}
+        title={t('theme.toggle')}
+        data-theme-toggle
+      >
+        <span class="theme-track">
+          <svg class="icon-sun" viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round">
+            <circle cx="12" cy="12" r="4"></circle>
+            <path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"></path>
+          </svg>
+          <svg class="icon-moon" viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M20 14.5A8 8 0 0 1 9.5 4a8 8 0 1 0 10.5 10.5z"></path>
+          </svg>
+          <span class="theme-thumb"></span>
+        </span>
+        <span class="theme-text" data-day={t('theme.day')} data-night={t('theme.night')}></span>
+      </button>
+    </div>
+  </div>
+</header>
+
+<script>
+  const langSelect = document.querySelector<HTMLSelectElement>('[data-lang-select]');
+  langSelect?.addEventListener('change', () => {
+    window.location.href = langSelect.value;
+  });
+
+  const toggle = document.querySelector<HTMLButtonElement>('[data-theme-toggle]');
+  const root = document.documentElement;
+  const sync = () => toggle?.setAttribute('aria-checked', String(root.dataset.theme === 'dark'));
+  sync();
+  toggle?.addEventListener('click', () => {
+    const next = root.dataset.theme === 'dark' ? 'light' : 'dark';
+    root.dataset.theme = next;
+    try {
+      localStorage.setItem('theme', next);
+    } catch {
+      // Sin almacenamiento disponible: el tema vale solo para esta visita.
+    }
+    sync();
+  });
+</script>
+
+<style>
+  .header {
+    position: sticky;
+    top: 0;
+    z-index: 20;
+    background: color-mix(in srgb, var(--bg) 88%, transparent);
+    backdrop-filter: blur(10px);
+    border-bottom: 1px solid var(--border);
+  }
+
+  .header-inner {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+    min-height: 64px;
+  }
+
+  .brand {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    color: var(--text);
+    font-weight: 700;
+    font-size: 1.05rem;
+    letter-spacing: -0.01em;
+    text-decoration: none;
+    white-space: nowrap;
+  }
+
+  .brand svg {
+    width: 32px;
+    height: 32px;
+    flex: none;
+  }
+
+  .header-actions {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+
+  .lang {
+    position: relative;
+    display: inline-flex;
+    align-items: center;
+  }
+
+  .lang svg {
+    position: absolute;
+    left: 10px;
+    width: 18px;
+    height: 18px;
+    color: var(--muted);
+    pointer-events: none;
+  }
+
+  .lang select {
+    height: 40px;
+    padding: 0 12px 0 34px;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 999px;
+    cursor: pointer;
+  }
+
+  .theme {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    height: 40px;
+    padding: 0 12px 0 6px;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 999px;
+    cursor: pointer;
+  }
+
+  .theme-track {
+    position: relative;
+    display: inline-flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 54px;
+    height: 28px;
+    padding: 0 6px;
+    background: var(--surface-2);
+    border-radius: 999px;
+    color: var(--muted);
+  }
+
+  .theme-track svg {
+    width: 15px;
+    height: 15px;
+  }
+
+  .theme-thumb {
+    position: absolute;
+    top: 3px;
+    left: 3px;
+    width: 22px;
+    height: 22px;
+    background: var(--accent);
+    border-radius: 50%;
+    opacity: 0.9;
+    mix-blend-mode: multiply;
+    transition: transform 0.2s ease;
+  }
+
+  :global([data-theme='dark']) .theme-thumb {
+    transform: translateX(26px);
+    mix-blend-mode: screen;
+    opacity: 0.55;
+  }
+
+  .theme-text {
+    font-size: 0.85rem;
+    font-weight: 600;
+  }
+
+  .theme-text::after {
+    content: attr(data-day);
+  }
+
+  :global([data-theme='dark']) .theme-text::after {
+    content: attr(data-night);
+  }
+
+  @media (max-width: 560px) {
+    .brand span {
+      display: none;
+    }
+  }
+</style>
