@@ -3,9 +3,11 @@ import { locales, localeNames, localePath, useTranslations, type Locale } from '
 
 interface Props {
   locale: Locale;
+  /** Ruta de la página actual en cada idioma, para el selector de idioma. */
+  paths: Record<Locale, string>;
 }
 
-const { locale } = Astro.props;
+const { locale, paths } = Astro.props;
 const t = useTranslations(locale);
 ---
 
@@ -32,7 +34,7 @@ const t = useTranslations(locale);
         <select data-lang-select>
           {
             locales.map((code) => (
-              <option value={localePath(code)} selected={code === locale} lang={code}>
+              <option value={paths[code]} selected={code === locale} lang={code}>
                 {localeNames[code]}
               </option>
             ))

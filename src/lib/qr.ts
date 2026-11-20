@@ -1,13 +1,23 @@
 // Dibuja un código QR como SVG: módulos redondeados, marco con borde delicado
-// y el logo de la red social en el centro. Sirve para cualquier red: solo cambia el logo.
+// y un logo opcional en el centro (el de la red social o uno propio).
 import qrcode from 'qrcode-generator';
 
-export interface QrLogo {
+/** Logo de marca: ícono dentro de un círculo del color oficial. */
+export interface QrIconLogo {
   /** Trazado del ícono en una caja de 24×24 (formato Simple Icons). */
   path: string;
   /** Color oficial de la marca, con numeral. */
   color: string;
+  /** Ícono oscuro en vez de blanco, para marcas de color muy claro. */
+  darkGlyph?: boolean;
 }
+
+/** Logo propio subido por el usuario (PNG o SVG como data URL). */
+export interface QrImageLogo {
+  image: string;
+}
+
+export type QrLogo = QrIconLogo | QrImageLogo;
 
 export interface QrOptions {
   data: string;
@@ -42,7 +52,7 @@ export function buildQrSvg({
   const offset = FRAME + QUIET * MODULE;
   const size = count * MODULE + offset * 2;
   const center = size / 2;
-  const borderColor = accent ?? logo?.color ?? dark;
+  const borderColor = accent ?? (logo && 'color' in logo ? logo.color : dark);
 
   const badgeRadius = count * MODULE * 0.115;
   const clearRadius = logo ? badgeRadius + MODULE * 1.4 : 0;
@@ -114,12 +124,18 @@ export function buildQrSvg({
 
   let badge = '';
   if (logo) {
-    const glyph = badgeRadius * 2 * 0.62;
-    const scale = round(glyph / 24);
-    const shift = round(center - glyph / 2);
-    badge =
-      `<circle cx="${center}" cy="${center}" r="${round(badgeRadius)}" fill="${logo.color}"/>` +
-      `<path transform="translate(${shift} ${shift}) scale(${scale})" fill="#FFFFFF" d="${logo.path}"/>`;
+    if ('image' in logo) {
+      const side = round(badgeRadius * 1.6);
+      const corner = round(center - side / 2);
+      badge = `<image x="${corner}" y="${corner}" width="${side}" height="${side}" preserveAspectRatio="xMidYMid meet" href="${logo.image}"/>`;
+    } else {
+      const glyph = badgeRadius * 2 * 0.62;
+      const scale = round(glyph / 24);
+      const shift = round(center - glyph / 2);
+      badge =
+        `<circle cx="${center}" cy="${center}" r="${round(badgeRadius)}" fill="${logo.color}"/>` +
+        `<path transform="translate(${shift} ${shift}) scale(${scale})" fill="${logo.darkGlyph ? '#111B21' : '#FFFFFF'}" d="${logo.path}"/>`;
+    }
   }
 
   return (

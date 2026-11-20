@@ -1,0 +1,34 @@
+---
+// Una página por plantilla y por idioma:
+//   /            plantilla por defecto, español
+//   /instagram/  otra plantilla, español
+//   /en/         plantilla por defecto, inglés
+//   /en/instagram/
+import GeneratorPage from '../components/GeneratorPage.astro';
+import { defaultLocale, locales, type Locale } from '../i18n/ui';
+import { DEFAULT_NETWORK, networks } from '../networks';
+
+export function getStaticPaths() {
+  return locales.flatMap((locale) =>
+    networks.map((network) => {
+      const parts = [
+        locale === defaultLocale ? '' : locale,
+        network.id === DEFAULT_NETWORK ? '' : network.id,
+      ].filter(Boolean);
+      return {
+        params: { path: parts.join('/') || undefined },
+        props: { locale, networkId: network.id },
+      };
+    }),
+  );
+}
+
+interface Props {
+  locale: Locale;
+  networkId: string;
+}
+
+const { locale, networkId } = Astro.props;
+---
+
+<GeneratorPage locale={locale} networkId={networkId} />

@@ -1,0 +1,633 @@
+---
+// Formulario + vista previa del QR para cualquier plantilla.
+// Los campos se dibujan a partir de la definición de la plantilla.
+import CountrySelect from './CountrySelect.astro';
+import TemplateSelect from './TemplateSelect.astro';
+import type { NetworkDef } from '../networks/types';
+import { useTranslations, type Locale } from '../i18n/ui';
+
+interface Props {
+  locale: Locale;
+  network: NetworkDef;
+}
+
+const { locale, network } = Astro.props;
+const t = useTranslations(locale);
+
+// Lo que necesita el navegador para armar el enlace (sin textos).
+const config = {
+  id: network.id,
+  logo: network.qrLogo === false ? null : network.icon,
+  modes: network.modes.map((mode) => ({
+    id: mode.id,
+    template: mode.template,
+    query: mode.query,
+    fields: mode.fields.map(({ id, type, required, sanitize, pattern }) => ({ id, type, required, sanitize, pattern })),
+  })),
+};
+
+const inputMode = { trim: 'text', handle: 'text', digits: 'numeric', url: 'url' } as const;
+---
+
+<section
+  class="generator"
+  data-generator
+  data-msg-empty={t('preview.empty')}
+  data-msg-invalid={t('preview.invalid')}
+  data-msg-toolong={t('preview.tooLong')}
+  data-msg-logo={t('form.logoError')}
+  data-copy={t('preview.copy')}
+  data-copied={t('preview.copied')}
+>
+  <script type="application/json" data-config set:html={JSON.stringify(config).replace(/</g, '\\u003c')} />
+
+  <form class="form" novalidate>
+    <TemplateSelect locale={locale} current={network} />
+
+    {
+      network.modes.length > 1 && (
+        <fieldset class="modes">
+          <legend class="field-label">{t('form.mode')}</legend>
+          <div class="modes-options">
+            {network.modes.map((mode, index) => (
+              <label>
+                <input type="radio" name="mode" value={mode.id} checked={index === 0} data-mode />
+                <span>{mode.label[locale]}</span>
+              </label>
+            ))}
+          </div>
+        </fieldset>
+      )
+    }
+
+    {
+      network.modes.map((mode, index) => (
+        <div class="fields" data-mode-panel={mode.id} hidden={index > 0}>
+          {mode.fields.map((field) => {
+            const uid = `f-${mode.id}-${field.id}`;
+            const hint = field.hint?.[locale] || (field.type === 'phone' ? t('form.phoneHint') : '');
+            const label = (
+              <span class="field-label">
+                {field.label[locale]}
+                {!field.required && <small>({t('form.optional')})</small>}
+              </span>
+            );
+            if (field.type === 'phone') {
+              return (
+                <div class="fields" data-phone-field>
+                  <CountrySelect locale={locale} uid={`${uid}-country`} />
+                  <label class="field">
+                    {label}
+                    <span class="affix">
+                      <span class="affix-text" data-dial-prefix aria-hidden="true" />
+                      <input
+                        class="control"
+                        type="tel"
+                        inputmode="tel"
+                        autocomplete="tel-national"
+                        maxlength="24"
+                        placeholder={field.placeholder[locale]}
+                        aria-describedby={hint ? `${uid}-hint` : undefined}
+                        data-field={field.id}
+                      />
+                    </span>
+                    {hint && <span class="field-hint" id={`${uid}-hint`}>{hint}</span>}
+                  </label>
+                </div>
+              );
+            }
+            return (
+              <label class="field">
+                {label}
+                {field.type === 'textarea' ? (
+                  <textarea
+                    class="control"
+                    rows="3"
+                    maxlength={field.maxLength ?? 300}
+                    placeholder={field.placeholder[locale]}
+                    aria-describedby={hint ? `${uid}-hint` : undefined}
+                    data-field={field.id}
+                  />
+                ) : (
+                  <span class:list={['affix', { 'no-affix': !field.prefix }]}>
+                    {field.prefix && <span class="affix-text" aria-hidden="true">{field.prefix}</span>}
+                    <input
+                      class="control"
+                      type="text"
+                      inputmode={inputMode[field.sanitize]}
+                      autocomplete="off"
+                      autocapitalize="off"
+                      autocorrect="off"
+                      spellcheck="false"
+                      maxlength={field.maxLength ?? 200}
+                      placeholder={field.placeholder[locale]}
+                      aria-describedby={hint ? `${uid}-hint` : undefined}
+                      data-field={field.id}
+                    />
+                  </span>
+                )}
+                {hint && <span class="field-hint" id={`${uid}-hint`}>{hint}</span>}
+              </label>
+            );
+          })}
+        </div>
+      ))
+    }
+
+    {
+      network.logoUpload && (
+        <div class="field">
+          <span class="field-label">
+            {t('form.logo')}
+            <small>({t('form.optional')})</small>
+          </span>
+          <div class="logo-row">
+            <label class="btn btn-secondary logo-pick">
+              <input type="file" class="visually-hidden" accept="image/png,image/svg+xml,.png,.svg" data-logo-input />
+              <svg viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M12 16V4m0 0-4.5 4.5M12 4l4.5 4.5M4 20h16" />
+              </svg>
+              {t('form.logoChoose')}
+            </label>
+            <span class="logo-name" data-logo-name />
+            <button type="button" class="logo-remove" data-logo-remove hidden>{t('form.logoRemove')}</button>
+          </div>
+          <span class="field-hint">{t('form.logoHint')}</span>
+        </div>
+      )
+    }
+  </form>
+
+  <div class="result">
+    <h2 class="result-title">{t('preview.title')}</h2>
+    <div class="qr" data-qr role="img" aria-label={t('preview.title')}></div>
+    <p class="status" data-status role="status" aria-live="polite"></p>
+
+    <div class="link" data-link hidden>
+      <span class="field-label">{t('preview.link')}</span>
+      <div class="link-row">
+        <a class="link-url" data-link-url target="_blank" rel="noopener noreferrer" title={t('preview.open')}></a>
+        <button type="button" class="link-copy" data-copy-button>{t('preview.copy')}</button>
+      </div>
+    </div>
+
+    <div class="downloads">
+      <button type="button" class="btn btn-primary" data-download="png" disabled>
+        <svg viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M12 3v12m0 0-4.5-4.5M12 15l4.5-4.5M4 20h16"></path>
+        </svg>
+        {t('download.png')}
+      </button>
+      <button type="button" class="btn btn-secondary" data-download="svg" disabled>
+        <svg viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M12 3v12m0 0-4.5-4.5M12 15l4.5-4.5M4 20h16"></path>
+        </svg>
+        {t('download.svg')}
+      </button>
+    </div>
+  </div>
+</section>
+
+<script>
+  import { buildLink, phoneDigits, type EngineMode } from '../lib/engine';
+  import { buildQrSvg, type QrLogo } from '../lib/qr';
+
+  interface Config {
+    id: string;
+    logo: QrLogo | null;
+    modes: EngineMode[];
+  }
+
+  const PNG_SIZE = 1200;
+  const MAX_LOGO_BYTES = 1024 * 1024;
+  const PLACEHOLDER_DATA = 'https://qr.example/placeholder';
+
+  const root = document.querySelector<HTMLElement>('[data-generator]')!;
+  const config: Config = JSON.parse(root.querySelector('[data-config]')!.textContent!);
+  const preview = root.querySelector<HTMLElement>('[data-qr]')!;
+  const status = root.querySelector<HTMLElement>('[data-status]')!;
+  const link = root.querySelector<HTMLElement>('[data-link]')!;
+  const linkUrl = root.querySelector<HTMLAnchorElement>('[data-link-url]')!;
+  const copyButton = root.querySelector<HTMLButtonElement>('[data-copy-button]')!;
+  const downloads = Array.from(root.querySelectorAll<HTMLButtonElement>('[data-download]'));
+  const modeInputs = Array.from(root.querySelectorAll<HTMLInputElement>('[data-mode]'));
+  const panels = Array.from(root.querySelectorAll<HTMLElement>('[data-mode-panel]'));
+  const logoInput = root.querySelector<HTMLInputElement>('[data-logo-input]');
+  const logoName = root.querySelector<HTMLElement>('[data-logo-name]');
+  const logoRemove = root.querySelector<HTMLButtonElement>('[data-logo-remove]');
+
+  let customLogo: string | undefined;
+  let logoError = false;
+  let current: { svg: string; url: string; name: string } | undefined;
+
+  const activeMode = () => {
+    const id = modeInputs.find((input) => input.checked)?.value ?? config.modes[0].id;
+    return config.modes.find((mode) => mode.id === id)!;
+  };
+  const panelOf = (modeId: string) => panels.find((panel) => panel.dataset.modePanel === modeId)!;
+  const logo = (): QrLogo | undefined => (customLogo ? { image: customLogo } : (config.logo ?? undefined));
+
+  /** Nombre de archivo a partir del primer dato: qr-instagram-mitienda */
+  function fileName(values: Record<string, string>, mode: EngineMode): string {
+    const first = values[mode.fields[0].id] ?? '';
+    const slug = first
+      .replace(/^https?:\/\/(www\.)?/i, '')
+      .normalize('NFD')
+      .replace(/[^a-zA-Z0-9]+/g, '-')
+      .replace(/^-+|-+$/g, '')
+      .slice(0, 40)
+      .toLowerCase();
+    return ['qr', config.id, slug].filter(Boolean).join('-');
+  }
+
+  function render() {
+    const mode = activeMode();
+    const panel = panelOf(mode.id);
+    const values: Record<string, string | null> = {};
+
+    for (const field of mode.fields) {
+      const input = panel.querySelector<HTMLInputElement | HTMLTextAreaElement>(`[data-field="${field.id}"]`)!;
+      input.removeAttribute('aria-invalid');
+      if (field.type === 'phone') {
+        const wrapper = input.closest<HTMLElement>('[data-phone-field]')!;
+        const dial = wrapper.querySelector<HTMLElement>('[data-country-select]')!.dataset.dial ?? '';
+        wrapper.querySelector<HTMLElement>('[data-dial-prefix]')!.textContent = `+${dial}`;
+        values[field.id] = phoneDigits(dial, input.value);
+      } else {
+        values[field.id] = input.value;
+      }
+    }
+
+    const result = buildLink(mode, values);
+    let problem = '';
+    current = undefined;
+
+    if (result.status === 'empty') {
+      problem = root.dataset.msgEmpty!;
+    } else if (result.status === 'invalid') {
+      problem = root.dataset.msgInvalid!;
+      panel.querySelector(`[data-field="${result.field}"]`)?.setAttribute('aria-invalid', 'true');
+    } else {
+      try {
+        current = {
+          svg: buildQrSvg({ data: result.url, logo: logo() }),
+          url: result.url,
+          name: fileName(result.values, mode),
+        };
+      } catch {
+        problem = root.dataset.msgToolong!;
+      }
+    }
+
+    // Sin datos válidos se muestra un código de ejemplo atenuado.
+    preview.innerHTML = current?.svg ?? buildQrSvg({ data: PLACEHOLDER_DATA, logo: logo() });
+    preview.classList.toggle('is-placeholder', !current);
+    const message = logoError ? root.dataset.msgLogo! : problem;
+    status.textContent = message;
+    status.classList.toggle('is-error', logoError || (Boolean(problem) && result.status !== 'empty'));
+    link.hidden = !current;
+    if (current) {
+      linkUrl.href = current.url;
+      linkUrl.textContent = current.url;
+    }
+    for (const button of downloads) button.disabled = !current;
+  }
+
+  function save(blob: Blob, extension: string) {
+    const anchor = document.createElement('a');
+    anchor.href = URL.createObjectURL(blob);
+    anchor.download = `${current!.name}.${extension}`;
+    document.body.append(anchor);
+    anchor.click();
+    anchor.remove();
+    setTimeout(() => URL.revokeObjectURL(anchor.href), 1000);
+  }
+
+  async function toPng(svg: string): Promise<Blob> {
+    const image = new Image();
+    image.src = `data:image/svg+xml;charset=utf-8,${encodeURIComponent(svg)}`;
+    await image.decode();
+    const canvas = document.createElement('canvas');
+    canvas.width = canvas.height = PNG_SIZE;
+    canvas.getContext('2d')!.drawImage(image, 0, 0, PNG_SIZE, PNG_SIZE);
+    return new Promise((resolve, reject) =>
+      canvas.toBlob((blob) => (blob ? resolve(blob) : reject(new Error('PNG'))), 'image/png'),
+    );
+  }
+
+  for (const button of downloads) {
+    button.addEventListener('click', async () => {
+      if (!current) return;
+      if (button.dataset.download === 'svg') {
+        save(new Blob([current.svg], { type: 'image/svg+xml' }), 'svg');
+      } else {
+        save(await toPng(current.svg), 'png');
+      }
+    });
+  }
+
+  copyButton.addEventListener('click', async () => {
+    if (!current) return;
+    try {
+      await navigator.clipboard.writeText(current.url);
+      copyButton.textContent = root.dataset.copied!;
+      setTimeout(() => (copyButton.textContent = root.dataset.copy!), 1800);
+    } catch {
+      // Portapapeles no disponible: el enlace sigue visible para copiarlo a mano.
+    }
+  });
+
+  for (const input of modeInputs) {
+    input.addEventListener('change', () => {
+      for (const panel of panels) panel.hidden = panel.dataset.modePanel !== activeMode().id;
+      render();
+    });
+  }
+
+  if (logoInput && logoName && logoRemove) {
+    const clearLogo = () => {
+      customLogo = undefined;
+      logoInput.value = '';
+      logoName.textContent = '';
+      logoRemove.hidden = true;
+    };
+    logoInput.addEventListener('change', () => {
+      const file = logoInput.files?.[0];
+      if (!file) return;
+      const isSvg = file.type === 'image/svg+xml' || /\.svg$/i.test(file.name);
+      const isPng = file.type === 'image/png' || /\.png$/i.test(file.name);
+      if ((!isSvg && !isPng) || file.size > MAX_LOGO_BYTES) {
+        clearLogo();
+        logoError = true;
+        render();
+        return;
+      }
+      const reader = new FileReader();
+      reader.onload = () => {
+        logoError = false;
+        // Se fuerza el tipo correcto: algunos sistemas no informan el de los SVG.
+        customLogo = String(reader.result).replace(/^data:[^;,]*/, `data:${isSvg ? 'image/svg+xml' : 'image/png'}`);
+        logoName.textContent = file.name;
+        logoRemove.hidden = false;
+        render();
+      };
+      reader.readAsDataURL(file);
+    });
+    logoRemove.addEventListener('click', () => {
+      clearLogo();
+      logoError = false;
+      render();
+    });
+  }
+
+  root.querySelector('form')!.addEventListener('submit', (event) => event.preventDefault());
+  root.querySelector('form')!.addEventListener('input', render);
+  root.addEventListener('countrychange', render);
+  render();
+</script>
+
+<style>
+  .generator {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) minmax(0, 380px);
+    gap: 32px;
+    padding: 28px;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    box-shadow: var(--shadow);
+  }
+
+  .form,
+  .fields {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+  }
+
+  .modes {
+    margin: 0;
+    padding: 0;
+    border: 0;
+  }
+
+  .modes legend {
+    margin-bottom: 6px;
+    padding: 0;
+  }
+
+  .modes-options {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 4px;
+    padding: 4px;
+    background: var(--surface-2);
+    border-radius: var(--radius-sm);
+  }
+
+  .modes-options label {
+    flex: 1 1 0;
+    min-width: max-content;
+    cursor: pointer;
+  }
+
+  .modes-options input {
+    position: absolute;
+    opacity: 0;
+    pointer-events: none;
+  }
+
+  .modes-options span {
+    display: block;
+    padding: 9px 12px;
+    border-radius: 9px;
+    color: var(--muted);
+    font-size: 0.92rem;
+    font-weight: 600;
+    text-align: center;
+  }
+
+  .modes-options input:checked + span {
+    background: var(--surface);
+    color: var(--text);
+    box-shadow: 0 1px 2px rgba(17, 27, 33, 0.12);
+  }
+
+  .modes-options input:focus-visible + span {
+    outline: 2px solid var(--accent);
+    outline-offset: 1px;
+  }
+
+  .affix {
+    display: flex;
+    align-items: stretch;
+  }
+
+  .affix-text {
+    display: inline-flex;
+    align-items: center;
+    padding: 0 14px;
+    background: var(--surface-2);
+    border: 1px solid var(--border);
+    border-right: 0;
+    border-radius: var(--radius-sm) 0 0 var(--radius-sm);
+    color: var(--muted);
+    font-variant-numeric: tabular-nums;
+    white-space: nowrap;
+  }
+
+  .affix:not(.no-affix) .control {
+    border-radius: 0 var(--radius-sm) var(--radius-sm) 0;
+  }
+
+  .control[aria-invalid='true'] {
+    border-color: var(--danger);
+  }
+
+  .logo-row {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    min-width: 0;
+  }
+
+  .logo-pick {
+    flex: none;
+    min-height: 42px;
+    font-size: 0.92rem;
+  }
+
+  .logo-pick:focus-within {
+    outline: 2px solid var(--accent);
+    outline-offset: 2px;
+  }
+
+  .logo-name {
+    flex: 0 1 auto;
+    min-width: 0;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    font-size: 0.88rem;
+    color: var(--muted);
+  }
+
+  .logo-remove {
+    flex: none;
+    padding: 4px 8px;
+    background: none;
+    border: 0;
+    color: var(--danger);
+    font-size: 0.85rem;
+    font-weight: 600;
+    cursor: pointer;
+  }
+
+  .result {
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+    align-self: start;
+    padding: 22px;
+    background: var(--surface-2);
+    border-radius: var(--radius-sm);
+  }
+
+  .result-title {
+    font-size: 1.05rem;
+  }
+
+  .qr {
+    width: 100%;
+    max-width: 320px;
+    margin: 0 auto;
+    aspect-ratio: 1;
+    transition: opacity 0.2s ease;
+  }
+
+  .qr :global(svg) {
+    display: block;
+    width: 100%;
+    height: 100%;
+  }
+
+  .qr.is-placeholder {
+    opacity: 0.22;
+    filter: grayscale(1);
+  }
+
+  .status {
+    font-size: 0.88rem;
+    color: var(--muted);
+    text-align: center;
+  }
+
+  .status:empty {
+    display: none;
+  }
+
+  .status.is-error {
+    color: var(--danger);
+  }
+
+  .link-row {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-top: 6px;
+    padding: 6px 6px 6px 12px;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-sm);
+  }
+
+  .link-url {
+    flex: 1;
+    min-width: 0;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    font-size: 0.85rem;
+  }
+
+  .link-copy {
+    flex: none;
+    min-height: 34px;
+    padding: 4px 12px;
+    background: var(--surface-2);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    font-size: 0.82rem;
+    font-weight: 600;
+    cursor: pointer;
+  }
+
+  .link-copy:hover {
+    border-color: var(--muted);
+  }
+
+  .downloads {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+  }
+
+  .downloads .btn {
+    padding-inline: 12px;
+    font-size: 0.92rem;
+  }
+
+  @media (max-width: 820px) {
+    .generator {
+      grid-template-columns: minmax(0, 1fr);
+      gap: 24px;
+      padding: 18px;
+    }
+  }
+
+  @media (max-width: 380px) {
+    .downloads {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>

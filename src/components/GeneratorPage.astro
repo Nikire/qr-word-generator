@@ -1,0 +1,234 @@
+---
+// Página completa de una plantilla: título, generador, pasos, preguntas
+// frecuentes y enlaces al resto de las plantillas.
+import Base from '../layouts/Base.astro';
+import Generator from './Generator.astro';
+import NetworkBadge from './NetworkBadge.astro';
+import AdSlot from './AdSlot.astro';
+import { locales, useTranslations, type Locale, type UiKey } from '../i18n/ui';
+import { getNetwork, networkName, networkPath, sortedNetworks } from '../networks';
+
+interface Props {
+  locale: Locale;
+  networkId: string;
+}
+
+const { locale, networkId } = Astro.props;
+const t = useTranslations(locale);
+const network = getNetwork(networkId);
+const name = networkName(network, locale);
+const subtitle = network.subtitle[locale];
+
+const heading = network.title?.[locale] ?? t('hero.title', { name });
+const pageTitle = `${network.title?.[locale] ?? t('meta.title', { name })} | QR Word Generator`;
+const description = `${subtitle} ${t('meta.descriptionTail')}`;
+
+const paths = Object.fromEntries(locales.map((code) => [code, networkPath(code, network.id)])) as Record<Locale, string>;
+const others = sortedNetworks(locale).filter((item) => item.id !== network.id);
+
+const key = (value: string) => value as UiKey;
+const steps = [1, 2, 3].map((n) => ({ title: t(key(`steps.${n}.title`)), text: t(key(`steps.${n}.text`)) }));
+const faq = [
+  ...[1, 2, 3].map((n) => ({ q: t(key(`faq.${n}.q`)), a: t(key(`faq.${n}.a`)) })),
+  ...(network.faq ?? []).map((item) => ({ q: item.q[locale], a: item.a[locale] })),
+];
+---
+
+<Base locale={locale} title={pageTitle} description={description} paths={paths}>
+  <section class="hero container">
+    <h1>{heading}</h1>
+    <p>{subtitle} {t('hero.tail')}</p>
+  </section>
+
+  <div class="container">
+    <Generator locale={locale} network={network} />
+  </div>
+
+  <AdSlot position="top" label={t('ads.label')} />
+
+  <section class="section container">
+    <h2>{t('steps.title')}</h2>
+    <ol class="steps">
+      {
+        steps.map((step, index) => (
+          <li>
+            <span class="step-number">{index + 1}</span>
+            <h3>{step.title}</h3>
+            <p>{step.text}</p>
+          </li>
+        ))
+      }
+    </ol>
+  </section>
+
+  <section class="section container">
+    <h2>{t('faq.title')}</h2>
+    <div class="faq">
+      {
+        faq.map((item) => (
+          <details>
+            <summary>{item.q}</summary>
+            <p>{item.a}</p>
+          </details>
+        ))
+      }
+    </div>
+  </section>
+
+  {
+    others.length > 0 && (
+      <section class="section container">
+        <h2>{t('templates.title')}</h2>
+        <ul class="templates">
+          {others.map((item) => (
+            <li>
+              <a href={networkPath(locale, item.id)}>
+                <NetworkBadge icon={item.icon} />
+                <span>{networkName(item, locale)}</span>
+              </a>
+            </li>
+          ))}
+        </ul>
+      </section>
+    )
+  }
+
+  <AdSlot position="bottom" label={t('ads.label')} />
+</Base>
+
+<style>
+  .hero {
+    padding-top: 44px;
+    padding-bottom: 28px;
+    text-align: center;
+  }
+
+  .hero h1 {
+    font-size: clamp(1.7rem, 4.5vw, 2.6rem);
+    line-height: 1.15;
+  }
+
+  .hero p {
+    max-width: 640px;
+    margin: 12px auto 0;
+    color: var(--muted);
+    font-size: 1.05rem;
+    text-wrap: pretty;
+  }
+
+  .section {
+    margin-top: 56px;
+  }
+
+  .section h2 {
+    margin-bottom: 20px;
+    font-size: 1.45rem;
+    text-align: center;
+  }
+
+  .steps {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 16px;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+  }
+
+  .steps li {
+    padding: 22px;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+  }
+
+  .step-number {
+    display: inline-grid;
+    place-items: center;
+    width: 32px;
+    height: 32px;
+    margin-bottom: 12px;
+    background: var(--accent-soft);
+    border-radius: 50%;
+    color: var(--accent-strong);
+    font-weight: 700;
+  }
+
+  .steps h3 {
+    margin-bottom: 4px;
+    font-size: 1.02rem;
+  }
+
+  .steps p {
+    color: var(--muted);
+    font-size: 0.93rem;
+  }
+
+  .faq {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    max-width: 720px;
+    margin: 0 auto;
+  }
+
+  .faq details {
+    padding: 0 18px;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-sm);
+  }
+
+  .faq summary {
+    padding: 14px 0;
+    font-weight: 600;
+    cursor: pointer;
+  }
+
+  .faq p {
+    padding-bottom: 16px;
+    color: var(--muted);
+  }
+
+  .templates {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(190px, 1fr));
+    gap: 10px;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+  }
+
+  .templates a {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    min-height: 52px;
+    padding: 10px 14px;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-sm);
+    color: var(--text);
+    font-weight: 600;
+    font-size: 0.95rem;
+    text-decoration: none;
+    transition: border-color 0.15s ease;
+  }
+
+  .templates a:hover {
+    border-color: var(--accent);
+  }
+
+  .templates span {
+    min-width: 0;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+
+  @media (max-width: 720px) {
+    .steps {
+      grid-template-columns: minmax(0, 1fr);
+    }
+  }
+</style>

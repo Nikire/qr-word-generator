@@ -235,3 +235,107 @@ textarea.control {
     animation: none !important;
   }
 }
+
+/* Listas desplegables con buscador (país y plantilla) */
+.dd {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.dd-button {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  text-align: left;
+  cursor: pointer;
+}
+
+.dd-flag {
+  width: 28px;
+  height: 21px;
+  flex: none;
+  object-fit: cover;
+  border-radius: 4px;
+  box-shadow: 0 0 0 1px rgba(17, 27, 33, 0.12);
+  background: var(--surface-2);
+}
+
+.dd-name {
+  flex: 1;
+  min-width: 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.dd-meta {
+  color: var(--muted);
+  font-variant-numeric: tabular-nums;
+}
+
+.dd-chevron {
+  width: 18px;
+  height: 18px;
+  flex: none;
+  color: var(--muted);
+  transition: transform 0.15s ease;
+}
+
+.dd-button[aria-expanded='true'] .dd-chevron {
+  transform: rotate(180deg);
+}
+
+.dd-popover {
+  position: absolute;
+  top: calc(100% + 6px);
+  left: 0;
+  right: 0;
+  z-index: 30;
+  padding: 8px;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-sm);
+  box-shadow: var(--shadow);
+}
+
+.dd-search {
+  min-height: 42px;
+  margin-bottom: 6px;
+}
+
+.dd-list {
+  max-height: 280px;
+  margin: 0;
+  padding: 0;
+  overflow-y: auto;
+  list-style: none;
+  overscroll-behavior: contain;
+}
+
+.dd-list li {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  min-height: 44px;
+  padding: 8px 10px;
+  border-radius: 8px;
+  cursor: pointer;
+}
+
+.dd-list li:hover,
+.dd-list li.is-active {
+  background: var(--surface-2);
+}
+
+.dd-list li[aria-selected='true'] {
+  background: var(--accent-soft);
+  font-weight: 600;
+}
+
+.dd-empty {
+  padding: 14px 10px;
+  color: var(--muted);
+  text-align: center;
+}

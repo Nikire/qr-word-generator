@@ -1,0 +1,23 @@
+---
+// Ícono de una plantilla: círculo del color de la marca con el logo adentro.
+import type { NetworkIcon } from '../networks/types';
+
+interface Props {
+  icon: NetworkIcon;
+}
+
+const { icon } = Astro.props;
+---
+
+<svg class="badge" viewBox="0 0 40 40" aria-hidden="true">
+  <circle cx="20" cy="20" r="20" fill={icon.color}></circle>
+  <path transform="translate(9 9) scale(0.9167)" fill={icon.darkGlyph ? '#111B21' : '#FFFFFF'} d={icon.path}></path>
+</svg>
+
+<style>
+  .badge {
+    width: 28px;
+    height: 28px;
+    flex: none;
+  }
+</style>

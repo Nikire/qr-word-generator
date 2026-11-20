@@ -1,16 +1,18 @@
 ---
 import '../styles/global.css';
 import Header from '../components/Header.astro';
-import { locales, localePath, useTranslations, type Locale } from '../i18n/ui';
+import { locales, useTranslations, type Locale } from '../i18n/ui';
 import { SITE_URL, ADSENSE_CLIENT } from '../../site.config.mjs';
 
 interface Props {
   locale: Locale;
   title: string;
   description: string;
+  /** Ruta de esta misma página en cada idioma. */
+  paths: Record<Locale, string>;
 }
 
-const { locale, title, description } = Astro.props;
+const { locale, title, description, paths } = Astro.props;
 const t = useTranslations(locale);
 const absolute = (path: string) => `${SITE_URL}${path}`;
 const year = new Date().getFullYear();
@@ -33,12 +35,12 @@ const year = new Date().getFullYear();
     {
       SITE_URL && (
         <>
-          <link rel="canonical" href={absolute(localePath(locale))} />
-          <meta property="og:url" content={absolute(localePath(locale))} />
+          <link rel="canonical" href={absolute(paths[locale])} />
+          <meta property="og:url" content={absolute(paths[locale])} />
           {locales.map((code) => (
-            <link rel="alternate" hreflang={code} href={absolute(localePath(code))} />
+            <link rel="alternate" hreflang={code} href={absolute(paths[code])} />
           ))}
-          <link rel="alternate" hreflang="x-default" href={absolute('/')} />
+          <link rel="alternate" hreflang="x-default" href={absolute(paths.es)} />
         </>
       )
     }
@@ -67,7 +69,7 @@ const year = new Date().getFullYear();
     }
   </head>
   <body>
-    <Header locale={locale} />
+    <Header locale={locale} paths={paths} />
     <main>
       <slot />
     </main>

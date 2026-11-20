@@ -6,49 +6,52 @@ import { localeDefaultCountry, useTranslations, type Locale } from '../i18n/ui';
 
 interface Props {
   locale: Locale;
+  /** Prefijo único para los id, por si hay más de un selector en la página. */
+  uid: string;
 }
 
-const { locale } = Astro.props;
+const { locale, uid } = Astro.props;
 const t = useTranslations(locale);
 const countries = getCountryList(locale);
 ---
 
-<div class="cs" data-country-select data-default={localeDefaultCountry[locale]}>
-  <span class="field-label" id="cs-label">{t('form.country')}</span>
+<div class="dd" data-country-select data-default={localeDefaultCountry[locale]}>
+  <span class="field-label" id={`${uid}-label`}>{t('form.country')}</span>
   <button
     type="button"
-    class="control cs-button"
-    id="cs-button"
+    class="control dd-button"
+    id={`${uid}-button`}
     aria-haspopup="listbox"
     aria-expanded="false"
-    aria-controls="cs-popover"
-    aria-labelledby="cs-label cs-button"
+    aria-controls={`${uid}-popover`}
+    aria-labelledby={`${uid}-label ${uid}-button`}
+    data-dd-button
   >
-    <img class="cs-flag" data-cs-flag alt="" width="28" height="21" />
-    <span class="cs-name" data-cs-name></span>
-    <span class="cs-dial" data-cs-dial></span>
-    <svg class="cs-chevron" viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+    <img class="dd-flag" data-cs-flag alt="" width="28" height="21" />
+    <span class="dd-name" data-cs-name></span>
+    <span class="dd-meta" data-cs-dial></span>
+    <svg class="dd-chevron" viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
       <path d="m6 9 6 6 6-6"></path>
     </svg>
   </button>
 
-  <div class="cs-popover" id="cs-popover" hidden>
+  <div class="dd-popover" id={`${uid}-popover`} data-dd-popover hidden>
     <input
       type="search"
-      class="control cs-search"
+      class="control dd-search"
       placeholder={t('form.searchCountry')}
       aria-label={t('form.searchCountry')}
-      aria-controls="cs-list"
+      aria-controls={`${uid}-list`}
       autocomplete="off"
       spellcheck="false"
-      data-cs-search
+      data-dd-search
     />
-    <ul class="cs-list" id="cs-list" role="listbox" aria-labelledby="cs-label" tabindex="-1">
+    <ul class="dd-list" id={`${uid}-list`} role="listbox" aria-labelledby={`${uid}-label`} tabindex="-1" data-dd-list>
       {
         countries.map((country) => (
           <li
             role="option"
-            id={`cs-option-${country.iso}`}
+            id={`${uid}-option-${country.iso}`}
             aria-selected="false"
             data-iso={country.iso}
             data-dial={country.dial}
@@ -56,258 +59,39 @@ const countries = getCountryList(locale);
             data-flag={country.flag}
             data-search={country.search}
           >
-            <img class="cs-flag" src={country.flag} alt="" width="28" height="21" loading="lazy" decoding="async" />
-            <span class="cs-name">{country.name}</span>
-            <span class="cs-dial">+{country.dial}</span>
+            <img class="dd-flag" src={country.flag} alt="" width="28" height="21" loading="lazy" decoding="async" />
+            <span class="dd-name">{country.name}</span>
+            <span class="dd-meta">+{country.dial}</span>
           </li>
         ))
       }
     </ul>
-    <p class="cs-empty" data-cs-empty hidden>{t('form.noResults')}</p>
+    <p class="dd-empty" data-dd-empty hidden>{t('form.noResults')}</p>
   </div>
 </div>
 
 <script>
-  const normalize = (text: string) =>
-    text
-      .normalize('NFD')
-      .replace(/[̀-ͯ]/g, '')
-      .toLowerCase();
+  import { setupDropdown } from '../lib/dropdown';
 
   document.querySelectorAll<HTMLElement>('[data-country-select]').forEach((root) => {
-    const button = root.querySelector<HTMLButtonElement>('.cs-button')!;
-    const popover = root.querySelector<HTMLElement>('.cs-popover')!;
-    const search = root.querySelector<HTMLInputElement>('[data-cs-search]')!;
-    const list = root.querySelector<HTMLElement>('.cs-list')!;
-    const empty = root.querySelector<HTMLElement>('[data-cs-empty]')!;
-    const options = Array.from(list.querySelectorAll<HTMLElement>('[role="option"]'));
     const flag = root.querySelector<HTMLImageElement>('[data-cs-flag]')!;
     const name = root.querySelector<HTMLElement>('[data-cs-name]')!;
     const dial = root.querySelector<HTMLElement>('[data-cs-dial]')!;
 
-    let selected: HTMLElement | undefined;
-    let active: HTMLElement | undefined;
-
-    const visible = () => options.filter((option) => !option.hidden);
-
-    const setActive = (option: HTMLElement | undefined, scroll = true) => {
-      active?.classList.remove('is-active');
-      active = option;
-      if (option) {
-        option.classList.add('is-active');
-        search.setAttribute('aria-activedescendant', option.id);
-        if (scroll) option.scrollIntoView({ block: 'nearest' });
-      } else {
-        search.removeAttribute('aria-activedescendant');
-      }
-    };
-
-    const select = (option: HTMLElement, notify = true) => {
-      selected?.setAttribute('aria-selected', 'false');
-      selected = option;
-      option.setAttribute('aria-selected', 'true');
+    const dropdown = setupDropdown(root, (option, notify) => {
       flag.src = option.dataset.flag!;
       name.textContent = option.dataset.name!;
       dial.textContent = `+${option.dataset.dial}`;
       root.dataset.iso = option.dataset.iso;
       root.dataset.dial = option.dataset.dial;
-      if (notify) root.dispatchEvent(new CustomEvent('countrychange', { bubbles: true }));
-    };
-
-    const filter = () => {
-      const query = normalize(search.value.trim());
-      let matches = 0;
-      for (const option of options) {
-        option.hidden = !option.dataset.search!.includes(query);
-        if (!option.hidden) matches++;
-      }
-      empty.hidden = matches > 0;
-      setActive(query ? visible()[0] : (selected ?? visible()[0]));
-    };
-
-    const open = () => {
-      if (!popover.hidden) return;
-      popover.hidden = false;
-      button.setAttribute('aria-expanded', 'true');
-      search.value = '';
-      filter();
-      search.focus();
-    };
-
-    const close = (focusButton = true) => {
-      if (popover.hidden) return;
-      popover.hidden = true;
-      button.setAttribute('aria-expanded', 'false');
-      if (focusButton) button.focus();
-    };
-
-    button.addEventListener('click', () => (popover.hidden ? open() : close()));
-    button.addEventListener('keydown', (event) => {
-      if (event.key === 'ArrowDown' || event.key === 'ArrowUp') {
-        event.preventDefault();
-        open();
-      }
-    });
-
-    search.addEventListener('input', filter);
-    search.addEventListener('keydown', (event) => {
-      const items = visible();
-      const index = active ? items.indexOf(active) : -1;
-      switch (event.key) {
-        case 'ArrowDown':
-          event.preventDefault();
-          setActive(items[Math.min(index + 1, items.length - 1)]);
-          break;
-        case 'ArrowUp':
-          event.preventDefault();
-          setActive(items[Math.max(index - 1, 0)]);
-          break;
-        case 'Home':
-          event.preventDefault();
-          setActive(items[0]);
-          break;
-        case 'End':
-          event.preventDefault();
-          setActive(items[items.length - 1]);
-          break;
-        case 'Enter':
-          event.preventDefault();
-          if (active) {
-            select(active);
-            close();
-          }
-          break;
-        case 'Escape':
-          event.preventDefault();
-          close();
-          break;
-        case 'Tab':
-          close(false);
-          break;
-      }
-    });
-
-    list.addEventListener('click', (event) => {
-      const option = (event.target as HTMLElement).closest<HTMLElement>('[role="option"]');
-      if (!option) return;
-      select(option);
-      close();
-    });
-
-    document.addEventListener('pointerdown', (event) => {
-      if (!root.contains(event.target as Node)) close(false);
+      root.dispatchEvent(new CustomEvent('countrychange', { bubbles: true, detail: { user: notify } }));
     });
 
     // País inicial: el del idioma del navegador si se puede deducir; si no, el del idioma de la página.
-    const byIso = (iso?: string) => options.find((option) => option.dataset.iso === iso);
+    const byIso = (iso?: string) => dropdown.options.find((option) => option.dataset.iso === iso);
     const browserRegion = (navigator.languages ?? [navigator.language])
       .map((tag) => tag.split('-')[1]?.toUpperCase())
       .find((region) => region && byIso(region));
-    select(byIso(browserRegion) ?? byIso(root.dataset.default) ?? options[0], false);
+    dropdown.select(byIso(browserRegion) ?? byIso(root.dataset.default) ?? dropdown.options[0], false);
   });
 </script>
-
-<style>
-  .cs {
-    position: relative;
-    display: flex;
-    flex-direction: column;
-    gap: 6px;
-  }
-
-  .cs-button {
-    display: flex;
-    align-items: center;
-    gap: 12px;
-    text-align: left;
-    cursor: pointer;
-  }
-
-  .cs-flag {
-    width: 28px;
-    height: 21px;
-    flex: none;
-    object-fit: cover;
-    border-radius: 4px;
-    box-shadow: 0 0 0 1px rgba(17, 27, 33, 0.12);
-    background: var(--surface-2);
-  }
-
-  .cs-name {
-    flex: 1;
-    min-width: 0;
-    overflow: hidden;
-    text-overflow: ellipsis;
-    white-space: nowrap;
-  }
-
-  .cs-dial {
-    color: var(--muted);
-    font-variant-numeric: tabular-nums;
-  }
-
-  .cs-chevron {
-    width: 18px;
-    height: 18px;
-    flex: none;
-    color: var(--muted);
-    transition: transform 0.15s ease;
-  }
-
-  .cs-button[aria-expanded='true'] .cs-chevron {
-    transform: rotate(180deg);
-  }
-
-  .cs-popover {
-    position: absolute;
-    top: calc(100% + 6px);
-    left: 0;
-    right: 0;
-    z-index: 30;
-    padding: 8px;
-    background: var(--surface);
-    border: 1px solid var(--border);
-    border-radius: var(--radius-sm);
-    box-shadow: var(--shadow);
-  }
-
-  .cs-search {
-    min-height: 42px;
-    margin-bottom: 6px;
-  }
-
-  .cs-list {
-    max-height: 280px;
-    margin: 0;
-    padding: 0;
-    overflow-y: auto;
-    list-style: none;
-    overscroll-behavior: contain;
-  }
-
-  .cs-list li {
-    display: flex;
-    align-items: center;
-    gap: 12px;
-    min-height: 44px;
-    padding: 8px 10px;
-    border-radius: 8px;
-    cursor: pointer;
-  }
-
-  .cs-list li:hover,
-  .cs-list li.is-active {
-    background: var(--surface-2);
-  }
-
-  .cs-list li[aria-selected='true'] {
-    background: var(--accent-soft);
-    font-weight: 600;
-  }
-
-  .cs-empty {
-    padding: 14px 10px;
-    color: var(--muted);
-    text-align: center;
-  }
-</style>

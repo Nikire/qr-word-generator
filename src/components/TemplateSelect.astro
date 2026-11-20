@@ -1,0 +1,80 @@
+---
+// Lista desplegable de plantillas (redes sociales y enlace libre).
+// Elegir una opción lleva a la página de esa plantilla.
+import NetworkBadge from './NetworkBadge.astro';
+import { networkName, networkPath, sortedNetworks } from '../networks';
+import type { NetworkDef } from '../networks/types';
+import { useTranslations, type Locale } from '../i18n/ui';
+import { normalize } from '../lib/countries';
+
+interface Props {
+  locale: Locale;
+  current: NetworkDef;
+}
+
+const { locale, current } = Astro.props;
+const t = useTranslations(locale);
+const items = sortedNetworks(locale);
+---
+
+<div class="dd" data-template-select>
+  <span class="field-label" id="tpl-label">{t('form.template')}</span>
+  <button
+    type="button"
+    class="control dd-button"
+    id="tpl-button"
+    aria-haspopup="listbox"
+    aria-expanded="false"
+    aria-controls="tpl-popover"
+    aria-labelledby="tpl-label tpl-button"
+    data-dd-button
+  >
+    <NetworkBadge icon={current.icon} />
+    <span class="dd-name">{networkName(current, locale)}</span>
+    <svg class="dd-chevron" viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+      <path d="m6 9 6 6 6-6"></path>
+    </svg>
+  </button>
+
+  <div class="dd-popover" id="tpl-popover" data-dd-popover hidden>
+    <input
+      type="search"
+      class="control dd-search"
+      placeholder={t('form.searchTemplate')}
+      aria-label={t('form.searchTemplate')}
+      aria-controls="tpl-list"
+      autocomplete="off"
+      spellcheck="false"
+      data-dd-search
+    />
+    <ul class="dd-list" id="tpl-list" role="listbox" aria-labelledby="tpl-label" tabindex="-1" data-dd-list>
+      {
+        items.map((network) => (
+          <li
+            role="option"
+            id={`tpl-option-${network.id}`}
+            aria-selected={network.id === current.id ? 'true' : 'false'}
+            data-href={networkPath(locale, network.id)}
+            data-search={`${normalize(networkName(network, locale))} ${network.id}`}
+          >
+            <NetworkBadge icon={network.icon} />
+            <span class="dd-name">{networkName(network, locale)}</span>
+          </li>
+        ))
+      }
+    </ul>
+    <p class="dd-empty" data-dd-empty hidden>{t('form.noResults')}</p>
+  </div>
+</div>
+
+<script>
+  import { setupDropdown } from '../lib/dropdown';
+
+  document.querySelectorAll<HTMLElement>('[data-template-select]').forEach((root) => {
+    setupDropdown(root, (option, notify) => {
+      if (notify && option.dataset.href !== window.location.pathname) {
+        window.location.href = option.dataset.href!;
+      }
+    });
+  });
+</script>
