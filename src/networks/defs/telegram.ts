@@ -1,0 +1,161 @@
+import { siTelegram } from 'simple-icons';
+import type { NetworkDef } from '../types';
+
+const template: NetworkDef = {
+  id: 'telegram',
+  name: 'Telegram',
+  icon: { path: siTelegram.path, color: `#${siTelegram.hex}` },
+  subtitle: {
+    es: 'Creá un código QR que abre un chat de Telegram con vos.',
+    en: 'Create a QR code that opens a Telegram chat with you.',
+    pt: 'Crie um QR code que abre uma conversa com você no Telegram.',
+    fr: 'Créez un code QR qui ouvre une conversation Telegram avec vous.',
+    it: 'Crea un codice QR che apre una chat Telegram con te.',
+  },
+  modes: [
+    {
+      id: 'username',
+      label: {
+        es: 'Usuario',
+        en: 'Username',
+        pt: 'Nome de usuário',
+        fr: 'Nom d\'utilisateur',
+        it: 'Nome utente',
+      },
+      template: 'https://t.me/{username}',
+      query: [{ param: 'text', field: 'message' }],
+      fields: [
+        {
+          id: 'username',
+          type: 'text',
+          required: true,
+          maxLength: 32,
+          prefix: '@',
+          sanitize: 'handle',
+          pattern: '^[A-Za-z0-9_]{4,32}$',
+          label: {
+            es: 'Usuario',
+            en: 'Username',
+            pt: 'Nome de usuário',
+            fr: 'Nom d\'utilisateur',
+            it: 'Nome utente',
+          },
+          placeholder: {
+            es: 'Ej.: mitienda',
+            en: 'e.g. mystore',
+            pt: 'Ex.: minhaloja',
+            fr: 'Ex. : maboutique',
+            it: 'Es.: ilmionegozio',
+          },
+          hint: {
+            es: 'Lo encontrás en Ajustes, debajo de tu nombre. También sirve para canales y grupos públicos.',
+            en: 'Find it in Settings, under your name. Public channels and groups work too.',
+            pt: 'Fica em Configurações, abaixo do seu nome. Também funciona com canais e grupos públicos.',
+            fr: 'Il se trouve dans Paramètres, sous votre nom. Fonctionne aussi pour les chaînes et groupes publics.',
+            it: 'Lo trovi in Impostazioni, sotto il tuo nome. Funziona anche con canali e gruppi pubblici.',
+          },
+        },
+        {
+          id: 'message',
+          type: 'textarea',
+          required: false,
+          maxLength: 1000,
+          sanitize: 'trim',
+          label: {
+            es: 'Mensaje',
+            en: 'Message',
+            pt: 'Mensagem',
+            fr: 'Message',
+            it: 'Messaggio',
+          },
+          placeholder: {
+            es: 'Ej.: Hola, quiero hacer un pedido',
+            en: 'e.g. Hi, I\'d like to place an order',
+            pt: 'Ex.: Olá, quero fazer um pedido',
+            fr: 'Ex. : Bonjour, je voudrais passer commande',
+            it: 'Es.: Ciao, vorrei fare un ordine',
+          },
+          hint: {
+            es: 'Opcional. Aparece escrito en el chat, listo para enviar.',
+            en: 'Optional. It appears pre-typed in the chat, ready to send.',
+            pt: 'Opcional. Aparece já digitada na conversa, pronta para enviar.',
+            fr: 'Facultatif. Il apparaît déjà saisi dans la conversation, prêt à envoyer.',
+            it: 'Facoltativo. Compare già scritto nella chat, pronto da inviare.',
+          },
+        },
+      ],
+    },
+    {
+      id: 'phone',
+      label: {
+        es: 'Número de teléfono',
+        en: 'Phone number',
+        pt: 'Número de telefone',
+        fr: 'Numéro de téléphone',
+        it: 'Numero di telefono',
+      },
+      template: 'https://t.me/+{phone}',
+      query: [{ param: 'text', field: 'message' }],
+      fields: [
+        {
+          id: 'phone',
+          type: 'phone',
+          required: true,
+          maxLength: 15,
+          sanitize: 'digits',
+          label: {
+            es: 'Número de teléfono',
+            en: 'Phone number',
+            pt: 'Número de telefone',
+            fr: 'Numéro de téléphone',
+            it: 'Numero di telefono',
+          },
+          placeholder: {
+            es: 'Ej.: 11 2345 6789',
+            en: 'e.g. 20 7946 0958',
+            pt: 'Ex.: 11 91234 5678',
+            fr: 'Ex. : 6 12 34 56 78',
+            it: 'Es.: 312 345 6789',
+          },
+          hint: {
+            es: 'Solo funciona si en Privacidad permitís que te encuentren por tu número.',
+            en: 'Only works if your Privacy settings let people find you by your number.',
+            pt: 'Só funciona se sua Privacidade permitir que te encontrem pelo número.',
+            fr: 'Ne fonctionne que si vos réglages de confidentialité permettent de vous trouver par numéro.',
+            it: 'Funziona solo se nella Privacy permetti di trovarti tramite il numero.',
+          },
+        },
+        {
+          id: 'message',
+          type: 'textarea',
+          required: false,
+          maxLength: 1000,
+          sanitize: 'trim',
+          label: {
+            es: 'Mensaje',
+            en: 'Message',
+            pt: 'Mensagem',
+            fr: 'Message',
+            it: 'Messaggio',
+          },
+          placeholder: {
+            es: 'Ej.: Hola, quiero hacer un pedido',
+            en: 'e.g. Hi, I\'d like to place an order',
+            pt: 'Ex.: Olá, quero fazer um pedido',
+            fr: 'Ex. : Bonjour, je voudrais passer commande',
+            it: 'Es.: Ciao, vorrei fare un ordine',
+          },
+          hint: {
+            es: 'Opcional. Aparece escrito en el chat, listo para enviar.',
+            en: 'Optional. It appears pre-typed in the chat, ready to send.',
+            pt: 'Opcional. Aparece já digitada na conversa, pronta para enviar.',
+            fr: 'Facultatif. Il apparaît déjà saisi dans la conversation, prêt à envoyer.',
+            it: 'Facoltativo. Compare già scritto nella chat, pronto da inviare.',
+          },
+        },
+      ],
+    },
+  ],
+};
+
+export default template;
