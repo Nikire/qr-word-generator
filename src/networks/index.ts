@@ -1,6 +1,7 @@
 // Registro de plantillas: toma todos los archivos de ./defs/ automáticamente.
 import { defaultLocale, type Locale } from '../i18n/ui';
 import type { NetworkDef } from './types';
+import { BASE_PATH } from '../../site.config.mjs';
 
 const modules = import.meta.glob<{ default: NetworkDef }>('./defs/*.ts', { eager: true });
 
@@ -29,8 +30,8 @@ export function getNetwork(id: string): NetworkDef {
   return network;
 }
 
-/** Ruta de una plantilla en un idioma. La plantilla por defecto vive en la portada. */
+/** Ruta de una plantilla en un idioma (incluye la carpeta del sitio). La plantilla por defecto vive en la portada. */
 export function networkPath(locale: Locale, id: string): string {
   const parts = [locale === defaultLocale ? '' : locale, id === DEFAULT_NETWORK ? '' : id].filter(Boolean);
-  return parts.length ? `/${parts.join('/')}/` : '/';
+  return `${BASE_PATH}${parts.length ? `/${parts.join('/')}/` : '/'}`;
 }

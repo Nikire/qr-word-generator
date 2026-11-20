@@ -3,7 +3,7 @@ import '@fontsource-variable/plus-jakarta-sans';
 import '../styles/global.css';
 import Header from '../components/Header.astro';
 import { locales, useTranslations, type Locale } from '../i18n/ui';
-import { SITE_URL, ADSENSE_CLIENT } from '../../site.config.mjs';
+import { SITE_URL, BASE_PATH, ADSENSE_CLIENT } from '../../site.config.mjs';
 
 interface Props {
   locale: Locale;
@@ -27,7 +27,7 @@ const year = new Date().getFullYear();
     <title>{title}</title>
     <meta name="description" content={description} />
     <meta name="theme-color" content="#25D366" />
-    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="icon" type="image/svg+xml" href={`${BASE_PATH}/favicon.svg`} />
     <meta property="og:type" content="website" />
     <meta property="og:site_name" content="QR Word Generator" />
     <meta property="og:title" content={title} />

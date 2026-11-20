@@ -2,6 +2,7 @@
 // Ícono de una plantilla: círculo del color de la marca con el logo adentro.
 // Se toma del sprite compartido /icons.svg.
 import { networks } from '../networks';
+import { BASE_PATH } from '../../site.config.mjs';
 
 interface Props {
   id: string;
@@ -9,7 +10,7 @@ interface Props {
 
 const { id } = Astro.props;
 // El parámetro cambia cuando se agregan plantillas, para que no quede un sprite viejo en caché.
-const href = `/icons.svg?v=${networks.length}#${id}`;
+const href = `${BASE_PATH}/icons.svg?v=${networks.length}#${id}`;
 ---
 
 <svg class="badge" viewBox="0 0 40 40" aria-hidden="true"><use href={href}></use></svg>

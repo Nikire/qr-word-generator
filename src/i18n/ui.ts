@@ -290,8 +290,3 @@ export function useTranslations(locale: Locale) {
   return (key: UiKey, vars: Record<string, string> = {}): string =>
     ui[locale][key].replace(/\{(\w+)\}/g, (match, name: string) => vars[name] ?? match);
 }
-
-/** Ruta de la portada para un idioma (el idioma por defecto vive en la raíz). */
-export function localePath(locale: Locale): string {
-  return locale === defaultLocale ? '/' : `/${locale}/`;
-}

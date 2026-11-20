@@ -1,5 +1,6 @@
 ---
-import { locales, localeNames, localePath, useTranslations, type Locale } from '../i18n/ui';
+import { locales, localeNames, useTranslations, type Locale } from '../i18n/ui';
+import { DEFAULT_NETWORK, networkPath } from '../networks';
 
 interface Props {
   locale: Locale;
@@ -13,7 +14,7 @@ const t = useTranslations(locale);
 
 <header class="header">
   <div class="container header-inner">
-    <a class="brand" href={localePath(locale)}>
+    <a class="brand" href={networkPath(locale, DEFAULT_NETWORK)}>
       <svg viewBox="0 0 32 32" aria-hidden="true">
         <rect width="32" height="32" rx="9" fill="#25D366"></rect>
         <path
