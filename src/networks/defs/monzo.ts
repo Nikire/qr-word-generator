@@ -1,0 +1,157 @@
+import { siMonzo } from 'simple-icons';
+import type { NetworkDef } from '../types';
+
+const template: NetworkDef = {
+  id: 'monzo',
+  name: 'Monzo',
+  icon: { path: siMonzo.path, color: `#${siMonzo.hex}` },
+  subtitle: {
+    es: 'Creá un código QR con tu enlace monzo.me para que te paguen.',
+    en: 'Create a QR code with your monzo.me link so people can pay you.',
+    pt: 'Crie um QR code com seu link monzo.me para receber pagamentos.',
+    fr: 'Créez un code QR avec votre lien monzo.me pour recevoir des paiements.',
+    it: 'Crea un codice QR con il tuo link monzo.me per ricevere pagamenti.',
+  },
+  modes: [
+    {
+      id: 'profile',
+      label: {
+        es: 'Monto libre',
+        en: 'Any amount',
+        pt: 'Valor livre',
+        fr: 'Montant libre',
+        it: 'Importo libero',
+      },
+      template: 'https://monzo.me/{username}',
+      fields: [
+        {
+          id: 'username',
+          type: 'text',
+          required: true,
+          maxLength: 40,
+          prefix: 'monzo.me/',
+          sanitize: 'handle',
+          pattern: '^[A-Za-z0-9._-]{2,40}$',
+          label: {
+            es: 'Usuario',
+            en: 'Username',
+            pt: 'Nome de usuário',
+            fr: 'Nom d\'utilisateur',
+            it: 'Nome utente',
+          },
+          placeholder: {
+            es: 'Ej.: juanperez',
+            en: 'e.g. janedoe',
+            pt: 'Ex.: joaosilva',
+            fr: 'Ex. : mariedupont',
+            it: 'Es.: mariorossi',
+          },
+          hint: {
+            es: 'Es lo que va después de monzo.me/ en tu enlace.',
+            en: 'It\'s what comes after monzo.me/ in your link.',
+            pt: 'É o que vem depois de monzo.me/ no seu link.',
+            fr: 'C\'est ce qui suit monzo.me/ dans votre lien.',
+            it: 'È ciò che segue monzo.me/ nel tuo link.',
+          },
+        },
+      ],
+    },
+    {
+      id: 'amount',
+      label: {
+        es: 'Con monto',
+        en: 'With amount',
+        pt: 'Com valor',
+        fr: 'Avec montant',
+        it: 'Con importo',
+      },
+      template: 'https://monzo.me/{username}/{amount:raw}',
+      query: [{ param: 'd', field: 'note' }],
+      fields: [
+        {
+          id: 'username',
+          type: 'text',
+          required: true,
+          maxLength: 40,
+          prefix: 'monzo.me/',
+          sanitize: 'handle',
+          pattern: '^[A-Za-z0-9._-]{2,40}$',
+          label: {
+            es: 'Usuario',
+            en: 'Username',
+            pt: 'Nome de usuário',
+            fr: 'Nom d\'utilisateur',
+            it: 'Nome utente',
+          },
+          placeholder: {
+            es: 'Ej.: juanperez',
+            en: 'e.g. janedoe',
+            pt: 'Ex.: joaosilva',
+            fr: 'Ex. : mariedupont',
+            it: 'Es.: mariorossi',
+          },
+          hint: {
+            es: 'Es lo que va después de monzo.me/ en tu enlace.',
+            en: 'It\'s what comes after monzo.me/ in your link.',
+            pt: 'É o que vem depois de monzo.me/ no seu link.',
+            fr: 'C\'est ce qui suit monzo.me/ dans votre lien.',
+            it: 'È ciò che segue monzo.me/ nel tuo link.',
+          },
+        },
+        {
+          id: 'amount',
+          type: 'text',
+          required: true,
+          maxLength: 8,
+          prefix: '£',
+          sanitize: 'trim',
+          pattern: '^\\d{1,5}(\\.\\d{1,2})?$',
+          label: {
+            es: 'Monto',
+            en: 'Amount',
+            pt: 'Valor',
+            fr: 'Montant',
+            it: 'Importo',
+          },
+          placeholder: {
+            es: 'Ej.: 12.50',
+            en: 'e.g. 12.50',
+            pt: 'Ex.: 12.50',
+            fr: 'Ex. : 12.50',
+            it: 'Es.: 12.50',
+          },
+          hint: {
+            es: 'En libras, con punto para los decimales.',
+            en: 'In pounds, use a dot for decimals.',
+            pt: 'Em libras, use ponto para os decimais.',
+            fr: 'En livres, avec un point pour les décimales.',
+            it: 'In sterline, usa il punto per i decimali.',
+          },
+        },
+        {
+          id: 'note',
+          type: 'text',
+          required: false,
+          maxLength: 100,
+          sanitize: 'trim',
+          label: {
+            es: 'Concepto',
+            en: 'Reference',
+            pt: 'Descrição',
+            fr: 'Motif',
+            it: 'Causale',
+          },
+          placeholder: {
+            es: 'Ej.: Pizza del viernes',
+            en: 'e.g. Friday pizza',
+            pt: 'Ex.: Pizza de sexta',
+            fr: 'Ex. : Pizza du vendredi',
+            it: 'Es.: Pizza di venerdì',
+          },
+        },
+      ],
+    },
+  ],
+};
+
+export default template;
