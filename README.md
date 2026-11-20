@@ -1,13 +1,14 @@
 # QR Word Generator
 
-Generador gratuito de códigos QR para redes sociales. Primera red: **WhatsApp**
-(número con código de país + mensaje personalizado opcional), con el logo en el
-centro y descarga en PNG y SVG.
+Generador gratuito de códigos QR. Se elige una **plantilla** (un enlace libre o
+una red social), se completa un formulario corto y se descarga el código en PNG
+o SVG, con el logo de la red (o uno propio) en el centro.
 
 - Sitio 100 % estático (Astro): no necesita servidor ni base de datos.
 - Idiomas: español (por defecto, en `/`), inglés, portugués, francés e italiano.
+- Una página por plantilla e idioma: `/instagram/`, `/en/instagram/`…
 - Modo día / noche.
-- El código se genera en el navegador: el número nunca sale del dispositivo.
+- El código se genera en el navegador: los datos nunca salen del dispositivo.
 
 ## Desarrollo
 
@@ -38,12 +39,24 @@ Mientras estén vacíos, el sitio funciona igual y no muestra anuncios.
 2. Subir el **contenido** de `dist/` a `public_html` del dominio (Administrador
    de archivos o FTP).
 
+## Cómo agregar una plantilla
+
+Cada plantilla es un archivo de datos en `src/networks/defs/`. Alcanza con crear
+uno nuevo: se suma solo al selector, a las rutas y a los enlaces del pie.
+
+Una plantilla define su ícono, sus textos en los cinco idiomas y uno o más
+"modos" (por ejemplo perfil / empresa). Cada modo lista sus campos y la forma
+del enlace, p. ej. `https://wa.me/{phone}` más `?text=` para el mensaje opcional.
+Ver `src/networks/types.ts` para el detalle y `defs/whatsapp.ts` como ejemplo.
+
 ## Estructura
 
-- `src/lib/qr.ts` — dibujo del QR (sirve para cualquier red: solo cambia el logo).
-- `src/components/WhatsAppGenerator.astro` — formulario y vista previa de WhatsApp.
-- `src/components/CountrySelect.astro` — lista de países con bandera.
-- `src/i18n/ui.ts` — todos los textos, por idioma.
+- `src/networks/defs/` — una plantilla por archivo.
+- `src/lib/engine.ts` — arma el enlace a partir del formulario.
+- `src/lib/qr.ts` — dibujo del QR (módulos redondeados, borde, logo).
+- `src/components/Generator.astro` — formulario genérico y vista previa.
+- `src/components/TemplateSelect.astro` / `CountrySelect.astro` — listas desplegables.
+- `src/i18n/ui.ts` — textos generales de la interfaz, por idioma.
 
 ## Licencia
 
