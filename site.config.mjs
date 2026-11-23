@@ -13,7 +13,7 @@ export const CONTACT_EMAIL = 'erikpastuszek@gmail.com';
 
 /** ID de editor de Google AdSense. Ej.: 'ca-pub-1234567890123456'.
  *  Vacío = no se carga AdSense, no se muestran anuncios y no se genera ads.txt. */
-export const ADSENSE_CLIENT = '';
+export const ADSENSE_CLIENT = 'ca-pub-9465439815952357';
 
 /** IDs de los bloques de anuncios creados en AdSense (data-ad-slot). */
 export const ADSENSE_SLOTS = {
