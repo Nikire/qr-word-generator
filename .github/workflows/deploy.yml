@@ -29,6 +29,21 @@ jobs:
 
       - run: npm run build
 
+      # Según la cuenta FTP, la sesión arranca dentro de public_html o un nivel arriba.
+      - name: Detectar carpeta de destino
+        id: destino
+        env:
+          FTP_SERVER: ${{ secrets.FTP_SERVER }}
+          FTP_USERNAME: ${{ secrets.FTP_USERNAME }}
+          FTP_PASSWORD: ${{ secrets.FTP_PASSWORD }}
+        run: |
+          listado=$(curl -sS --ssl-reqd -k --list-only --user "$FTP_USERNAME:$FTP_PASSWORD" "ftp://$FTP_SERVER/" | tr -d '\r')
+          if printf '%s\n' "$listado" | grep -qx 'public_html'; then
+            echo "dir=./public_html/" >> "$GITHUB_OUTPUT"
+          else
+            echo "dir=./" >> "$GITHUB_OUTPUT"
+          fi
+
       - name: Subir dist/ a Hostinger
         uses: SamKirkland/FTP-Deploy-Action@v4.3.5
         with:
@@ -40,5 +55,4 @@ jobs:
           # El certificado del servidor es de Hostinger (*.hstgr.io), no del dominio.
           security: loose
           local-dir: ./dist/
-          # La cuenta FTP ya arranca dentro de public_html/qr-word-generator.
-          server-dir: ./
+          server-dir: ${{ steps.destino.outputs.dir }}
