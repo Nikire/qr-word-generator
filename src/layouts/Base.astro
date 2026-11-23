@@ -3,6 +3,7 @@ import '@fontsource-variable/plus-jakarta-sans';
 import '../styles/global.css';
 import Header from '../components/Header.astro';
 import { locales, useTranslations, type Locale } from '../i18n/ui';
+import { info, infoIds, infoPath } from '../info/pages';
 import { SITE_URL, BASE_PATH, ADSENSE_CLIENT } from '../../site.config.mjs';
 
 interface Props {
@@ -76,6 +77,9 @@ const year = new Date().getFullYear();
     </main>
     <footer class="footer">
       <div class="container">
+        <nav class="footer-links">
+          {infoIds.map((id) => <a href={infoPath(locale, id)}>{info[locale][id].title}</a>)}
+        </nav>
         <p>© {year} QR Word Generator. {t('footer.rights')}</p>
         <p>{t('footer.disclaimer')}</p>
       </div>
@@ -91,6 +95,24 @@ const year = new Date().getFullYear();
     color: var(--muted);
     font-size: 0.85rem;
     text-align: center;
+  }
+
+  .footer-links {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 6px 20px;
+    margin-bottom: 14px;
+  }
+
+  .footer-links a {
+    color: var(--text);
+    font-weight: 600;
+    text-decoration: none;
+  }
+
+  .footer-links a:hover {
+    text-decoration: underline;
   }
 
   .footer p + p {

@@ -4,12 +4,15 @@
 //   /instagram/  otra plantilla, español
 //   /en/         plantilla por defecto, inglés
 //   /en/instagram/
+// Más las páginas informativas de cada idioma (/privacidad/, /en/privacy/, …).
 import GeneratorPage from '../components/GeneratorPage.astro';
+import InfoPage from '../components/InfoPage.astro';
 import { defaultLocale, locales, type Locale } from '../i18n/ui';
 import { DEFAULT_NETWORK, networks } from '../networks';
+import { infoIds, infoSegments, type InfoId } from '../info/pages';
 
 export function getStaticPaths() {
-  return locales.flatMap((locale) =>
+  const generators = locales.flatMap((locale) =>
     networks.map((network) => {
       const parts = [
         locale === defaultLocale ? '' : locale,
@@ -21,14 +24,22 @@ export function getStaticPaths() {
       };
     }),
   );
+  const infoPages = locales.flatMap((locale) =>
+    infoIds.map((infoId) => ({
+      params: { path: infoSegments(locale, infoId).join('/') },
+      props: { locale, infoId },
+    })),
+  );
+  return [...generators, ...infoPages];
 }
 
 interface Props {
   locale: Locale;
-  networkId: string;
+  networkId?: string;
+  infoId?: InfoId;
 }
 
-const { locale, networkId } = Astro.props;
+const { locale, networkId, infoId } = Astro.props;
 ---
 
-<GeneratorPage locale={locale} networkId={networkId} />
+{infoId ? <InfoPage locale={locale} infoId={infoId} /> : <GeneratorPage locale={locale} networkId={networkId!} />}

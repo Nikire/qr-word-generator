@@ -1,0 +1,67 @@
+---
+// Página informativa de solo texto (privacidad, acerca del sitio, contacto).
+import Base from '../layouts/Base.astro';
+import { locales, type Locale } from '../i18n/ui';
+import { info, infoPath, type InfoId } from '../info/pages';
+import { CONTACT_EMAIL } from '../../site.config.mjs';
+
+interface Props {
+  locale: Locale;
+  infoId: InfoId;
+}
+
+const { locale, infoId } = Astro.props;
+const page = info[locale][infoId];
+const paths = Object.fromEntries(locales.map((code) => [code, infoPath(code, infoId)])) as Record<Locale, string>;
+
+const email = CONTACT_EMAIL ? `<a href="mailto:${CONTACT_EMAIL}">${CONTACT_EMAIL}</a>` : '';
+const fill = (text: string) => text.replaceAll('{contact}', infoPath(locale, 'contact')).replaceAll('{email}', email);
+---
+
+<Base locale={locale} title={`${page.title} | QR Word Generator`} description={page.description} paths={paths}>
+  <article class="info container">
+    <h1>{page.title}</h1>
+    {
+      page.sections.map((section) => (
+        <section>
+          {section.h && <h2>{section.h}</h2>}
+          {section.p.map((text) => (
+            <p set:html={fill(text)} />
+          ))}
+        </section>
+      ))
+    }
+  </article>
+</Base>
+
+<style>
+  .info {
+    max-width: 720px;
+    padding-top: 44px;
+  }
+
+  .info h1 {
+    margin-bottom: 20px;
+    font-size: clamp(1.7rem, 4.5vw, 2.3rem);
+    line-height: 1.15;
+  }
+
+  .info h2 {
+    margin: 30px 0 8px;
+    font-size: 1.2rem;
+  }
+
+  .info p {
+    color: var(--muted);
+    text-wrap: pretty;
+  }
+
+  .info p + p {
+    margin-top: 10px;
+  }
+
+  .info :global(a) {
+    color: var(--accent-strong);
+    overflow-wrap: anywhere;
+  }
+</style>
