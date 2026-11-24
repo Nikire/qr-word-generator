@@ -6,7 +6,7 @@ const template: NetworkDef = {
   name: 'Wise',
   icon: { path: siWise.path, color: `#${siWise.hex}`, darkGlyph: true },
   subtitle: {
-    es: 'Creá un código QR para que te paguen a tu cuenta Wise.',
+    es: 'Crea un código QR para que te paguen a tu cuenta Wise.',
     en: 'Create a QR code so people can pay into your Wise account.',
     pt: 'Crie um QR code para receber pagamentos na sua conta Wise.',
     fr: 'Créez un code QR pour recevoir des paiements sur votre compte Wise.',
@@ -47,7 +47,7 @@ const template: NetworkDef = {
             it: 'Es.: marior12',
           },
           hint: {
-            es: 'Lo encontrás en Pagos > Tu Wisetag, en la app o la web de Wise.',
+            es: 'Lo encuentras en Pagos > Tu Wisetag, en la app o la web de Wise.',
             en: 'Find it under Payments > Your Wisetag in the Wise app or website.',
             pt: 'Fica em Pagamentos > Seu Wisetag, no app ou no site da Wise.',
             fr: 'Il se trouve dans Paiements > Votre Wisetag, dans l\'app ou sur le site Wise.',
@@ -90,7 +90,7 @@ const template: NetworkDef = {
             it: 'Es.: mionegozio',
           },
           hint: {
-            es: 'Copialo de tu enlace en Pagos > Quick Pay de Wise Business.',
+            es: 'Cópialo de tu enlace en Pagos > Quick Pay de Wise Business.',
             en: 'Copy it from your link under Payments > Quick Pay in Wise Business.',
             pt: 'Copie do seu link em Pagamentos > Quick Pay no Wise Business.',
             fr: 'Copiez-le depuis votre lien dans Paiements > Quick Pay de Wise Business.',

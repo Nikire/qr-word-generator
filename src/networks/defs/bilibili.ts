@@ -6,7 +6,7 @@ const template: NetworkDef = {
   name: 'bilibili',
   icon: { path: siBilibili.path, color: `#${siBilibili.hex}` },
   subtitle: {
-    es: 'Creá un código QR que abre tu espacio personal en bilibili.',
+    es: 'Crea un código QR que abre tu espacio personal en bilibili.',
     en: 'Create a QR code that opens your bilibili space.',
     pt: 'Crie um QR code que abre seu espaço no bilibili.',
     fr: 'Créez un code QR qui ouvre votre espace bilibili.',
@@ -46,7 +46,7 @@ const template: NetworkDef = {
             it: 'Es.: 12345678',
           },
           hint: {
-            es: 'Es el número de tu perfil; también podés pegar el enlace de space.bilibili.com.',
+            es: 'Es el número de tu perfil; también puedes pegar el enlace de space.bilibili.com.',
             en: 'Your numeric profile ID; you can also paste your space.bilibili.com link.',
             pt: 'É o número do seu perfil; também dá para colar o link de space.bilibili.com.',
             fr: 'Votre identifiant numérique ; vous pouvez aussi coller le lien space.bilibili.com.',

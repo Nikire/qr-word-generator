@@ -6,7 +6,7 @@ const template: NetworkDef = {
   name: 'Monzo',
   icon: { path: siMonzo.path, color: `#${siMonzo.hex}` },
   subtitle: {
-    es: 'Creá un código QR con tu enlace monzo.me para que te paguen.',
+    es: 'Crea un código QR con tu enlace monzo.me para que te paguen.',
     en: 'Create a QR code with your monzo.me link so people can pay you.',
     pt: 'Crie um QR code com seu link monzo.me para receber pagamentos.',
     fr: 'Créez un code QR avec votre lien monzo.me pour recevoir des paiements.',

@@ -6,7 +6,7 @@ const template: NetworkDef = {
   name: 'Rumble',
   icon: { path: siRumble.path, color: `#${siRumble.hex}`, darkGlyph: true },
   subtitle: {
-    es: 'Creá un código QR que abre tu canal de Rumble.',
+    es: 'Crea un código QR que abre tu canal de Rumble.',
     en: 'Create a QR code that opens your Rumble channel.',
     pt: 'Crie um QR code que abre seu canal do Rumble.',
     fr: 'Créez un code QR qui ouvre votre chaîne Rumble.',

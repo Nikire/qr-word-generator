@@ -6,7 +6,7 @@ const template: NetworkDef = {
   name: 'GoFundMe',
   icon: { path: siGofundme.path, color: `#${siGofundme.hex}` },
   subtitle: {
-    es: 'Creá un código QR que abre tu campaña de GoFundMe.',
+    es: 'Crea un código QR que abre tu campaña de GoFundMe.',
     en: 'Create a QR code that opens your GoFundMe fundraiser.',
     pt: 'Crie um QR code que abre sua vaquinha no GoFundMe.',
     fr: 'Créez un code QR qui ouvre votre cagnotte GoFundMe.',
@@ -47,7 +47,7 @@ const template: NetworkDef = {
             it: 'Es.: aiuto-per-il-giardino',
           },
           hint: {
-            es: 'Pegá el enlace gofundme.com/f/… (no el corto gofund.me) o lo que va después de /f/.',
+            es: 'Pega el enlace gofundme.com/f/… (no el corto gofund.me) o lo que va después de /f/.',
             en: 'Paste the gofundme.com/f/… link (not the short gofund.me one) or the part after /f/.',
             pt: 'Cole o link gofundme.com/f/… (não o curto gofund.me) ou o que vem depois de /f/.',
             fr: 'Collez le lien gofundme.com/f/… (pas le lien court gofund.me) ou la partie après /f/.',

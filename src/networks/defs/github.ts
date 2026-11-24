@@ -6,7 +6,7 @@ const template: NetworkDef = {
   name: 'GitHub',
   icon: { path: siGithub.path, color: `#${siGithub.hex}` },
   subtitle: {
-    es: 'Creá un código QR que abre tu perfil o un repositorio de GitHub.',
+    es: 'Crea un código QR que abre tu perfil o un repositorio de GitHub.',
     en: 'Create a QR code that opens your GitHub profile or a repository.',
     pt: 'Crie um QR code que abre seu perfil ou um repositório do GitHub.',
     fr: 'Créez un QR code qui ouvre votre profil ou un dépôt GitHub.',

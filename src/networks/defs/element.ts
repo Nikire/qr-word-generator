@@ -6,7 +6,7 @@ const template: NetworkDef = {
   name: 'Element (Matrix)',
   icon: { path: siElement.path, color: `#${siElement.hex}` },
   subtitle: {
-    es: 'Creá un código QR que abre tu usuario o sala de Matrix en Element u otra app compatible.',
+    es: 'Crea un código QR que abre tu usuario o sala de Matrix en Element u otra app compatible.',
     en: 'Create a QR code that opens your Matrix user or room in Element or another compatible app.',
     pt: 'Crie um QR code que abre seu usuário ou sala do Matrix no Element ou em outro app compatível.',
     fr: 'Créez un code QR qui ouvre votre utilisateur ou salon Matrix dans Element ou une autre app compatible.',
@@ -90,7 +90,7 @@ const template: NetworkDef = {
             it: 'Es.: comunita:matrix.org',
           },
           hint: {
-            es: 'Escribilo sin el # inicial, con el servidor después de los dos puntos.',
+            es: 'Escríbelo sin el # inicial, con el servidor después de los dos puntos.',
             en: 'Type it without the leading #, with the server after the colon.',
             pt: 'Digite sem o # inicial, com o servidor depois dos dois-pontos.',
             fr: 'Saisissez-le sans le # initial, avec le serveur après les deux-points.',

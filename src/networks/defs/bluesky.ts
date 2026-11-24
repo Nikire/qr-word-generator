@@ -6,7 +6,7 @@ const template: NetworkDef = {
   name: 'Bluesky',
   icon: { path: siBluesky.path, color: `#${siBluesky.hex}` },
   subtitle: {
-    es: 'Creá un código QR que abre tu perfil de Bluesky o un posteo con texto ya escrito.',
+    es: 'Crea un código QR que abre tu perfil de Bluesky o una publicación con texto ya escrito.',
     en: 'Create a QR code that opens your Bluesky profile or a post with pre-filled text.',
     pt: 'Crie um QR code que abre seu perfil do Bluesky ou um post com texto pré-preenchido.',
     fr: 'Créez un code QR qui ouvre votre profil Bluesky ou une publication avec un texte prérempli.',
@@ -47,7 +47,7 @@ const template: NetworkDef = {
             it: 'Es.: mionegozio.bsky.social',
           },
           hint: {
-            es: 'Ingresá el usuario completo, con .bsky.social o tu dominio.',
+            es: 'Ingresa el usuario completo, con .bsky.social o tu dominio.',
             en: 'Enter the full handle, including .bsky.social or your domain.',
             pt: 'Digite o usuário completo, com .bsky.social ou seu domínio.',
             fr: 'Saisissez l\'identifiant complet, avec .bsky.social ou votre domaine.',
@@ -59,7 +59,7 @@ const template: NetworkDef = {
     {
       id: 'post',
       label: {
-        es: 'Nuevo posteo',
+        es: 'Nueva publicación',
         en: 'New post',
         pt: 'Novo post',
         fr: 'Nouvelle publication',
@@ -74,7 +74,7 @@ const template: NetworkDef = {
           maxLength: 300,
           sanitize: 'trim',
           label: {
-            es: 'Texto del posteo',
+            es: 'Texto de la publicación',
             en: 'Post text',
             pt: 'Texto do post',
             fr: 'Texte de la publication',
@@ -88,7 +88,7 @@ const template: NetworkDef = {
             it: 'Es.: Sono alla fiera di @mionegozio.bsky.social!',
           },
           hint: {
-            es: 'Hasta 300 caracteres; podés incluir un enlace.',
+            es: 'Hasta 300 caracteres; puedes incluir un enlace.',
             en: 'Up to 300 characters; you can include a link.',
             pt: 'Até 300 caracteres; você pode incluir um link.',
             fr: 'Jusqu\'à 300 caractères ; vous pouvez inclure un lien.',

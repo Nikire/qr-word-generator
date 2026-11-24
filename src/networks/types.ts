@@ -73,3 +73,11 @@ export interface NetworkDef {
   /** Posición en el selector; sin valor, orden alfabético. */
   order?: number;
 }
+
+/** Texto propio de una plantilla (src/networks/content/<id>.ts): se muestra debajo del generador. */
+export interface NetworkContent {
+  heading: L10n;
+  about: L10n;
+  uses: L10n[];
+  faq: { q: L10n; a: L10n }[];
+}

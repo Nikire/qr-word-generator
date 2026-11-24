@@ -6,7 +6,7 @@ const template: NetworkDef = {
   name: 'Facebook',
   icon: { path: siFacebook.path, color: `#${siFacebook.hex}` },
   subtitle: {
-    es: 'Creá un código QR que abre tu perfil, página o grupo de Facebook.',
+    es: 'Crea un código QR que abre tu perfil, página o grupo de Facebook.',
     en: 'Create a QR code that opens your Facebook profile, page or group.',
     pt: 'Crie um QR code que abre seu perfil, página ou grupo do Facebook.',
     fr: 'Créez un code QR qui ouvre votre profil, page ou groupe Facebook.',
@@ -90,7 +90,7 @@ const template: NetworkDef = {
             it: 'Es.: viciniquartiere',
           },
           hint: {
-            es: 'Copiá lo que aparece después de facebook.com/groups/ en la dirección del grupo.',
+            es: 'Copia lo que aparece después de facebook.com/groups/ en la dirección del grupo.',
             en: 'Copy what appears after facebook.com/groups/ in the group\'s address.',
             pt: 'Copie o que aparece depois de facebook.com/groups/ no endereço do grupo.',
             fr: 'Copiez ce qui suit facebook.com/groups/ dans l\'adresse du groupe.',

@@ -6,7 +6,7 @@ const template: NetworkDef = {
   name: 'Mastodon',
   icon: { path: siMastodon.path, color: `#${siMastodon.hex}` },
   subtitle: {
-    es: 'Creá un código QR que abre tu perfil de Mastodon.',
+    es: 'Crea un código QR que abre tu perfil de Mastodon.',
     en: 'Create a QR code that opens your Mastodon profile.',
     pt: 'Crie um QR code que abre seu perfil do Mastodon.',
     fr: 'Créez un code QR qui ouvre votre profil Mastodon.',

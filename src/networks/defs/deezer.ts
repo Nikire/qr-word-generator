@@ -6,7 +6,7 @@ const template: NetworkDef = {
   name: 'Deezer',
   icon: { path: siDeezer.path, color: `#${siDeezer.hex}` },
   subtitle: {
-    es: 'Creá un código QR que abre un artista, una playlist o un podcast en Deezer.',
+    es: 'Crea un código QR que abre un artista, una playlist o un podcast en Deezer.',
     en: 'Create a QR code that opens an artist, playlist or podcast on Deezer.',
     pt: 'Crie um QR code que abre um artista, uma playlist ou um podcast no Deezer.',
     fr: 'Créez un code QR qui ouvre un artiste, une playlist ou un podcast sur Deezer.',
@@ -46,7 +46,7 @@ const template: NetworkDef = {
             it: 'Es.: 1234567',
           },
           hint: {
-            es: 'Es el número después de /artist/ en deezer.com; también podés pegar ese enlace.',
+            es: 'Es el número después de /artist/ en deezer.com; también puedes pegar ese enlace.',
             en: 'It\'s the number after /artist/ on deezer.com; you can also paste that link.',
             pt: 'É o número depois de /artist/ em deezer.com; também dá para colar esse link.',
             fr: 'C\'est le numéro après /artist/ sur deezer.com ; vous pouvez aussi coller ce lien.',

@@ -6,7 +6,7 @@ const template: NetworkDef = {
   name: 'Apple Podcasts',
   icon: { path: siApplepodcasts.path, color: `#${siApplepodcasts.hex}` },
   subtitle: {
-    es: 'Creá un código QR que abre tu podcast en Apple Podcasts.',
+    es: 'Crea un código QR que abre tu podcast en Apple Podcasts.',
     en: 'Create a QR code that opens your podcast on Apple Podcasts.',
     pt: 'Crie um QR code que abre seu podcast no Apple Podcasts.',
     fr: 'Créez un code QR qui ouvre votre podcast sur Apple Podcasts.',
@@ -46,7 +46,7 @@ const template: NetworkDef = {
             it: 'Es.: https://podcasts.apple.com/it/podcast/il-mio-podcast/id1200361736',
           },
           hint: {
-            es: 'Pegá el enlace del podcast o la parte que empieza con «id».',
+            es: 'Pega el enlace del podcast o la parte que empieza con «id».',
             en: 'Paste the podcast link or the part starting with "id".',
             pt: 'Cole o link do podcast ou a parte que começa com "id".',
             fr: 'Collez le lien du podcast ou la partie commençant par « id ».',

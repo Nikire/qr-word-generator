@@ -6,7 +6,7 @@ const template: NetworkDef = {
   name: 'Calendly',
   icon: { path: siCalendly.path, color: `#${siCalendly.hex}` },
   subtitle: {
-    es: 'Creá un código QR que abre tu página de reservas de Calendly.',
+    es: 'Crea un código QR que abre tu página de reservas de Calendly.',
     en: 'Create a QR code that opens your Calendly booking page.',
     pt: 'Crie um QR code que abre sua página de agendamento no Calendly.',
     fr: 'Créez un QR code qui ouvre votre page de réservation Calendly.',

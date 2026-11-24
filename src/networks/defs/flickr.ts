@@ -6,7 +6,7 @@ const template: NetworkDef = {
   name: 'Flickr',
   icon: { path: siFlickr.path, color: `#${siFlickr.hex}` },
   subtitle: {
-    es: 'Creá un código QR que abre tu galería de fotos de Flickr.',
+    es: 'Crea un código QR que abre tu galería de fotos de Flickr.',
     en: 'Create a QR code that opens your Flickr photostream.',
     pt: 'Crie um QR code que abre sua galeria de fotos no Flickr.',
     fr: 'Créez un QR code qui ouvre votre galerie de photos Flickr.',

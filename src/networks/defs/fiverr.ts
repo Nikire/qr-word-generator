@@ -6,7 +6,7 @@ const template: NetworkDef = {
   name: 'Fiverr',
   icon: { path: siFiverr.path, color: `#${siFiverr.hex}` },
   subtitle: {
-    es: 'Creá un código QR que abre tu perfil de freelancer en Fiverr.',
+    es: 'Crea un código QR que abre tu perfil de freelancer en Fiverr.',
     en: 'Create a QR code that opens your Fiverr freelancer profile.',
     pt: 'Crie um QR code que abre seu perfil de freelancer no Fiverr.',
     fr: 'Créez un QR code qui ouvre votre profil de freelance Fiverr.',

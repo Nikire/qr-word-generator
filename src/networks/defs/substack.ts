@@ -6,7 +6,7 @@ const template: NetworkDef = {
   name: 'Substack',
   icon: { path: siSubstack.path, color: `#${siSubstack.hex}` },
   subtitle: {
-    es: 'Creá un código QR que abre tu publicación o perfil de Substack.',
+    es: 'Crea un código QR que abre tu publicación o perfil de Substack.',
     en: 'Create a QR code that opens your Substack publication or profile.',
     pt: 'Crie um QR code que abre sua publicação ou perfil no Substack.',
     fr: 'Créez un QR code qui ouvre votre publication ou profil Substack.',
@@ -89,7 +89,7 @@ const template: NetworkDef = {
             it: 'Es.: mariorossi',
           },
           hint: {
-            es: 'Escribilo sin la @.',
+            es: 'Escríbelo sin la @.',
             en: 'Enter it without the @.',
             pt: 'Digite sem o @.',
             fr: 'Saisissez-le sans le @.',

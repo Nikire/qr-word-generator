@@ -6,7 +6,7 @@ const template: NetworkDef = {
   name: 'Audiomack',
   icon: { path: siAudiomack.path, color: `#${siAudiomack.hex}`, darkGlyph: true },
   subtitle: {
-    es: 'Creá un código QR que abre tu perfil de Audiomack.',
+    es: 'Crea un código QR que abre tu perfil de Audiomack.',
     en: 'Create a QR code that opens your Audiomack profile.',
     pt: 'Crie um QR code que abre seu perfil do Audiomack.',
     fr: 'Créez un code QR qui ouvre votre profil Audiomack.',

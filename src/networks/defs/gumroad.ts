@@ -6,7 +6,7 @@ const template: NetworkDef = {
   name: 'Gumroad',
   icon: { path: siGumroad.path, color: `#${siGumroad.hex}`, darkGlyph: true },
   subtitle: {
-    es: 'Creá un código QR que abre tu tienda de Gumroad.',
+    es: 'Crea un código QR que abre tu tienda de Gumroad.',
     en: 'Create a QR code that opens your Gumroad shop.',
     pt: 'Crie um QR code que abre sua loja no Gumroad.',
     fr: 'Créez un code QR qui ouvre votre boutique Gumroad.',

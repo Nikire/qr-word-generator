@@ -6,7 +6,7 @@ const template: NetworkDef = {
   name: 'ORCID',
   icon: { path: siOrcid.path, color: `#${siOrcid.hex}`, darkGlyph: true },
   subtitle: {
-    es: 'Creá un código QR que abre tu registro de investigador en ORCID.',
+    es: 'Crea un código QR que abre tu registro de investigador en ORCID.',
     en: 'Create a QR code that opens your ORCID researcher record.',
     pt: 'Crie um QR code que abre seu registro de pesquisador no ORCID.',
     fr: 'Créez un QR code qui ouvre votre dossier de chercheur ORCID.',

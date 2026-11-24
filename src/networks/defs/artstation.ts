@@ -6,7 +6,7 @@ const template: NetworkDef = {
   name: 'ArtStation',
   icon: { path: siArtstation.path, color: `#${siArtstation.hex}` },
   subtitle: {
-    es: 'Creá un código QR que abre tu portfolio de ArtStation.',
+    es: 'Crea un código QR que abre tu portfolio de ArtStation.',
     en: 'Create a QR code that opens your ArtStation portfolio.',
     pt: 'Crie um QR code que abre seu portfólio no ArtStation.',
     fr: 'Créez un QR code qui ouvre votre portfolio ArtStation.',

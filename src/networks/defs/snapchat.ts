@@ -6,7 +6,7 @@ const template: NetworkDef = {
   name: 'Snapchat',
   icon: { path: siSnapchat.path, color: `#${siSnapchat.hex}`, darkGlyph: true },
   subtitle: {
-    es: 'Creá un código QR para que te agreguen como amigo en Snapchat.',
+    es: 'Crea un código QR para que te agreguen como amigo en Snapchat.',
     en: 'Create a QR code that lets people add you as a friend on Snapchat.',
     pt: 'Crie um QR code para que te adicionem como amigo no Snapchat.',
     fr: 'Créez un code QR pour qu\'on vous ajoute en ami sur Snapchat.',

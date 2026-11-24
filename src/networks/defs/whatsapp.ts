@@ -6,7 +6,7 @@ const whatsapp: NetworkDef = {
   name: 'WhatsApp',
   icon: { path: siWhatsapp.path, color: `#${siWhatsapp.hex}` },
   subtitle: {
-    es: 'Creá un código QR que abre un chat de WhatsApp con tu número.',
+    es: 'Crea un código QR que abre un chat de WhatsApp con tu número.',
     en: 'Create a QR code that opens a WhatsApp chat with your number.',
     pt: 'Crie um QR Code que abre uma conversa no WhatsApp com o seu número.',
     fr: 'Créez un QR code qui ouvre une discussion WhatsApp avec votre numéro.',
@@ -32,7 +32,7 @@ const whatsapp: NetworkDef = {
             it: 'Numero WhatsApp',
           },
           placeholder: {
-            es: 'Ej.: 11 2345 6789',
+            es: 'Ej.: 55 1234 5678',
             en: 'E.g. 555 123 4567',
             pt: 'Ex.: 11 91234 5678',
             fr: 'Ex. : 6 12 34 56 78',

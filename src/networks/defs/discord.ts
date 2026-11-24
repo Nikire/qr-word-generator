@@ -6,7 +6,7 @@ const template: NetworkDef = {
   name: 'Discord',
   icon: { path: siDiscord.path, color: `#${siDiscord.hex}` },
   subtitle: {
-    es: 'Creá un código QR que invita a tu servidor de Discord.',
+    es: 'Crea un código QR que invita a tu servidor de Discord.',
     en: 'Create a QR code that invites people to your Discord server.',
     pt: 'Crie um QR code que convida para seu servidor do Discord.',
     fr: 'Créez un code QR qui invite sur votre serveur Discord.',
@@ -47,7 +47,7 @@ const template: NetworkDef = {
             it: 'Es.: aBc123XyZ',
           },
           hint: {
-            es: 'Pegá el enlace de invitación; elegí que no caduque para que el QR siga funcionando.',
+            es: 'Pega el enlace de invitación; elige que no caduque para que el QR siga funcionando.',
             en: 'Paste your invite link; set it to never expire so the QR keeps working.',
             pt: 'Cole o link de convite; defina que nunca expire para o QR continuar funcionando.',
             fr: 'Collez votre lien d\'invitation ; réglez-le pour qu\'il n\'expire jamais.',

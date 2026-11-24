@@ -6,7 +6,7 @@ const template: NetworkDef = {
   name: 'SoundCloud',
   icon: { path: siSoundcloud.path, color: `#${siSoundcloud.hex}` },
   subtitle: {
-    es: 'Creá un código QR que abre tu perfil de SoundCloud.',
+    es: 'Crea un código QR que abre tu perfil de SoundCloud.',
     en: 'Create a QR code that opens your SoundCloud profile.',
     pt: 'Crie um QR code que abre seu perfil do SoundCloud.',
     fr: 'Créez un code QR qui ouvre votre profil SoundCloud.',

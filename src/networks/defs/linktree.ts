@@ -6,7 +6,7 @@ const template: NetworkDef = {
   name: 'Linktree',
   icon: { path: siLinktree.path, color: `#${siLinktree.hex}`, darkGlyph: true },
   subtitle: {
-    es: 'Creá un código QR que abre tu página de Linktree.',
+    es: 'Crea un código QR que abre tu página de Linktree.',
     en: 'Create a QR code that opens your Linktree page.',
     pt: 'Crie um QR code que abre sua página do Linktree.',
     fr: 'Créez un QR code qui ouvre votre page Linktree.',

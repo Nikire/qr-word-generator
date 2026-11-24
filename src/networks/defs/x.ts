@@ -6,7 +6,7 @@ const template: NetworkDef = {
   name: 'X (Twitter)',
   icon: { path: siX.path, color: `#${siX.hex}` },
   subtitle: {
-    es: 'Creá un código QR que abre tu perfil de X o un posteo con texto ya escrito.',
+    es: 'Crea un código QR que abre tu perfil de X o una publicación con texto ya escrito.',
     en: 'Create a QR code that opens your X profile or a post with pre-filled text.',
     pt: 'Crie um QR code que abre seu perfil do X ou um post com texto pré-preenchido.',
     fr: 'Créez un code QR qui ouvre votre profil X ou une publication avec un texte prérempli.',
@@ -59,7 +59,7 @@ const template: NetworkDef = {
     {
       id: 'post',
       label: {
-        es: 'Nuevo posteo',
+        es: 'Nueva publicación',
         en: 'New post',
         pt: 'Novo post',
         fr: 'Nouvelle publication',
@@ -75,7 +75,7 @@ const template: NetworkDef = {
           maxLength: 280,
           sanitize: 'trim',
           label: {
-            es: 'Texto del posteo',
+            es: 'Texto de la publicación',
             en: 'Post text',
             pt: 'Texto do post',
             fr: 'Texte de la publication',
@@ -117,7 +117,7 @@ const template: NetworkDef = {
             it: 'Es.: mionegozio.it',
           },
           hint: {
-            es: 'Opcional: se agrega al final del posteo.',
+            es: 'Opcional: se agrega al final de la publicación.',
             en: 'Optional: added at the end of the post.',
             pt: 'Opcional: é adicionado ao final do post.',
             fr: 'Facultatif : ajouté à la fin de la publication.',

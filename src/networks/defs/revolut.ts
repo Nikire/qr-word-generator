@@ -6,7 +6,7 @@ const template: NetworkDef = {
   name: 'Revolut',
   icon: { path: siRevolut.path, color: `#${siRevolut.hex}` },
   subtitle: {
-    es: 'Creá un código QR con tu enlace revolut.me para que te paguen.',
+    es: 'Crea un código QR con tu enlace revolut.me para que te paguen.',
     en: 'Create a QR code with your revolut.me link so people can pay you.',
     pt: 'Crie um QR code com seu link revolut.me para receber pagamentos.',
     fr: 'Créez un code QR avec votre lien revolut.me pour recevoir des paiements.',

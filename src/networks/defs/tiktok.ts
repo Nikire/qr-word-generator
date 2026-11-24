@@ -6,7 +6,7 @@ const template: NetworkDef = {
   name: 'TikTok',
   icon: { path: siTiktok.path, color: `#${siTiktok.hex}` },
   subtitle: {
-    es: 'Creá un código QR que abre tu perfil de TikTok.',
+    es: 'Crea un código QR que abre tu perfil de TikTok.',
     en: 'Create a QR code that opens your TikTok profile.',
     pt: 'Crie um QR code que abre seu perfil do TikTok.',
     fr: 'Créez un code QR qui ouvre votre profil TikTok.',

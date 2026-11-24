@@ -6,7 +6,7 @@ const template: NetworkDef = {
   name: 'Open Collective',
   icon: { path: siOpencollective.path, color: `#${siOpencollective.hex}`, darkGlyph: true },
   subtitle: {
-    es: 'Creá un código QR que abre la página de tu colectivo en Open Collective.',
+    es: 'Crea un código QR que abre la página de tu colectivo en Open Collective.',
     en: 'Create a QR code that opens your Open Collective page.',
     pt: 'Crie um QR code que abre a página do seu coletivo no Open Collective.',
     fr: 'Créez un code QR qui ouvre votre page Open Collective.',

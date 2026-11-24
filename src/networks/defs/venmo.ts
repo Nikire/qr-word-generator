@@ -6,7 +6,7 @@ const template: NetworkDef = {
   name: 'Venmo',
   icon: { path: siVenmo.path, color: `#${siVenmo.hex}` },
   subtitle: {
-    es: 'Creá un código QR que abre tu perfil de Venmo para que te paguen.',
+    es: 'Crea un código QR que abre tu perfil de Venmo para que te paguen.',
     en: 'Create a QR code that opens your Venmo profile so people can pay you.',
     pt: 'Crie um QR code que abre seu perfil do Venmo para receber pagamentos.',
     fr: 'Créez un code QR qui ouvre votre profil Venmo pour recevoir des paiements.',

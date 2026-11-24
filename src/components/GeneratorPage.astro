@@ -6,7 +6,8 @@ import Generator from './Generator.astro';
 import NetworkBadge from './NetworkBadge.astro';
 import AdSlot from './AdSlot.astro';
 import { locales, useTranslations, type Locale, type UiKey } from '../i18n/ui';
-import { getNetwork, networkName, networkPath, sortedNetworks } from '../networks';
+import { DEFAULT_NETWORK, getContent, getNetwork, networkName, networkPath, sortedNetworks } from '../networks';
+import { SITE_URL } from '../../site.config.mjs';
 
 interface Props {
   locale: Locale;
@@ -28,13 +29,54 @@ const others = sortedNetworks(locale).filter((item) => item.id !== network.id);
 
 const key = (value: string) => value as UiKey;
 const steps = [1, 2, 3].map((n) => ({ title: t(key(`steps.${n}.title`)), text: t(key(`steps.${n}.text`)) }));
+const content = getContent(network.id);
+// Primero las preguntas propias de la plantilla; después las generales.
 const faq = [
+  ...[...(content?.faq ?? []), ...(network.faq ?? [])].map((item) => ({ q: item.q[locale], a: item.a[locale] })),
   ...[1, 2, 3].map((n) => ({ q: t(key(`faq.${n}.q`)), a: t(key(`faq.${n}.a`)) })),
-  ...(network.faq ?? []).map((item) => ({ q: item.q[locale], a: item.a[locale] })),
+];
+
+const url = `${SITE_URL}${paths[locale]}`;
+const home = `${SITE_URL}${networkPath(locale, DEFAULT_NETWORK)}`;
+const isHome = network.id === DEFAULT_NETWORK;
+const jsonLd: Record<string, unknown>[] = [
+  {
+    '@context': 'https://schema.org',
+    '@type': 'WebApplication',
+    name: heading,
+    url,
+    description,
+    inLanguage: locale,
+    applicationCategory: 'UtilitiesApplication',
+    operatingSystem: 'Any',
+    browserRequirements: 'Requires JavaScript',
+    isAccessibleForFree: true,
+    offers: { '@type': 'Offer', price: '0', priceCurrency: 'USD' },
+    publisher: { '@type': 'Organization', name: 'QR Word Generator', url: SITE_URL },
+  },
+  {
+    '@context': 'https://schema.org',
+    '@type': 'FAQPage',
+    mainEntity: faq.map((item) => ({
+      '@type': 'Question',
+      name: item.q,
+      acceptedAnswer: { '@type': 'Answer', text: item.a },
+    })),
+  },
+  isHome
+    ? { '@context': 'https://schema.org', '@type': 'WebSite', name: 'QR Word Generator', url: home, inLanguage: locale }
+    : {
+        '@context': 'https://schema.org',
+        '@type': 'BreadcrumbList',
+        itemListElement: [
+          { '@type': 'ListItem', position: 1, name: 'QR Word Generator', item: home },
+          { '@type': 'ListItem', position: 2, name, item: url },
+        ],
+      },
 ];
 ---
 
-<Base locale={locale} title={pageTitle} description={description} paths={paths}>
+<Base locale={locale} title={pageTitle} description={description} paths={paths} jsonLd={jsonLd}>
   <section class="hero container">
     <h1>{heading}</h1>
     <p>{subtitle} {t('hero.tail')}</p>
@@ -45,6 +87,20 @@ const faq = [
   </div>
 
   <AdSlot position="top" label={t('ads.label')} />
+
+  {
+    content && (
+      <section class="section container about">
+        <h2>{content.heading[locale]}</h2>
+        <p>{content.about[locale]}</p>
+        <ul>
+          {content.uses.map((use) => (
+            <li>{use[locale]}</li>
+          ))}
+        </ul>
+      </section>
+    )
+  }
 
   <section class="section container">
     <h2>{t('steps.title')}</h2>
@@ -124,6 +180,24 @@ const faq = [
     margin-bottom: 20px;
     font-size: 1.45rem;
     text-align: center;
+  }
+
+  .about {
+    max-width: 720px;
+  }
+
+  .about p,
+  .about li {
+    color: var(--muted);
+    text-wrap: pretty;
+  }
+
+  .about ul {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    margin: 16px 0 0;
+    padding-left: 22px;
   }
 
   .steps {

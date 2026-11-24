@@ -6,7 +6,7 @@ const template: NetworkDef = {
   name: 'Yelp',
   icon: { path: siYelp.path, color: `#${siYelp.hex}` },
   subtitle: {
-    es: 'Creá un código QR que abre la página de tu negocio en Yelp.',
+    es: 'Crea un código QR que abre la página de tu negocio en Yelp.',
     en: 'Create a QR code that opens your business page on Yelp.',
     pt: 'Crie um QR code que abre a página do seu negócio no Yelp.',
     fr: 'Créez un QR code qui ouvre la page de votre établissement sur Yelp.',

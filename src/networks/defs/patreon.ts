@@ -6,7 +6,7 @@ const template: NetworkDef = {
   name: 'Patreon',
   icon: { path: siPatreon.path, color: `#${siPatreon.hex}` },
   subtitle: {
-    es: 'Creá un código QR que abre tu página de Patreon.',
+    es: 'Crea un código QR que abre tu página de Patreon.',
     en: 'Create a QR code that opens your Patreon page.',
     pt: 'Crie um QR code que abre sua página do Patreon.',
     fr: 'Créez un code QR qui ouvre votre page Patreon.',

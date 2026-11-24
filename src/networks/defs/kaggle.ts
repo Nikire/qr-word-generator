@@ -6,7 +6,7 @@ const template: NetworkDef = {
   name: 'Kaggle',
   icon: { path: siKaggle.path, color: `#${siKaggle.hex}` },
   subtitle: {
-    es: 'Creá un código QR que abre tu perfil de Kaggle.',
+    es: 'Crea un código QR que abre tu perfil de Kaggle.',
     en: 'Create a QR code that opens your Kaggle profile.',
     pt: 'Crie um QR code que abre seu perfil no Kaggle.',
     fr: 'Créez un QR code qui ouvre votre profil Kaggle.',

@@ -6,7 +6,7 @@ const template: NetworkDef = {
   name: '500px',
   icon: { path: si500px.path, color: `#${si500px.hex}` },
   subtitle: {
-    es: 'Creá un código QR que abre tu perfil de fotografía en 500px.',
+    es: 'Crea un código QR que abre tu perfil de fotografía en 500px.',
     en: 'Create a QR code that opens your 500px photography profile.',
     pt: 'Crie um QR code que abre seu perfil de fotografia no 500px.',
     fr: 'Créez un QR code qui ouvre votre profil photo 500px.',

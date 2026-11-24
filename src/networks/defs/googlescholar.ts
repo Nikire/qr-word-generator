@@ -6,7 +6,7 @@ const template: NetworkDef = {
   name: 'Google Scholar',
   icon: { path: siGooglescholar.path, color: `#${siGooglescholar.hex}` },
   subtitle: {
-    es: 'Creá un código QR que abre tu perfil de Google Académico.',
+    es: 'Crea un código QR que abre tu perfil de Google Académico.',
     en: 'Create a QR code that opens your Google Scholar profile.',
     pt: 'Crie um QR code que abre seu perfil no Google Acadêmico.',
     fr: 'Créez un QR code qui ouvre votre profil Google Scholar.',

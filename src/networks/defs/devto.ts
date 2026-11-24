@@ -6,7 +6,7 @@ const template: NetworkDef = {
   name: 'DEV Community',
   icon: { path: siDevdotto.path, color: `#${siDevdotto.hex}` },
   subtitle: {
-    es: 'Creá un código QR que abre tu perfil de DEV Community.',
+    es: 'Crea un código QR que abre tu perfil de DEV Community.',
     en: 'Create a QR code that opens your DEV Community profile.',
     pt: 'Crie um QR code que abre seu perfil na DEV Community.',
     fr: 'Créez un QR code qui ouvre votre profil DEV Community.',

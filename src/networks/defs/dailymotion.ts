@@ -6,7 +6,7 @@ const template: NetworkDef = {
   name: 'Dailymotion',
   icon: { path: siDailymotion.path, color: `#${siDailymotion.hex}` },
   subtitle: {
-    es: 'Creá un código QR que abre tu canal de Dailymotion.',
+    es: 'Crea un código QR que abre tu canal de Dailymotion.',
     en: 'Create a QR code that opens your Dailymotion channel.',
     pt: 'Crie um QR code que abre seu canal do Dailymotion.',
     fr: 'Créez un code QR qui ouvre votre chaîne Dailymotion.',

@@ -6,7 +6,7 @@ const template: NetworkDef = {
   name: 'Etsy',
   icon: { path: siEtsy.path, color: `#${siEtsy.hex}` },
   subtitle: {
-    es: 'Creá un código QR que abre tu tienda de Etsy.',
+    es: 'Crea un código QR que abre tu tienda de Etsy.',
     en: 'Create a QR code that opens your Etsy shop.',
     pt: 'Crie um QR code que abre sua loja na Etsy.',
     fr: 'Créez un code QR qui ouvre votre boutique Etsy.',

@@ -6,7 +6,7 @@ const template: NetworkDef = {
   name: 'Steam',
   icon: { path: siSteam.path, color: `#${siSteam.hex}` },
   subtitle: {
-    es: 'Creá un código QR que abre tu perfil de Steam o la página de tu juego.',
+    es: 'Crea un código QR que abre tu perfil de Steam o la página de tu juego.',
     en: 'Create a QR code that opens your Steam profile or your game\'s store page.',
     pt: 'Crie um QR code que abre seu perfil na Steam ou a página do seu jogo.',
     fr: 'Créez un QR code qui ouvre votre profil Steam ou la page de votre jeu.',

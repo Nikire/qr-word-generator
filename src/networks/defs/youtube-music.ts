@@ -6,7 +6,7 @@ const template: NetworkDef = {
   name: 'YouTube Music',
   icon: { path: siYoutubemusic.path, color: `#${siYoutubemusic.hex}` },
   subtitle: {
-    es: 'Creá un código QR que abre tu perfil de artista en YouTube Music.',
+    es: 'Crea un código QR que abre tu perfil de artista en YouTube Music.',
     en: 'Create a QR code that opens your artist profile on YouTube Music.',
     pt: 'Crie um QR code que abre seu perfil de artista no YouTube Music.',
     fr: 'Créez un code QR qui ouvre votre profil d\'artiste sur YouTube Music.',
@@ -46,7 +46,7 @@ const template: NetworkDef = {
             it: 'Es.: UCuAXFkgsw1L7xaCfnd5JJOw',
           },
           hint: {
-            es: 'Pegá el enlace de tu perfil de artista; el ID empieza con UC.',
+            es: 'Pega el enlace de tu perfil de artista; el ID empieza con UC.',
             en: 'Paste your artist profile link; the ID starts with UC.',
             pt: 'Cole o link do seu perfil de artista; o ID começa com UC.',
             fr: 'Collez le lien de votre profil d\'artiste ; l\'ID commence par UC.',

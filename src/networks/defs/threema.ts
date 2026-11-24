@@ -6,7 +6,7 @@ const template: NetworkDef = {
   name: 'Threema',
   icon: { path: siThreema.path, color: `#${siThreema.hex}`, darkGlyph: true },
   subtitle: {
-    es: 'Creá un código QR que abre un chat de Threema con tu ID.',
+    es: 'Crea un código QR que abre un chat de Threema con tu ID.',
     en: 'Create a QR code that opens a Threema chat with your ID.',
     pt: 'Crie um QR code que abre uma conversa no Threema com seu ID.',
     fr: 'Créez un code QR qui ouvre une conversation Threema avec votre ID.',

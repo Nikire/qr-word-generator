@@ -6,7 +6,7 @@ const template: NetworkDef = {
   name: 'Product Hunt',
   icon: { path: siProducthunt.path, color: `#${siProducthunt.hex}` },
   subtitle: {
-    es: 'Creá un código QR que abre tu perfil o tu producto en Product Hunt.',
+    es: 'Crea un código QR que abre tu perfil o tu producto en Product Hunt.',
     en: 'Create a QR code that opens your Product Hunt profile or product.',
     pt: 'Crie um QR code que abre seu perfil ou produto no Product Hunt.',
     fr: 'Créez un QR code qui ouvre votre profil ou produit sur Product Hunt.',
@@ -47,7 +47,7 @@ const template: NetworkDef = {
             it: 'Es.: mariorossi',
           },
           hint: {
-            es: 'Escribilo sin la @.',
+            es: 'Escríbelo sin la @.',
             en: 'Enter it without the @.',
             pt: 'Digite sem o @.',
             fr: 'Saisissez-le sans le @.',

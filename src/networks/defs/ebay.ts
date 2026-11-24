@@ -6,7 +6,7 @@ const template: NetworkDef = {
   name: 'eBay',
   icon: { path: siEbay.path, color: `#${siEbay.hex}` },
   subtitle: {
-    es: 'Creá un código QR que abre tu tienda o perfil de vendedor en eBay.',
+    es: 'Crea un código QR que abre tu tienda o perfil de vendedor en eBay.',
     en: 'Create a QR code that opens your eBay store or seller profile.',
     pt: 'Crie um QR code que abre sua loja ou perfil de vendedor no eBay.',
     fr: 'Créez un code QR qui ouvre votre boutique ou profil vendeur eBay.',

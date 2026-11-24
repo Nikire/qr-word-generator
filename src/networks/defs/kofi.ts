@@ -6,7 +6,7 @@ const template: NetworkDef = {
   name: 'Ko-fi',
   icon: { path: siKofi.path, color: `#${siKofi.hex}` },
   subtitle: {
-    es: 'Creá un código QR que abre tu página de Ko-fi para recibir apoyo.',
+    es: 'Crea un código QR que abre tu página de Ko-fi para recibir apoyo.',
     en: 'Create a QR code that opens your Ko-fi page to receive support.',
     pt: 'Crie um QR code que abre sua página do Ko-fi para receber apoio.',
     fr: 'Créez un QR code qui ouvre votre page Ko-fi pour recevoir du soutien.',

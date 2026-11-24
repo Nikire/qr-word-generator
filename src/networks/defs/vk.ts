@@ -6,7 +6,7 @@ const template: NetworkDef = {
   name: 'VK',
   icon: { path: siVk.path, color: `#${siVk.hex}` },
   subtitle: {
-    es: 'Creá un código QR que abre tu perfil o comunidad de VK.',
+    es: 'Crea un código QR que abre tu perfil o comunidad de VK.',
     en: 'Create a QR code that opens your VK profile or community.',
     pt: 'Crie um QR code que abre seu perfil ou comunidade do VK.',
     fr: 'Créez un code QR qui ouvre votre profil ou votre communauté VK.',

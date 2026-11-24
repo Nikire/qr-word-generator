@@ -6,7 +6,7 @@ const template: NetworkDef = {
   name: 'Mixcloud',
   icon: { path: siMixcloud.path, color: `#${siMixcloud.hex}` },
   subtitle: {
-    es: 'Creá un código QR que abre tu perfil de Mixcloud.',
+    es: 'Crea un código QR que abre tu perfil de Mixcloud.',
     en: 'Create a QR code that opens your Mixcloud profile.',
     pt: 'Crie um QR code que abre seu perfil do Mixcloud.',
     fr: 'Créez un code QR qui ouvre votre profil Mixcloud.',

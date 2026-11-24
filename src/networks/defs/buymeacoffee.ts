@@ -6,7 +6,7 @@ const template: NetworkDef = {
   name: 'Buy Me a Coffee',
   icon: { path: siBuymeacoffee.path, color: `#${siBuymeacoffee.hex}`, darkGlyph: true },
   subtitle: {
-    es: 'Creá un código QR que abre tu página de Buy Me a Coffee.',
+    es: 'Crea un código QR que abre tu página de Buy Me a Coffee.',
     en: 'Create a QR code that opens your Buy Me a Coffee page.',
     pt: 'Crie um QR code que abre sua página do Buy Me a Coffee.',
     fr: 'Créez un code QR qui ouvre votre page Buy Me a Coffee.',

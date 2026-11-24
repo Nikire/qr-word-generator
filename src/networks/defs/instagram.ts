@@ -6,7 +6,7 @@ const template: NetworkDef = {
   name: 'Instagram',
   icon: { path: siInstagram.path, color: `#${siInstagram.hex}` },
   subtitle: {
-    es: 'Creá un código QR que abre tu perfil de Instagram o un chat directo.',
+    es: 'Crea un código QR que abre tu perfil de Instagram o un chat directo.',
     en: 'Create a QR code that opens your Instagram profile or a direct chat.',
     pt: 'Crie um QR code que abre seu perfil do Instagram ou uma conversa direta.',
     fr: 'Créez un code QR qui ouvre votre profil Instagram ou une conversation privée.',

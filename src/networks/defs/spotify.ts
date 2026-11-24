@@ -6,7 +6,7 @@ const template: NetworkDef = {
   name: 'Spotify',
   icon: { path: siSpotify.path, color: `#${siSpotify.hex}`, darkGlyph: true },
   subtitle: {
-    es: 'Creá un código QR que abre un artista, una playlist o un podcast en Spotify.',
+    es: 'Crea un código QR que abre un artista, una playlist o un podcast en Spotify.',
     en: 'Create a QR code that opens an artist, playlist or podcast on Spotify.',
     pt: 'Crie um QR code que abre um artista, uma playlist ou um podcast no Spotify.',
     fr: 'Créez un code QR qui ouvre un artiste, une playlist ou un podcast sur Spotify.',
@@ -46,7 +46,7 @@ const template: NetworkDef = {
             it: 'Es.: https://open.spotify.com/artist/0TnOYISbd1XYRBk9myaseg',
           },
           hint: {
-            es: 'En Spotify, tocá ⋯ > Compartir > Copiar enlace del artista y pegalo acá.',
+            es: 'En Spotify, toca ⋯ > Compartir > Copiar enlace del artista y pégalo aquí.',
             en: 'In Spotify, tap ⋯ > Share > Copy link to artist and paste it here.',
             pt: 'No Spotify, toque em ⋯ > Compartilhar > Copiar link do artista e cole aqui.',
             fr: 'Dans Spotify, touchez ⋯ > Partager > Copier le lien de l\'artiste et collez-le ici.',
@@ -88,7 +88,7 @@ const template: NetworkDef = {
             it: 'Es.: https://open.spotify.com/playlist/37i9dQZF1DXcBWIGoYBM5M',
           },
           hint: {
-            es: 'En la playlist, tocá ⋯ > Compartir > Copiar enlace y pegalo acá.',
+            es: 'En la playlist, toca ⋯ > Compartir > Copiar enlace y pégalo aquí.',
             en: 'On the playlist, tap ⋯ > Share > Copy link and paste it here.',
             pt: 'Na playlist, toque em ⋯ > Compartilhar > Copiar link e cole aqui.',
             fr: 'Sur la playlist, touchez ⋯ > Partager > Copier le lien et collez-le ici.',
@@ -130,7 +130,7 @@ const template: NetworkDef = {
             it: 'Es.: https://open.spotify.com/show/2MAi0BvDc6GTFvKFPXnkCL',
           },
           hint: {
-            es: 'En el podcast, tocá ⋯ > Compartir > Copiar enlace y pegalo acá.',
+            es: 'En el podcast, toca ⋯ > Compartir > Copiar enlace y pégalo aquí.',
             en: 'On the podcast, tap ⋯ > Share > Copy link and paste it here.',
             pt: 'No podcast, toque em ⋯ > Compartilhar > Copiar link e cole aqui.',
             fr: 'Sur le podcast, touchez ⋯ > Partager > Copier le lien et collez-le ici.',

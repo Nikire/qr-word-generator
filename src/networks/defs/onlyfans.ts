@@ -6,7 +6,7 @@ const template: NetworkDef = {
   name: 'OnlyFans',
   icon: { path: siOnlyfans.path, color: `#${siOnlyfans.hex}` },
   subtitle: {
-    es: 'Creá un código QR que abre tu perfil de OnlyFans.',
+    es: 'Crea un código QR que abre tu perfil de OnlyFans.',
     en: 'Create a QR code that opens your OnlyFans profile.',
     pt: 'Crie um QR code que abre seu perfil do OnlyFans.',
     fr: 'Créez un code QR qui ouvre votre profil OnlyFans.',

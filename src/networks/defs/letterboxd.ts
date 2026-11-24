@@ -6,7 +6,7 @@ const template: NetworkDef = {
   name: 'Letterboxd',
   icon: { path: siLetterboxd.path, color: `#${siLetterboxd.hex}` },
   subtitle: {
-    es: 'Creá un código QR que abre tu perfil de Letterboxd.',
+    es: 'Crea un código QR que abre tu perfil de Letterboxd.',
     en: 'Create a QR code that opens your Letterboxd profile.',
     pt: 'Crie um QR code que abre seu perfil no Letterboxd.',
     fr: 'Créez un QR code qui ouvre votre profil Letterboxd.',

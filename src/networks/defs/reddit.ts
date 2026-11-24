@@ -6,7 +6,7 @@ const template: NetworkDef = {
   name: 'Reddit',
   icon: { path: siReddit.path, color: `#${siReddit.hex}` },
   subtitle: {
-    es: 'Creá un código QR que abre tu perfil o una comunidad de Reddit.',
+    es: 'Crea un código QR que abre tu perfil o una comunidad de Reddit.',
     en: 'Create a QR code that opens your Reddit profile or a community.',
     pt: 'Crie um QR code que abre seu perfil ou uma comunidade do Reddit.',
     fr: 'Créez un code QR qui ouvre votre profil ou une communauté Reddit.',

@@ -1,0 +1,64 @@
+---
+// Página de error: el servidor la muestra para cualquier dirección que no existe.
+import Base from '../layouts/Base.astro';
+import { locales, localeNames, type Locale } from '../i18n/ui';
+import { DEFAULT_NETWORK, networkPath } from '../networks';
+
+const paths = Object.fromEntries(locales.map((code) => [code, networkPath(code, DEFAULT_NETWORK)])) as Record<Locale, string>;
+---
+
+<Base locale="es" title="Página no encontrada | QR Word Generator" description="La página que buscas no existe." paths={paths} noindex>
+  <section class="missing container">
+    <p class="code">404</p>
+    <h1>Página no encontrada</h1>
+    <p>La dirección que abriste no existe o cambió de lugar. Page not found.</p>
+    <nav>
+      {locales.map((code) => <a href={paths[code]} hreflang={code} lang={code}>{localeNames[code]}</a>)}
+    </nav>
+  </section>
+</Base>
+
+<style>
+  .missing {
+    padding-top: 72px;
+    text-align: center;
+  }
+
+  .missing .code {
+    color: var(--accent-strong);
+    font-size: 4rem;
+    font-weight: 800;
+    line-height: 1;
+  }
+
+  .missing h1 {
+    margin: 12px 0 8px;
+    font-size: 1.8rem;
+  }
+
+  .missing p {
+    color: var(--muted);
+  }
+
+  .missing nav {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 10px;
+    margin-top: 24px;
+  }
+
+  .missing a {
+    padding: 10px 18px;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-sm);
+    color: var(--text);
+    font-weight: 600;
+    text-decoration: none;
+  }
+
+  .missing a:hover {
+    border-color: var(--accent);
+  }
+</style>

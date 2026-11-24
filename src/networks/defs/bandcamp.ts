@@ -6,7 +6,7 @@ const template: NetworkDef = {
   name: 'Bandcamp',
   icon: { path: siBandcamp.path, color: `#${siBandcamp.hex}` },
   subtitle: {
-    es: 'Creá un código QR que abre tu página de Bandcamp.',
+    es: 'Crea un código QR que abre tu página de Bandcamp.',
     en: 'Create a QR code that opens your Bandcamp page.',
     pt: 'Crie um QR code que abre sua página do Bandcamp.',
     fr: 'Créez un code QR qui ouvre votre page Bandcamp.',

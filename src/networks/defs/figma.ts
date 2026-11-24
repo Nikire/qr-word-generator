@@ -6,7 +6,7 @@ const template: NetworkDef = {
   name: 'Figma Community',
   icon: { path: siFigma.path, color: `#${siFigma.hex}` },
   subtitle: {
-    es: 'Creá un código QR que abre tu perfil en la comunidad de Figma.',
+    es: 'Crea un código QR que abre tu perfil en la comunidad de Figma.',
     en: 'Create a QR code that opens your Figma Community profile.',
     pt: 'Crie um QR code que abre seu perfil na comunidade do Figma.',
     fr: 'Créez un QR code qui ouvre votre profil Figma Community.',

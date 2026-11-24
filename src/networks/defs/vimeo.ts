@@ -6,7 +6,7 @@ const template: NetworkDef = {
   name: 'Vimeo',
   icon: { path: siVimeo.path, color: `#${siVimeo.hex}` },
   subtitle: {
-    es: 'Creá un código QR que abre tu perfil o un video de Vimeo.',
+    es: 'Crea un código QR que abre tu perfil o un video de Vimeo.',
     en: 'Create a QR code that opens your Vimeo profile or a video.',
     pt: 'Crie um QR code que abre seu perfil ou um vídeo do Vimeo.',
     fr: 'Créez un code QR qui ouvre votre profil ou une vidéo Vimeo.',

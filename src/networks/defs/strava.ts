@@ -6,7 +6,7 @@ const template: NetworkDef = {
   name: 'Strava',
   icon: { path: siStrava.path, color: `#${siStrava.hex}` },
   subtitle: {
-    es: 'Creá un código QR que abre tu perfil o tu club de Strava.',
+    es: 'Crea un código QR que abre tu perfil o tu club de Strava.',
     en: 'Create a QR code that opens your Strava profile or club.',
     pt: 'Crie um QR code que abre seu perfil ou clube no Strava.',
     fr: 'Créez un QR code qui ouvre votre profil ou club Strava.',

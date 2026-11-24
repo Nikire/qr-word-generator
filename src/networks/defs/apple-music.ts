@@ -6,7 +6,7 @@ const template: NetworkDef = {
   name: 'Apple Music',
   icon: { path: siApplemusic.path, color: `#${siApplemusic.hex}` },
   subtitle: {
-    es: 'Creá un código QR que abre un artista o un álbum en Apple Music.',
+    es: 'Crea un código QR que abre un artista o un álbum en Apple Music.',
     en: 'Create a QR code that opens an artist or album on Apple Music.',
     pt: 'Crie um QR code que abre um artista ou álbum no Apple Music.',
     fr: 'Créez un code QR qui ouvre un artiste ou un album sur Apple Music.',
@@ -46,7 +46,7 @@ const template: NetworkDef = {
             it: 'Es.: https://music.apple.com/it/artist/la-mia-band/909253',
           },
           hint: {
-            es: 'En el perfil del artista, tocá ⋯ > Compartir > Copiar enlace; también sirve solo el número final.',
+            es: 'En el perfil del artista, toca ⋯ > Compartir > Copiar enlace; también sirve solo el número final.',
             en: 'On the artist page, tap ⋯ > Share > Copy Link; the final number alone also works.',
             pt: 'Na página do artista, toque em ⋯ > Compartilhar > Copiar link; só o número final também serve.',
             fr: 'Sur la page de l\'artiste, touchez ⋯ > Partager > Copier le lien ; le numéro final seul fonctionne aussi.',
@@ -88,7 +88,7 @@ const template: NetworkDef = {
             it: 'Es.: https://music.apple.com/it/album/il-mio-disco/1440857781',
           },
           hint: {
-            es: 'Copiá el enlace del álbum desde ⋯ > Compartir; también sirve solo el número final.',
+            es: 'Copia el enlace del álbum desde ⋯ > Compartir; también sirve solo el número final.',
             en: 'Copy the album link from ⋯ > Share; the final number alone also works.',
             pt: 'Copie o link do álbum em ⋯ > Compartilhar; só o número final também serve.',
             fr: 'Copiez le lien de l\'album via ⋯ > Partager ; le numéro final seul fonctionne aussi.',

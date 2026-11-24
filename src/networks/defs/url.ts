@@ -26,7 +26,7 @@ const url: NetworkDef = {
     it: 'Generatore di codici QR gratis',
   },
   subtitle: {
-    es: 'Creá un código QR para cualquier enlace y, si querés, sumale tu logo en el centro.',
+    es: 'Crea un código QR para cualquier enlace y, si quieres, añade tu logo en el centro.',
     en: 'Create a QR code for any link and, if you like, add your logo in the center.',
     pt: 'Crie um QR Code para qualquer link e, se quiser, adicione seu logo no centro.',
     fr: 'Créez un QR code pour n’importe quel lien et, si vous le souhaitez, ajoutez votre logo au centre.',

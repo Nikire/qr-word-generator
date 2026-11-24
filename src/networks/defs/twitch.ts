@@ -6,7 +6,7 @@ const template: NetworkDef = {
   name: 'Twitch',
   icon: { path: siTwitch.path, color: `#${siTwitch.hex}` },
   subtitle: {
-    es: 'Creá un código QR que abre tu canal de Twitch.',
+    es: 'Crea un código QR que abre tu canal de Twitch.',
     en: 'Create a QR code that opens your Twitch channel.',
     pt: 'Crie um QR code que abre seu canal da Twitch.',
     fr: 'Créez un code QR qui ouvre votre chaîne Twitch.',

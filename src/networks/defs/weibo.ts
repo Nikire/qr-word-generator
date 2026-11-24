@@ -6,7 +6,7 @@ const template: NetworkDef = {
   name: 'Weibo',
   icon: { path: siSinaweibo.path, color: `#${siSinaweibo.hex}` },
   subtitle: {
-    es: 'Creá un código QR que abre tu perfil de Weibo.',
+    es: 'Crea un código QR que abre tu perfil de Weibo.',
     en: 'Create a QR code that opens your Weibo profile.',
     pt: 'Crie um QR code que abre seu perfil do Weibo.',
     fr: 'Créez un code QR qui ouvre votre profil Weibo.',

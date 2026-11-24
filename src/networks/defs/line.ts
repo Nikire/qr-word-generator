@@ -6,7 +6,7 @@ const template: NetworkDef = {
   name: 'LINE',
   icon: { path: siLine.path, color: `#${siLine.hex}` },
   subtitle: {
-    es: 'Creá un código QR que abre tu cuenta oficial de LINE.',
+    es: 'Crea un código QR que abre tu cuenta oficial de LINE.',
     en: 'Create a QR code that opens your LINE Official Account.',
     pt: 'Crie um QR code que abre sua conta oficial do LINE.',
     fr: 'Créez un code QR qui ouvre votre compte officiel LINE.',

@@ -6,7 +6,7 @@ const template: NetworkDef = {
   name: 'Dribbble',
   icon: { path: siDribbble.path, color: `#${siDribbble.hex}` },
   subtitle: {
-    es: 'Creá un código QR que abre tu perfil de Dribbble.',
+    es: 'Crea un código QR que abre tu perfil de Dribbble.',
     en: 'Create a QR code that opens your Dribbble profile.',
     pt: 'Crie um QR code que abre seu perfil no Dribbble.',
     fr: 'Créez un QR code qui ouvre votre profil Dribbble.',

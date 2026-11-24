@@ -9,7 +9,7 @@ const template: NetworkDef = {
     color: '#0A66C2',
   },
   subtitle: {
-    es: 'Creá un código QR que abre tu perfil o la página de tu empresa en LinkedIn.',
+    es: 'Crea un código QR que abre tu perfil o la página de tu empresa en LinkedIn.',
     en: 'Create a QR code that opens your LinkedIn profile or company page.',
     pt: 'Crie um QR code que abre seu perfil ou a página da sua empresa no LinkedIn.',
     fr: 'Créez un code QR qui ouvre votre profil ou la page de votre entreprise sur LinkedIn.',
@@ -93,7 +93,7 @@ const template: NetworkDef = {
             it: 'Es.: mia-azienda',
           },
           hint: {
-            es: 'Copiá lo que aparece después de linkedin.com/company/ en la dirección de la página.',
+            es: 'Copia lo que aparece después de linkedin.com/company/ en la dirección de la página.',
             en: 'Copy what appears after linkedin.com/company/ in the page address.',
             pt: 'Copie o que aparece depois de linkedin.com/company/ no endereço da página.',
             fr: 'Copiez ce qui suit linkedin.com/company/ dans l\'adresse de la page.',

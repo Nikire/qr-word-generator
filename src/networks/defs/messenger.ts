@@ -6,7 +6,7 @@ const template: NetworkDef = {
   name: 'Messenger',
   icon: { path: siMessenger.path, color: `#${siMessenger.hex}` },
   subtitle: {
-    es: 'Creá un código QR que abre un chat de Messenger con tu página o perfil de Facebook.',
+    es: 'Crea un código QR que abre un chat de Messenger con tu página o perfil de Facebook.',
     en: 'Create a QR code that opens a Messenger chat with your Facebook Page or profile.',
     pt: 'Crie um QR code que abre uma conversa no Messenger com sua Página ou perfil do Facebook.',
     fr: 'Créez un code QR qui ouvre une conversation Messenger avec votre Page ou profil Facebook.',

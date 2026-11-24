@@ -6,7 +6,7 @@ const template: NetworkDef = {
   name: 'Hugging Face',
   icon: { path: siHuggingface.path, color: `#${siHuggingface.hex}`, darkGlyph: true },
   subtitle: {
-    es: 'Creá un código QR que abre tu perfil u organización en Hugging Face.',
+    es: 'Crea un código QR que abre tu perfil u organización en Hugging Face.',
     en: 'Create a QR code that opens your Hugging Face profile or organization.',
     pt: 'Crie um QR code que abre seu perfil ou organização no Hugging Face.',
     fr: 'Créez un QR code qui ouvre votre profil ou organisation Hugging Face.',

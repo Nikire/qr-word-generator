@@ -6,7 +6,7 @@ const template: NetworkDef = {
   name: 'itch.io',
   icon: { path: siItchdotio.path, color: `#${siItchdotio.hex}` },
   subtitle: {
-    es: 'Creá un código QR que abre tu página de creador en itch.io.',
+    es: 'Crea un código QR que abre tu página de creador en itch.io.',
     en: 'Create a QR code that opens your itch.io creator page.',
     pt: 'Crie um QR code que abre sua página de criador no itch.io.',
     fr: 'Créez un QR code qui ouvre votre page de créateur itch.io.',

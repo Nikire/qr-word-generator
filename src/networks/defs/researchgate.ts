@@ -6,7 +6,7 @@ const template: NetworkDef = {
   name: 'ResearchGate',
   icon: { path: siResearchgate.path, color: `#${siResearchgate.hex}` },
   subtitle: {
-    es: 'Creá un código QR que abre tu perfil de ResearchGate.',
+    es: 'Crea un código QR que abre tu perfil de ResearchGate.',
     en: 'Create a QR code that opens your ResearchGate profile.',
     pt: 'Crie um QR code que abre seu perfil no ResearchGate.',
     fr: 'Créez un QR code qui ouvre votre profil ResearchGate.',

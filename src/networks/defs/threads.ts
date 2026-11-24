@@ -6,7 +6,7 @@ const template: NetworkDef = {
   name: 'Threads',
   icon: { path: siThreads.path, color: `#${siThreads.hex}` },
   subtitle: {
-    es: 'Creá un código QR que abre tu perfil de Threads o una publicación con texto ya escrito.',
+    es: 'Crea un código QR que abre tu perfil de Threads o una publicación con texto ya escrito.',
     en: 'Create a QR code that opens your Threads profile or a post with pre-filled text.',
     pt: 'Crie um QR code que abre seu perfil do Threads ou uma publicação com texto pré-preenchido.',
     fr: 'Créez un code QR qui ouvre votre profil Threads ou une publication avec un texte prérempli.',
@@ -47,7 +47,7 @@ const template: NetworkDef = {
             it: 'Es.: mionegozio',
           },
           hint: {
-            es: 'Es el mismo usuario que tenés en Instagram.',
+            es: 'Es el mismo usuario que tienes en Instagram.',
             en: 'It\'s the same username you use on Instagram.',
             pt: 'É o mesmo nome de usuário do Instagram.',
             fr: 'C\'est le même nom d\'utilisateur que sur Instagram.',

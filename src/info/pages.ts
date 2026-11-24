@@ -34,13 +34,13 @@ export const info: Record<Locale, Record<InfoId, InfoPage>> = {
         {
           p: [
             'Última actualización: 23 de noviembre de 2026.',
-            'Esta política explica qué pasa con tus datos cuando usás QR Word Generator (qrwordgenerator.com).',
+            'Esta política explica qué pasa con tus datos cuando usas QR Word Generator (qrwordgenerator.com).',
           ],
         },
         {
-          h: 'Los datos que escribís',
+          h: 'Los datos que escribes',
           p: [
-            'Los códigos QR se generan en tu navegador. Los números, enlaces, mensajes y logos que cargás no se envían a nuestros servidores ni se guardan en ellos.',
+            'Los códigos QR se generan en tu navegador. Los números, enlaces, mensajes y logos que subes no se envían a nuestros servidores ni se guardan en ellos.',
             'No hace falta crear una cuenta ni dejar tu nombre o tu correo para usar el sitio.',
           ],
         },
@@ -56,17 +56,17 @@ export const info: Record<Locale, Record<InfoId, InfoPage>> = {
           h: 'Publicidad y cookies',
           p: [
             'Este sitio puede mostrar anuncios de Google AdSense. Google y sus socios publicitarios usan cookies para mostrar anuncios basados en tus visitas a este y a otros sitios web.',
-            `Podés desactivar la publicidad personalizada en ${ADS_SETTINGS}. Para saber cómo usa Google la información de los sitios que utilizan sus servicios, consultá ${PARTNER_SITES}.`,
-            'Si nos visitás desde el Espacio Económico Europeo, el Reino Unido o Suiza, te pedimos tu consentimiento antes de usar cookies publicitarias y podés cambiar tu elección cuando quieras.',
+            `Puedes desactivar la publicidad personalizada en ${ADS_SETTINGS}. Para saber cómo usa Google la información de los sitios que utilizan sus servicios, consulta ${PARTNER_SITES}.`,
+            'Si nos visitas desde el Espacio Económico Europeo, el Reino Unido o Suiza, te pedimos tu consentimiento antes de usar cookies publicitarias y puedes cambiar tu elección cuando quieras.',
           ],
         },
         {
           h: 'Enlaces a otros servicios',
-          p: ['Los códigos QR que generás llevan a servicios de terceros (redes sociales, mensajería, pagos y otros). Cada uno tiene su propia política de privacidad y no tenemos control sobre ellos.'],
+          p: ['Los códigos QR que generas llevan a servicios de terceros (redes sociales, mensajería, pagos y otros). Cada uno tiene su propia política de privacidad y no tenemos control sobre ellos.'],
         },
         {
           h: 'Tus derechos y contacto',
-          p: ['Si tenés preguntas sobre esta política o querés ejercer tus derechos sobre tus datos, escribinos desde la página de <a href="{contact}">contacto</a>.'],
+          p: ['Si tienes preguntas sobre esta política o quieres ejercer tus derechos sobre tus datos, escríbenos desde la página de <a href="{contact}">contacto</a>.'],
         },
         {
           h: 'Cambios en esta política',
@@ -82,19 +82,19 @@ export const info: Record<Locale, Record<InfoId, InfoPage>> = {
         {
           p: [
             'QR Word Generator es una herramienta gratuita para crear códigos QR de enlaces, WhatsApp, redes sociales, música, pagos y decenas de servicios más.',
-            'Elegís una plantilla, completás el formulario y descargás el código en PNG o SVG, con el logo en el centro y listo para imprimir o compartir.',
+            'Eliges una plantilla, completas el formulario y descargas el código en PNG o SVG, con el logo en el centro y listo para imprimir o compartir.',
           ],
         },
         {
           h: 'Cómo funciona',
           p: [
-            'El código se arma en tu navegador: lo que escribís no pasa por nuestros servidores.',
+            'El código se arma en tu navegador: lo que escribes no pasa por nuestros servidores.',
             'Los códigos son estáticos. Guardan el enlace final, sin pasar por redirecciones nuestras, así que no vencen, no tienen límite de escaneos y siguen funcionando aunque este sitio deje de existir.',
           ],
         },
         {
           h: 'Gratis y sin registro',
-          p: ['No hay cuentas, marcas de agua ni versiones pagas. Podés usar los códigos para fines personales o comerciales.'],
+          p: ['No hay cuentas, marcas de agua ni versiones pagas. Puedes usar los códigos para fines personales o comerciales.'],
         },
         {
           h: 'Marcas de terceros',
@@ -109,7 +109,7 @@ export const info: Record<Locale, Record<InfoId, InfoPage>> = {
       sections: [
         {
           p: [
-            '¿Encontraste un error, falta una red o tenés una sugerencia? Escribinos a {email}.',
+            '¿Encontraste un error, falta una red o tienes una sugerencia? Escríbenos a {email}.',
             'Leemos todos los mensajes y respondemos lo antes posible.',
           ],
         },

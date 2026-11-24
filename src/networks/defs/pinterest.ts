@@ -6,7 +6,7 @@ const template: NetworkDef = {
   name: 'Pinterest',
   icon: { path: siPinterest.path, color: `#${siPinterest.hex}` },
   subtitle: {
-    es: 'Creá un código QR que abre tu perfil de Pinterest.',
+    es: 'Crea un código QR que abre tu perfil de Pinterest.',
     en: 'Create a QR code that opens your Pinterest profile.',
     pt: 'Crie um QR code que abre seu perfil do Pinterest.',
     fr: 'Créez un code QR qui ouvre votre profil Pinterest.',

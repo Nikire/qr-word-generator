@@ -6,7 +6,7 @@ const template: NetworkDef = {
   name: 'Mercado Pago',
   icon: { path: siMercadopago.path, color: `#${siMercadopago.hex}` },
   subtitle: {
-    es: 'Creá un código QR con Tu link de Mercado Pago para cobrar cualquier monto.',
+    es: 'Crea un código QR con Tu link de Mercado Pago para cobrar cualquier monto.',
     en: 'Create a QR code with your Mercado Pago link to get paid any amount.',
     pt: 'Crie um QR code com o Seu link do Mercado Pago para receber qualquer valor.',
     fr: 'Créez un code QR avec votre lien Mercado Pago pour encaisser n\'importe quel montant.',

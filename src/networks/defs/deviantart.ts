@@ -6,7 +6,7 @@ const template: NetworkDef = {
   name: 'DeviantArt',
   icon: { path: siDeviantart.path, color: `#${siDeviantart.hex}` },
   subtitle: {
-    es: 'Creá un código QR que abre tu galería de DeviantArt.',
+    es: 'Crea un código QR que abre tu galería de DeviantArt.',
     en: 'Create a QR code that opens your DeviantArt gallery.',
     pt: 'Crie um QR code que abre sua galeria no DeviantArt.',
     fr: 'Créez un QR code qui ouvre votre galerie DeviantArt.',

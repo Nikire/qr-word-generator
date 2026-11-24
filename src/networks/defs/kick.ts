@@ -6,7 +6,7 @@ const template: NetworkDef = {
   name: 'Kick',
   icon: { path: siKick.path, color: `#${siKick.hex}`, darkGlyph: true },
   subtitle: {
-    es: 'Creá un código QR que abre tu canal de Kick.',
+    es: 'Crea un código QR que abre tu canal de Kick.',
     en: 'Create a QR code that opens your Kick channel.',
     pt: 'Crie um QR code que abre seu canal da Kick.',
     fr: 'Créez un code QR qui ouvre votre chaîne Kick.',

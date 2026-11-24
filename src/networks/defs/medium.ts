@@ -6,7 +6,7 @@ const template: NetworkDef = {
   name: 'Medium',
   icon: { path: siMedium.path, color: `#${siMedium.hex}` },
   subtitle: {
-    es: 'Creá un código QR que abre tu perfil de Medium.',
+    es: 'Crea un código QR que abre tu perfil de Medium.',
     en: 'Create a QR code that opens your Medium profile.',
     pt: 'Crie um QR code que abre seu perfil no Medium.',
     fr: 'Créez un QR code qui ouvre votre profil Medium.',
@@ -47,7 +47,7 @@ const template: NetworkDef = {
             it: 'Es.: mariorossi',
           },
           hint: {
-            es: 'Escribilo sin la @.',
+            es: 'Escríbelo sin la @.',
             en: 'Enter it without the @.',
             pt: 'Digite sem o @.',
             fr: 'Saisissez-le sans le @.',

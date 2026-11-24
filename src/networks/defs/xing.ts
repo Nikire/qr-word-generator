@@ -6,7 +6,7 @@ const template: NetworkDef = {
   name: 'XING',
   icon: { path: siXing.path, color: `#${siXing.hex}` },
   subtitle: {
-    es: 'Creá un código QR que abre tu perfil profesional de XING.',
+    es: 'Crea un código QR que abre tu perfil profesional de XING.',
     en: 'Create a QR code that opens your XING professional profile.',
     pt: 'Crie um QR code que abre seu perfil profissional no XING.',
     fr: 'Créez un QR code qui ouvre votre profil professionnel XING.',

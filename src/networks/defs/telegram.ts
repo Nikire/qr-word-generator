@@ -6,7 +6,7 @@ const template: NetworkDef = {
   name: 'Telegram',
   icon: { path: siTelegram.path, color: `#${siTelegram.hex}` },
   subtitle: {
-    es: 'Creá un código QR que abre un chat de Telegram con vos.',
+    es: 'Crea un código QR que abre un chat de Telegram contigo.',
     en: 'Create a QR code that opens a Telegram chat with you.',
     pt: 'Crie um QR code que abre uma conversa com você no Telegram.',
     fr: 'Créez un code QR qui ouvre une conversation Telegram avec vous.',
@@ -48,7 +48,7 @@ const template: NetworkDef = {
             it: 'Es.: ilmionegozio',
           },
           hint: {
-            es: 'Lo encontrás en Ajustes, debajo de tu nombre. También sirve para canales y grupos públicos.',
+            es: 'Lo encuentras en Ajustes, debajo de tu nombre. También sirve para canales y grupos públicos.',
             en: 'Find it in Settings, under your name. Public channels and groups work too.',
             pt: 'Fica em Configurações, abaixo do seu nome. Também funciona com canais e grupos públicos.',
             fr: 'Il se trouve dans Paramètres, sous votre nom. Fonctionne aussi pour les chaînes et groupes publics.',
@@ -111,14 +111,14 @@ const template: NetworkDef = {
             it: 'Numero di telefono',
           },
           placeholder: {
-            es: 'Ej.: 11 2345 6789',
+            es: 'Ej.: 55 1234 5678',
             en: 'e.g. 20 7946 0958',
             pt: 'Ex.: 11 91234 5678',
             fr: 'Ex. : 6 12 34 56 78',
             it: 'Es.: 312 345 6789',
           },
           hint: {
-            es: 'Solo funciona si en Privacidad permitís que te encuentren por tu número.',
+            es: 'Solo funciona si en Privacidad permites que te encuentren por tu número.',
             en: 'Only works if your Privacy settings let people find you by your number.',
             pt: 'Só funciona se sua Privacidade permitir que te encontrem pelo número.',
             fr: 'Ne fonctionne que si vos réglages de confidentialité permettent de vous trouver par numéro.',

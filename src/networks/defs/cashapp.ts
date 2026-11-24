@@ -6,7 +6,7 @@ const template: NetworkDef = {
   name: 'Cash App',
   icon: { path: siCashapp.path, color: `#${siCashapp.hex}` },
   subtitle: {
-    es: 'Creá un código QR con tu $Cashtag para que te paguen con Cash App.',
+    es: 'Crea un código QR con tu $Cashtag para que te paguen con Cash App.',
     en: 'Create a QR code with your $Cashtag so people can pay you with Cash App.',
     pt: 'Crie um QR code com seu $Cashtag para receber pagamentos pelo Cash App.',
     fr: 'Créez un code QR avec votre $Cashtag pour recevoir des paiements via Cash App.',
@@ -47,7 +47,7 @@ const template: NetworkDef = {
             it: 'Es.: mariorossi',
           },
           hint: {
-            es: 'Escribilo sin el signo $.',
+            es: 'Escríbelo sin el signo $.',
             en: 'Type it without the $ sign.',
             pt: 'Digite sem o sinal $.',
             fr: 'Saisissez-le sans le signe $.',

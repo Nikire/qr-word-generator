@@ -6,7 +6,7 @@ const template: NetworkDef = {
   name: 'Goodreads',
   icon: { path: siGoodreads.path, color: `#${siGoodreads.hex}` },
   subtitle: {
-    es: 'Creá un código QR que abre tu página de autor o tu perfil de lector en Goodreads.',
+    es: 'Crea un código QR que abre tu página de autor o tu perfil de lector en Goodreads.',
     en: 'Create a QR code that opens your Goodreads author page or reader profile.',
     pt: 'Crie um QR code que abre sua página de autor ou perfil de leitor no Goodreads.',
     fr: 'Créez un QR code qui ouvre votre page d\'auteur ou profil de lecteur Goodreads.',

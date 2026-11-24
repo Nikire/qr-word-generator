@@ -6,7 +6,7 @@ const template: NetworkDef = {
   name: 'Quora',
   icon: { path: siQuora.path, color: `#${siQuora.hex}` },
   subtitle: {
-    es: 'Creá un código QR que abre tu perfil de Quora.',
+    es: 'Crea un código QR que abre tu perfil de Quora.',
     en: 'Create a QR code that opens your Quora profile.',
     pt: 'Crie um QR code que abre seu perfil do Quora.',
     fr: 'Créez un code QR qui ouvre votre profil Quora.',
@@ -47,7 +47,7 @@ const template: NetworkDef = {
             it: 'Es.: Mario-Rossi-12',
           },
           hint: {
-            es: 'Copiá lo que aparece después de quora.com/profile/ en tu perfil.',
+            es: 'Copia lo que aparece después de quora.com/profile/ en tu perfil.',
             en: 'Copy what appears after quora.com/profile/ on your profile.',
             pt: 'Copie o que aparece depois de quora.com/profile/ no seu perfil.',
             fr: 'Copiez ce qui suit quora.com/profile/ sur votre profil.',

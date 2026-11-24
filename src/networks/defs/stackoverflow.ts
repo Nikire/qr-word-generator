@@ -6,7 +6,7 @@ const template: NetworkDef = {
   name: 'Stack Overflow',
   icon: { path: siStackoverflow.path, color: `#${siStackoverflow.hex}` },
   subtitle: {
-    es: 'Creá un código QR que abre tu perfil de Stack Overflow.',
+    es: 'Crea un código QR que abre tu perfil de Stack Overflow.',
     en: 'Create a QR code that opens your Stack Overflow profile.',
     pt: 'Crie um QR code que abre seu perfil no Stack Overflow.',
     fr: 'Créez un QR code qui ouvre votre profil Stack Overflow.',

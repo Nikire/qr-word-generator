@@ -6,7 +6,7 @@ const template: NetworkDef = {
   name: 'Tumblr',
   icon: { path: siTumblr.path, color: `#${siTumblr.hex}` },
   subtitle: {
-    es: 'Creá un código QR que abre tu blog de Tumblr.',
+    es: 'Crea un código QR que abre tu blog de Tumblr.',
     en: 'Create a QR code that opens your Tumblr blog.',
     pt: 'Crie um QR code que abre seu blog do Tumblr.',
     fr: 'Créez un code QR qui ouvre votre blog Tumblr.',

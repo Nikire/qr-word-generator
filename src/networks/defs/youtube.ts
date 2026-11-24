@@ -6,7 +6,7 @@ const template: NetworkDef = {
   name: 'YouTube',
   icon: { path: siYoutube.path, color: `#${siYoutube.hex}` },
   subtitle: {
-    es: 'Creá un código QR que abre tu canal o un video de YouTube.',
+    es: 'Crea un código QR que abre tu canal o un video de YouTube.',
     en: 'Create a QR code that opens your YouTube channel or a video.',
     pt: 'Crie um QR code que abre seu canal ou um vídeo do YouTube.',
     fr: 'Créez un code QR qui ouvre votre chaîne ou une vidéo YouTube.',
@@ -132,7 +132,7 @@ const template: NetworkDef = {
             it: 'Es.: dQw4w9WgXcQ',
           },
           hint: {
-            es: 'Pegá el enlace del botón Compartir (youtu.be/…) o el ID de 11 caracteres.',
+            es: 'Pega el enlace del botón Compartir (youtu.be/…) o el ID de 11 caracteres.',
             en: 'Paste the link from the Share button (youtu.be/…) or the 11-character ID.',
             pt: 'Cole o link do botão Compartilhar (youtu.be/…) ou o ID de 11 caracteres.',
             fr: 'Collez le lien du bouton Partager (youtu.be/…) ou l\'ID de 11 caractères.',

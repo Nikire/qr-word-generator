@@ -6,7 +6,7 @@ const template: NetworkDef = {
   name: 'Google Reviews',
   icon: { path: siGoogle.path, color: `#${siGoogle.hex}` },
   subtitle: {
-    es: 'Creá un código QR que abre el formulario para dejar una reseña de tu negocio en Google.',
+    es: 'Crea un código QR que abre el formulario para dejar una reseña de tu negocio en Google.',
     en: 'Create a QR code that opens the form to review your business on Google.',
     pt: 'Crie um QR code que abre o formulário para avaliar seu negócio no Google.',
     fr: 'Créez un QR code qui ouvre le formulaire d\'avis de votre établissement sur Google.',
@@ -47,7 +47,7 @@ const template: NetworkDef = {
             it: 'Es.: CbQ8kZ3xY1AbEBM',
           },
           hint: {
-            es: 'En tu Perfil de Empresa, tocá Pedir reseñas y copiá el código entre g.page/r/ y /review.',
+            es: 'En tu Perfil de Empresa, toca Pedir reseñas y copia el código entre g.page/r/ y /review.',
             en: 'In your Business Profile, choose Ask for reviews and copy the code between g.page/r/ and /review.',
             pt: 'No seu Perfil da Empresa, escolha Pedir avaliações e copie o código entre g.page/r/ e /review.',
             fr: 'Dans votre fiche d\'établissement, choisissez Demander des avis et copiez le code entre g.page/r/ et /review.',
@@ -89,7 +89,7 @@ const template: NetworkDef = {
             it: 'Es.: ChIJN1t_tDeuEmsRUsoyG83frY4',
           },
           hint: {
-            es: 'Buscá tu negocio en el Place ID Finder de Google y copiá el ID.',
+            es: 'Busca tu negocio en el Place ID Finder de Google y copia el ID.',
             en: 'Look up your business in Google\'s Place ID Finder and copy the ID.',
             pt: 'Busque seu negócio no Place ID Finder do Google e copie o ID.',
             fr: 'Recherchez votre établissement dans le Place ID Finder de Google et copiez l\'ID.',

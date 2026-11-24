@@ -6,7 +6,7 @@ const template: NetworkDef = {
   name: 'Codeberg',
   icon: { path: siCodeberg.path, color: `#${siCodeberg.hex}` },
   subtitle: {
-    es: 'Creá un código QR que abre tu perfil de Codeberg.',
+    es: 'Crea un código QR que abre tu perfil de Codeberg.',
     en: 'Create a QR code that opens your Codeberg profile.',
     pt: 'Crie um QR code que abre seu perfil no Codeberg.',
     fr: 'Créez un QR code qui ouvre votre profil Codeberg.',

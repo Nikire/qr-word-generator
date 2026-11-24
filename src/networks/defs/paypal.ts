@@ -6,7 +6,7 @@ const template: NetworkDef = {
   name: 'PayPal',
   icon: { path: siPaypal.path, color: `#${siPaypal.hex}` },
   subtitle: {
-    es: 'Creá un código QR para que te paguen con PayPal.',
+    es: 'Crea un código QR para que te paguen con PayPal.',
     en: 'Create a QR code so people can pay you with PayPal.',
     pt: 'Crie um QR code para receber pagamentos pelo PayPal.',
     fr: 'Créez un code QR pour recevoir des paiements via PayPal.',

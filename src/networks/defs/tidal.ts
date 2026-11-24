@@ -6,7 +6,7 @@ const template: NetworkDef = {
   name: 'TIDAL',
   icon: { path: siTidal.path, color: `#${siTidal.hex}` },
   subtitle: {
-    es: 'Creá un código QR que abre un artista o una playlist en TIDAL.',
+    es: 'Crea un código QR que abre un artista o una playlist en TIDAL.',
     en: 'Create a QR code that opens an artist or playlist on TIDAL.',
     pt: 'Crie um QR code que abre um artista ou uma playlist no TIDAL.',
     fr: 'Créez un code QR qui ouvre un artiste ou une playlist sur TIDAL.',

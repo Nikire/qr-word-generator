@@ -6,7 +6,7 @@ const template: NetworkDef = {
   name: 'GitLab',
   icon: { path: siGitlab.path, color: `#${siGitlab.hex}` },
   subtitle: {
-    es: 'Creá un código QR que abre tu perfil o grupo de GitLab.',
+    es: 'Crea un código QR que abre tu perfil o grupo de GitLab.',
     en: 'Create a QR code that opens your GitLab profile or group.',
     pt: 'Crie um QR code que abre seu perfil ou grupo do GitLab.',
     fr: 'Créez un QR code qui ouvre votre profil ou groupe GitLab.',

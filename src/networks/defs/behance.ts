@@ -6,7 +6,7 @@ const template: NetworkDef = {
   name: 'Behance',
   icon: { path: siBehance.path, color: `#${siBehance.hex}` },
   subtitle: {
-    es: 'Creá un código QR que abre tu portfolio de Behance.',
+    es: 'Crea un código QR que abre tu portfolio de Behance.',
     en: 'Create a QR code that opens your Behance portfolio.',
     pt: 'Crie um QR code que abre seu portfólio no Behance.',
     fr: 'Créez un QR code qui ouvre votre portfolio Behance.',

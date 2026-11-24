@@ -6,7 +6,7 @@ const template: NetworkDef = {
   name: 'KakaoTalk',
   icon: { path: siKakaotalk.path, color: `#${siKakaotalk.hex}`, darkGlyph: true },
   subtitle: {
-    es: 'Creá un código QR que abre el chat o el perfil de tu canal de KakaoTalk.',
+    es: 'Crea un código QR que abre el chat o el perfil de tu canal de KakaoTalk.',
     en: 'Create a QR code that opens the chat or profile of your KakaoTalk Channel.',
     pt: 'Crie um QR code que abre o chat ou o perfil do seu canal do KakaoTalk.',
     fr: 'Créez un code QR qui ouvre la discussion ou le profil de votre chaîne KakaoTalk.',

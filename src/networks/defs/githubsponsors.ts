@@ -6,7 +6,7 @@ const template: NetworkDef = {
   name: 'GitHub Sponsors',
   icon: { path: siGithubsponsors.path, color: `#${siGithubsponsors.hex}` },
   subtitle: {
-    es: 'Creá un código QR que abre tu perfil de GitHub Sponsors.',
+    es: 'Crea un código QR que abre tu perfil de GitHub Sponsors.',
     en: 'Create a QR code that opens your GitHub Sponsors profile.',
     pt: 'Crie um QR code que abre seu perfil do GitHub Sponsors.',
     fr: 'Créez un code QR qui ouvre votre profil GitHub Sponsors.',

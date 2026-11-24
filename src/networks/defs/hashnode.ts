@@ -6,7 +6,7 @@ const template: NetworkDef = {
   name: 'Hashnode',
   icon: { path: siHashnode.path, color: `#${siHashnode.hex}` },
   subtitle: {
-    es: 'Creá un código QR que abre tu perfil de Hashnode.',
+    es: 'Crea un código QR que abre tu perfil de Hashnode.',
     en: 'Create a QR code that opens your Hashnode profile.',
     pt: 'Crie um QR code que abre seu perfil no Hashnode.',
     fr: 'Créez un QR code qui ouvre votre profil Hashnode.',

@@ -6,7 +6,7 @@ const template: NetworkDef = {
   name: 'Cal.com',
   icon: { path: siCaldotcom.path, color: `#${siCaldotcom.hex}` },
   subtitle: {
-    es: 'Creá un código QR que abre tu página de reservas de Cal.com.',
+    es: 'Crea un código QR que abre tu página de reservas de Cal.com.',
     en: 'Create a QR code that opens your Cal.com booking page.',
     pt: 'Crie um QR code que abre sua página de agendamento no Cal.com.',
     fr: 'Créez un QR code qui ouvre votre page de réservation Cal.com.',

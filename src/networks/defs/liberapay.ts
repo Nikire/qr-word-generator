@@ -6,7 +6,7 @@ const template: NetworkDef = {
   name: 'Liberapay',
   icon: { path: siLiberapay.path, color: `#${siLiberapay.hex}`, darkGlyph: true },
   subtitle: {
-    es: 'Creá un código QR que abre tu página de donaciones en Liberapay.',
+    es: 'Crea un código QR que abre tu página de donaciones en Liberapay.',
     en: 'Create a QR code that opens your Liberapay donation page.',
     pt: 'Crie um QR code que abre sua página de doações no Liberapay.',
     fr: 'Créez un code QR qui ouvre votre page de dons Liberapay.',
