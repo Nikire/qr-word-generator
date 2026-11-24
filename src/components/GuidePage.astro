@@ -1,0 +1,343 @@
+---
+// Guía por caso de uso. Sin `guideId` muestra el índice con todas las guías.
+import Base from '../layouts/Base.astro';
+import NetworkBadge from './NetworkBadge.astro';
+import AdSlot from './AdSlot.astro';
+import { locales, useTranslations, type Locale } from '../i18n/ui';
+import { DEFAULT_NETWORK, getNetwork, networkName, networkPath } from '../networks';
+import { getGuide, guidePath, guides, guidesIndexDescription, guidesIndexTitle, guidesLabel } from '../guides';
+import { SITE_URL } from '../../site.config.mjs';
+
+interface Props {
+  locale: Locale;
+  guideId?: string;
+}
+
+const { locale, guideId } = Astro.props;
+const t = useTranslations(locale);
+const guide = guideId ? getGuide(guideId) : undefined;
+
+const labels = {
+  create: {
+    es: 'Crea tu código QR',
+    en: 'Create your QR code',
+    pt: 'Crie seu código QR',
+    fr: 'Créez votre code QR',
+    it: 'Crea il tuo codice QR',
+  },
+  more: {
+    es: 'Más guías',
+    en: 'More guides',
+    pt: 'Mais guias',
+    fr: 'Plus de guides',
+    it: 'Altre guide',
+  },
+  generator: {
+    es: 'Ir al generador de códigos QR',
+    en: 'Go to the QR code generator',
+    pt: 'Ir para o gerador de códigos QR',
+    fr: 'Aller au générateur de codes QR',
+    it: 'Vai al generatore di codici QR',
+  },
+};
+
+const title = guide ? guide.title[locale] : guidesIndexTitle[locale];
+const description = guide ? guide.description[locale] : guidesIndexDescription[locale];
+const paths = Object.fromEntries(locales.map((code) => [code, guidePath(code, guideId)])) as Record<Locale, string>;
+const others = guides.filter((item) => item.id !== guideId);
+const templates = (guide?.templates ?? []).map((id) => getNetwork(id));
+const faq = (guide?.faq ?? []).map((item) => ({ q: item.q[locale], a: item.a[locale] }));
+
+const url = `${SITE_URL}${paths[locale]}`;
+const home = `${SITE_URL}${networkPath(locale, DEFAULT_NETWORK)}`;
+const index = `${SITE_URL}${guidePath(locale)}`;
+const publisher = { '@type': 'Organization', name: 'QR Word Generator', url: SITE_URL };
+const crumbs = [
+  { name: 'QR Word Generator', item: home },
+  { name: guidesLabel[locale], item: index },
+  ...(guide ? [{ name: title, item: url }] : []),
+];
+const jsonLd: Record<string, unknown>[] = [
+  {
+    '@context': 'https://schema.org',
+    '@type': 'BreadcrumbList',
+    itemListElement: crumbs.map((crumb, position) => ({ '@type': 'ListItem', position: position + 1, ...crumb })),
+  },
+];
+if (guide) {
+  jsonLd.push({
+    '@context': 'https://schema.org',
+    '@type': 'Article',
+    headline: title,
+    description,
+    inLanguage: locale,
+    mainEntityOfPage: url,
+    image: `${SITE_URL}/og.png`,
+    author: publisher,
+    publisher,
+  });
+  if (faq.length > 0) {
+    jsonLd.push({
+      '@context': 'https://schema.org',
+      '@type': 'FAQPage',
+      mainEntity: faq.map((item) => ({
+        '@type': 'Question',
+        name: item.q,
+        acceptedAnswer: { '@type': 'Answer', text: item.a },
+      })),
+    });
+  }
+}
+---
+
+<Base locale={locale} title={`${title} | QR Word Generator`} description={description} paths={paths} jsonLd={jsonLd}>
+  <article class="guide container">
+    <nav class="crumbs" aria-label="Breadcrumb">
+      <a href={networkPath(locale, DEFAULT_NETWORK)}>QR Word Generator</a>
+      {
+        guide && (
+          <>
+            <span aria-hidden="true">/</span>
+            <a href={guidePath(locale)}>{guidesLabel[locale]}</a>
+          </>
+        )
+      }
+    </nav>
+    <h1>{title}</h1>
+    <p class="intro">{guide ? guide.intro[locale] : description}</p>
+
+    {
+      guide?.sections.map((section) => (
+        <section>
+          <h2>{section.h[locale]}</h2>
+          {section.p.map((text) => (
+            <p>{text[locale]}</p>
+          ))}
+          {section.list && (
+            <ul>
+              {section.list.map((item) => (
+                <li>{item[locale]}</li>
+              ))}
+            </ul>
+          )}
+        </section>
+      ))
+    }
+  </article>
+
+  {
+    guide && (
+      <section class="block container">
+        <h2>{labels.create[locale]}</h2>
+        <ul class="cards">
+          {templates.map((network) => (
+            <li>
+              <a href={networkPath(locale, network.id)}>
+                <NetworkBadge id={network.id} />
+                <span>{networkName(network, locale)}</span>
+              </a>
+            </li>
+          ))}
+        </ul>
+      </section>
+    )
+  }
+
+  {guide && <AdSlot position="top" label={t('ads.label')} />}
+
+  {
+    faq.length > 0 && (
+      <section class="block container">
+        <h2>{t('faq.title')}</h2>
+        <div class="faq">
+          {faq.map((item) => (
+            <details>
+              <summary>{item.q}</summary>
+              <p>{item.a}</p>
+            </details>
+          ))}
+        </div>
+      </section>
+    )
+  }
+
+  <section class="block container">
+    {guide && <h2>{labels.more[locale]}</h2>}
+    <ul class="guide-list">
+      {
+        others.map((item) => (
+          <li>
+            <a href={guidePath(locale, item.id)}>
+              <strong>{item.title[locale]}</strong>
+              <span>{item.description[locale]}</span>
+            </a>
+          </li>
+        ))
+      }
+    </ul>
+    {
+      !guide && (
+        <p class="back">
+          <a href={networkPath(locale, DEFAULT_NETWORK)}>{labels.generator[locale]}</a>
+        </p>
+      )
+    }
+  </section>
+</Base>
+
+<style>
+  .guide,
+  .block {
+    max-width: 760px;
+  }
+
+  .guide {
+    padding-top: 36px;
+  }
+
+  .crumbs {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-bottom: 16px;
+    color: var(--muted);
+    font-size: 0.9rem;
+  }
+
+  .crumbs a {
+    color: var(--muted);
+  }
+
+  .guide h1 {
+    font-size: clamp(1.7rem, 4.5vw, 2.4rem);
+    line-height: 1.15;
+    text-wrap: balance;
+  }
+
+  .intro {
+    margin-top: 14px;
+    font-size: 1.08rem;
+  }
+
+  .guide h2 {
+    margin: 34px 0 10px;
+    font-size: 1.3rem;
+    line-height: 1.25;
+  }
+
+  .guide p,
+  .guide li {
+    color: var(--muted);
+    text-wrap: pretty;
+  }
+
+  .guide p + p {
+    margin-top: 10px;
+  }
+
+  .guide ul {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    margin: 12px 0 0;
+    padding-left: 22px;
+  }
+
+  .block {
+    margin-top: 48px;
+  }
+
+  .block h2 {
+    margin-bottom: 16px;
+    font-size: 1.3rem;
+  }
+
+  .cards,
+  .guide-list {
+    display: grid;
+    gap: 10px;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+  }
+
+  .cards {
+    grid-template-columns: repeat(auto-fill, minmax(210px, 1fr));
+  }
+
+  .cards a,
+  .guide-list a {
+    display: flex;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-sm);
+    color: var(--text);
+    text-decoration: none;
+    transition: border-color 0.15s ease;
+  }
+
+  .cards a:hover,
+  .guide-list a:hover {
+    border-color: var(--accent);
+  }
+
+  .cards a {
+    align-items: center;
+    gap: 10px;
+    min-height: 52px;
+    padding: 10px 14px;
+    font-weight: 600;
+    font-size: 0.95rem;
+  }
+
+  .cards span {
+    min-width: 0;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+
+  .guide-list a {
+    flex-direction: column;
+    gap: 4px;
+    padding: 14px 18px;
+  }
+
+  .guide-list span {
+    color: var(--muted);
+    font-size: 0.93rem;
+  }
+
+  .faq {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .faq details {
+    padding: 0 18px;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-sm);
+  }
+
+  .faq summary {
+    padding: 14px 0;
+    font-weight: 600;
+    cursor: pointer;
+  }
+
+  .faq p {
+    padding-bottom: 16px;
+    color: var(--muted);
+  }
+
+  .back {
+    margin-top: 20px;
+  }
+
+  .back a {
+    color: var(--accent-strong);
+    font-weight: 600;
+  }
+</style>

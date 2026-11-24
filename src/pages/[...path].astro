@@ -4,12 +4,15 @@
 //   /instagram/  otra plantilla, español
 //   /en/         plantilla por defecto, inglés
 //   /en/instagram/
-// Más las páginas informativas de cada idioma (/privacidad/, /en/privacy/, …).
+// Más las páginas informativas de cada idioma (/privacidad/, /en/privacy/, …)
+// y las guías (/guias/, /en/guides/, …).
 import GeneratorPage from '../components/GeneratorPage.astro';
 import InfoPage from '../components/InfoPage.astro';
+import GuidePage from '../components/GuidePage.astro';
 import { defaultLocale, locales, type Locale } from '../i18n/ui';
 import { DEFAULT_NETWORK, networks } from '../networks';
 import { infoIds, infoSegments, type InfoId } from '../info/pages';
+import { guides, guideSegments } from '../guides';
 
 export function getStaticPaths() {
   const generators = locales.flatMap((locale) =>
@@ -30,16 +33,25 @@ export function getStaticPaths() {
       props: { locale, infoId },
     })),
   );
-  return [...generators, ...infoPages];
+  // Índice de guías (/guias/) y una página por guía (/guias/<slug>/).
+  const guidePages = locales.flatMap((locale) =>
+    [undefined, ...guides.map((guide) => guide.id)].map((guideId) => ({
+      params: { path: guideSegments(locale, guideId).join('/') },
+      props: { locale, guideId, isGuide: true },
+    })),
+  );
+  return [...generators, ...infoPages, ...guidePages];
 }
 
 interface Props {
   locale: Locale;
   networkId?: string;
   infoId?: InfoId;
+  guideId?: string;
+  isGuide?: boolean;
 }
 
-const { locale, networkId, infoId } = Astro.props;
+const { locale, networkId, infoId, guideId, isGuide } = Astro.props;
 ---
 
-{infoId ? <InfoPage locale={locale} infoId={infoId} /> : <GeneratorPage locale={locale} networkId={networkId!} />}
+{isGuide ? <GuidePage locale={locale} guideId={guideId} /> : infoId ? <InfoPage locale={locale} infoId={infoId} /> : <GeneratorPage locale={locale} networkId={networkId!} />}

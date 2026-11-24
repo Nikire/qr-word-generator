@@ -7,6 +7,7 @@ import NetworkBadge from './NetworkBadge.astro';
 import AdSlot from './AdSlot.astro';
 import { locales, useTranslations, type Locale, type UiKey } from '../i18n/ui';
 import { DEFAULT_NETWORK, getContent, getNetwork, networkName, networkPath, sortedNetworks } from '../networks';
+import { guidePath, guides, guidesIndexTitle } from '../guides';
 import { SITE_URL } from '../../site.config.mjs';
 
 interface Props {
@@ -148,6 +149,19 @@ const jsonLd: Record<string, unknown>[] = [
       </section>
     )
   }
+
+  <section class="section container">
+    <h2>{guidesIndexTitle[locale]}</h2>
+    <ul class="guide-links">
+      {
+        guides.map((guide) => (
+          <li>
+            <a href={guidePath(locale, guide.id)}>{guide.title[locale]}</a>
+          </li>
+        ))
+      }
+    </ul>
+  </section>
 
   <AdSlot position="bottom" label={t('ads.label')} />
 </Base>
@@ -298,6 +312,20 @@ const jsonLd: Record<string, unknown>[] = [
     overflow: hidden;
     text-overflow: ellipsis;
     white-space: nowrap;
+  }
+
+  .guide-links {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 8px 24px;
+    max-width: 900px;
+    margin: 0 auto;
+    padding-left: 22px;
+  }
+
+  .guide-links a {
+    color: var(--accent-strong);
+    font-weight: 600;
   }
 
   @media (max-width: 720px) {

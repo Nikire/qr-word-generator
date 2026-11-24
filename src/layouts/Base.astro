@@ -4,6 +4,7 @@ import '../styles/global.css';
 import Header from '../components/Header.astro';
 import { locales, localeNames, useTranslations, type Locale } from '../i18n/ui';
 import { info, infoIds, infoPath } from '../info/pages';
+import { guidePath, guidesLabel } from '../guides';
 import { SITE_URL, BASE_PATH, ADSENSE_CLIENT } from '../../site.config.mjs';
 
 interface Props {
@@ -92,6 +93,7 @@ const year = new Date().getFullYear();
     <footer class="footer">
       <div class="container">
         <nav class="footer-links">
+          <a href={guidePath(locale)}>{guidesLabel[locale]}</a>
           {infoIds.map((id) => <a href={infoPath(locale, id)}>{info[locale][id].title}</a>)}
         </nav>
         <nav class="footer-links footer-langs" aria-label={t('lang.label')}>
