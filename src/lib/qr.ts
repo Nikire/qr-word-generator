@@ -32,6 +32,7 @@ const MODULE = 10; // tamaño de cada módulo, en unidades del SVG
 const QUIET = 4; // zona de silencio, en módulos
 const FRAME = 8; // espacio reservado para el borde exterior
 const FINDER = 7; // lado de cada patrón de posición, en módulos
+const CREDIT = 'powered by qrwordgenerator.com'; // leyenda del margen inferior
 
 const round = (value: number) => Math.round(value * 100) / 100;
 
@@ -146,6 +147,8 @@ export function buildQrSvg({
     `<path fill="${dark}" d="${modules}"/>` +
     `<path fill="${dark}" fill-rule="evenodd" d="${finders}"/>` +
     badge +
+    // Leyenda chica y tenue, pegada al borde inferior para no acercarse al código.
+    `<text x="${center}" y="${size - 17}" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-size="11" fill="${dark}" fill-opacity="0.55">${CREDIT}</text>` +
     `</svg>`
   );
 }

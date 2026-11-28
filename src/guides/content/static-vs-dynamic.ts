@@ -100,11 +100,11 @@ const guide: Guide = {
       ],
       list: [
         {
-          es: 'Son gratis, sin cuenta y sin período de prueba.',
-          en: 'They are free, with no account and no trial period.',
-          pt: 'São gratuitos, sem conta e sem período de teste.',
-          fr: 'Ils sont gratuits, sans compte et sans période d’essai.',
-          it: 'Sono gratuiti, senza account e senza periodo di prova.',
+          es: 'Son gratis y sin período de prueba.',
+          en: 'They are free, with no trial period.',
+          pt: 'São gratuitos e sem período de teste.',
+          fr: 'Ils sont gratuits et sans période d’essai.',
+          it: 'Sono gratuiti e senza periodo di prova.',
         },
         {
           es: 'No tienen fecha de vencimiento ni límite de escaneos.',

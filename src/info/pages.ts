@@ -100,8 +100,8 @@ export const info: Record<Locale, Record<InfoId, InfoPage>> = {
           ],
         },
         {
-          h: 'Gratis y sin registro',
-          p: ['No hay cuentas, marcas de agua ni versiones pagas. Puedes usar los códigos para fines personales o comerciales.'],
+          h: 'Gratis',
+          p: ['No hay versiones pagas. Puedes usar los códigos para fines personales o comerciales.'],
         },
         {
           h: 'Marcas de terceros',
@@ -198,8 +198,8 @@ export const info: Record<Locale, Record<InfoId, InfoPage>> = {
           ],
         },
         {
-          h: 'Free, no sign-up',
-          p: ['There are no accounts, watermarks or paid tiers. You can use the codes for personal or commercial purposes.'],
+          h: 'Free',
+          p: ['There are no paid tiers. You can use the codes for personal or commercial purposes.'],
         },
         {
           h: 'Third-party brands',
@@ -296,8 +296,8 @@ export const info: Record<Locale, Record<InfoId, InfoPage>> = {
           ],
         },
         {
-          h: 'Grátis e sem cadastro',
-          p: ['Não há contas, marcas d’água nem versões pagas. Você pode usar os códigos para fins pessoais ou comerciais.'],
+          h: 'Grátis',
+          p: ['Não há versões pagas. Você pode usar os códigos para fins pessoais ou comerciais.'],
         },
         {
           h: 'Marcas de terceiros',
@@ -394,8 +394,8 @@ export const info: Record<Locale, Record<InfoId, InfoPage>> = {
           ],
         },
         {
-          h: 'Gratuit et sans inscription',
-          p: ['Pas de compte, pas de filigrane, pas de version payante. Vous pouvez utiliser les codes à des fins personnelles ou commerciales.'],
+          h: 'Gratuit',
+          p: ['Pas de version payante. Vous pouvez utiliser les codes à des fins personnelles ou commerciales.'],
         },
         {
           h: 'Marques tierces',
@@ -492,8 +492,8 @@ export const info: Record<Locale, Record<InfoId, InfoPage>> = {
           ],
         },
         {
-          h: 'Gratis e senza registrazione',
-          p: ['Niente account, filigrane o versioni a pagamento. Puoi usare i codici per scopi personali o commerciali.'],
+          h: 'Gratis',
+          p: ['Nessuna versione a pagamento. Puoi usare i codici per scopi personali o commerciali.'],
         },
         {
           h: 'Marchi di terze parti',

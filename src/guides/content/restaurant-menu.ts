@@ -114,11 +114,11 @@ const guide: Guide = {
       },
       p: [
         {
-          es: 'Con la dirección del menú lista, el código se crea en cuatro pasos. Es gratis, no pide registro y se genera en tu navegador. El código no caduca ni tiene límite de escaneos: funciona mientras la dirección siga abriendo el menú.',
-          en: 'With the menu address ready, the code takes four steps. It is free, needs no sign-up and is generated in your browser. The code never expires and has no scan limit: it works for as long as the address keeps opening the menu.',
-          pt: 'Com o endereço do cardápio pronto, o código sai em quatro passos. É grátis, não pede cadastro e é gerado no seu navegador. O código não expira nem tem limite de leituras: funciona enquanto o endereço continuar abrindo o cardápio.',
-          fr: 'Une fois l’adresse du menu prête, le code se crée en quatre étapes. C’est gratuit, sans inscription, et le code est généré dans votre navigateur. Il n’expire pas et n’a aucune limite de scans : il fonctionne tant que l’adresse ouvre le menu.',
-          it: 'Con l’indirizzo del menu pronto, il codice si crea in quattro passaggi. È gratis, non richiede registrazione e viene generato nel tuo browser. Il codice non scade e non ha limiti di scansioni: funziona finché l’indirizzo continua ad aprire il menu.',
+          es: 'Con la dirección del menú lista, el código se crea en cuatro pasos. Es gratis y se genera en tu navegador. El código no caduca ni tiene límite de escaneos: funciona mientras la dirección siga abriendo el menú.',
+          en: 'With the menu address ready, the code takes four steps. It is free and is generated in your browser. The code never expires and has no scan limit: it works for as long as the address keeps opening the menu.',
+          pt: 'Com o endereço do cardápio pronto, o código sai em quatro passos. É grátis e é gerado no seu navegador. O código não expira nem tem limite de leituras: funciona enquanto o endereço continuar abrindo o cardápio.',
+          fr: 'Une fois l’adresse du menu prête, le code se crée en quatre étapes. C’est gratuit et le code est généré dans votre navigateur. Il n’expire pas et n’a aucune limite de scans : il fonctionne tant que l’adresse ouvre le menu.',
+          it: 'Con l’indirizzo del menu pronto, il codice si crea in quattro passaggi. È gratis e viene generato nel tuo browser. Il codice non scade e non ha limiti di scansioni: funziona finché l’indirizzo continua ad aprire il menu.',
         },
       ],
       list: [

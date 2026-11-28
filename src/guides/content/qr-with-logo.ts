@@ -24,11 +24,11 @@ const guide: Guide = {
     it: 'Crea gratis un codice QR con logo al centro: perché si legge comunque, come caricare il tuo logo passo per passo e quale file e dimensione scegliere.',
   },
   intro: {
-    es: 'Un logo en el centro de un código QR le dice a la gente adónde lleva el código antes de escanearlo. Aquí puedes añadirlo gratis y sin registrarte: las plantillas de redes sociales y servicios ya traen el logo de la marca, y la plantilla de URL personalizada te deja subir el tuyo. Esta guía explica cómo funciona y qué cuidar para que el código se siga leyendo a la primera.',
-    en: 'A logo in the centre of a QR code tells people where the code leads before they scan it. You can add one here for free and without signing up: the social network and service templates already carry the brand logo, and the Custom URL template lets you upload your own. This guide explains how it works and what to watch so that the code still scans first time.',
-    pt: 'Um logo no centro de um código QR mostra às pessoas para onde o código leva antes mesmo da leitura. Aqui você pode adicioná-lo grátis e sem cadastro: os modelos de redes sociais e serviços já trazem o logo da marca, e o modelo de URL personalizada permite enviar o seu. Este guia explica como funciona e o que cuidar para que o código continue sendo lido de primeira.',
-    fr: 'Un logo au centre d’un code QR indique où mène le code avant même qu’on le scanne. Vous pouvez l’ajouter ici gratuitement et sans inscription : les modèles de réseaux sociaux et de services portent déjà le logo de la marque, et le modèle URL personnalisée vous permet d’importer le vôtre. Ce guide explique comment cela fonctionne et ce qu’il faut surveiller pour que le code se scanne toujours du premier coup.',
-    it: 'Un logo al centro di un codice QR fa capire dove porta il codice prima ancora di scansionarlo. Qui puoi aggiungerlo gratis e senza registrarti: i modelli dei social network e dei servizi hanno già il logo del marchio, e il modello URL personalizzato ti permette di caricare il tuo. Questa guida spiega come funziona e a che cosa fare attenzione perché il codice si legga comunque al primo colpo.',
+    es: 'Un logo en el centro de un código QR le dice a la gente adónde lleva el código antes de escanearlo. Aquí puedes añadirlo gratis: las plantillas de redes sociales y servicios ya traen el logo de la marca, y la plantilla de URL personalizada te deja subir el tuyo. Esta guía explica cómo funciona y qué cuidar para que el código se siga leyendo a la primera.',
+    en: 'A logo in the centre of a QR code tells people where the code leads before they scan it. You can add one here for free: the social network and service templates already carry the brand logo, and the Custom URL template lets you upload your own. This guide explains how it works and what to watch so that the code still scans first time.',
+    pt: 'Um logo no centro de um código QR mostra às pessoas para onde o código leva antes mesmo da leitura. Aqui você pode adicioná-lo grátis: os modelos de redes sociais e serviços já trazem o logo da marca, e o modelo de URL personalizada permite enviar o seu. Este guia explica como funciona e o que cuidar para que o código continue sendo lido de primeira.',
+    fr: 'Un logo au centre d’un code QR indique où mène le code avant même qu’on le scanne. Vous pouvez l’ajouter ici gratuitement : les modèles de réseaux sociaux et de services portent déjà le logo de la marque, et le modèle URL personnalisée vous permet d’importer le vôtre. Ce guide explique comment cela fonctionne et ce qu’il faut surveiller pour que le code se scanne toujours du premier coup.',
+    it: 'Un logo al centro di un codice QR fa capire dove porta il codice prima ancora di scansionarlo. Qui puoi aggiungerlo gratis: i modelli dei social network e dei servizi hanno già il logo del marchio, e il modello URL personalizzato ti permette di caricare il tuo. Questa guida spiega come funziona e a che cosa fare attenzione perché il codice si legga comunque al primo colpo.',
   },
   sections: [
     {
@@ -262,11 +262,11 @@ const guide: Guide = {
         it: 'Mettere un logo nel codice QR è davvero gratis?',
       },
       a: {
-        es: 'Sí. No hay que registrarse ni pagar, y el código se descarga en PNG o SVG con el logo incluido. Es un código estático, así que no caduca; lo único que no ofrece son estadísticas de escaneos ni la posibilidad de cambiar el enlace después.',
-        en: 'Yes. There is no sign-up and nothing to pay, and the code downloads as PNG or SVG with the logo included. It is a static code, so it never expires; what it does not offer is scan statistics or the option to change the link later.',
-        pt: 'Sim. Não é preciso cadastro nem pagamento, e o código é baixado em PNG ou SVG com o logo incluído. É um código estático, então não expira; o que ele não oferece são estatísticas de leitura nem a possibilidade de mudar o link depois.',
-        fr: 'Oui. Il n’y a ni inscription ni paiement, et le code se télécharge en PNG ou en SVG avec le logo inclus. C’est un code statique, il n’expire donc jamais ; il ne propose en revanche ni statistiques de scan ni modification du lien par la suite.',
-        it: 'Sì. Non serve registrarsi né pagare, e il codice si scarica in PNG o SVG con il logo incluso. È un codice statico, quindi non scade mai; non offre invece statistiche di scansione né la possibilità di cambiare il link in seguito.',
+        es: 'Sí. No hay que pagar, y el código se descarga en PNG o SVG con el logo incluido. Es un código estático, así que no caduca; lo único que no ofrece son estadísticas de escaneos ni la posibilidad de cambiar el enlace después.',
+        en: 'Yes. There is nothing to pay, and the code downloads as PNG or SVG with the logo included. It is a static code, so it never expires; what it does not offer is scan statistics or the option to change the link later.',
+        pt: 'Sim. Não é preciso pagar, e o código é baixado em PNG ou SVG com o logo incluído. É um código estático, então não expira; o que ele não oferece são estatísticas de leitura nem a possibilidade de mudar o link depois.',
+        fr: 'Oui. Il n’y a rien à payer, et le code se télécharge en PNG ou en SVG avec le logo inclus. C’est un code statique, il n’expire donc jamais ; il ne propose en revanche ni statistiques de scan ni modification du lien par la suite.',
+        it: 'Sì. Non serve pagare, e il codice si scarica in PNG o SVG con il logo incluso. È un codice statico, quindi non scade mai; non offre invece statistiche di scansione né la possibilità di cambiare il link in seguito.',
       },
     },
     {
