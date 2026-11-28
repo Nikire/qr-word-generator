@@ -209,7 +209,7 @@ export const info: Record<Locale, Record<InfoId, InfoPage>> = {
     },
     contact: {
       slug: 'contact',
-      title: 'Contact',
+      title: 'Contact us',
       description: 'How to reach us with questions, bug reports or suggestions about QR Word Generator.',
       sections: [
         {

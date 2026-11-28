@@ -3,7 +3,8 @@
 import Base from '../layouts/Base.astro';
 import { locales, type Locale } from '../i18n/ui';
 import { info, infoPath, type InfoId } from '../info/pages';
-import { CONTACT_EMAIL } from '../../site.config.mjs';
+import { brandTitle } from '../lib/seo';
+import { CONTACT_EMAIL, SITE_URL } from '../../site.config.mjs';
 
 interface Props {
   locale: Locale;
@@ -14,11 +15,23 @@ const { locale, infoId } = Astro.props;
 const page = info[locale][infoId];
 const paths = Object.fromEntries(locales.map((code) => [code, infoPath(code, infoId)])) as Record<Locale, string>;
 
+const jsonLd = [
+  {
+    '@context': 'https://schema.org',
+    '@type': infoId === 'about' ? 'AboutPage' : infoId === 'contact' ? 'ContactPage' : 'WebPage',
+    name: page.title,
+    description: page.description,
+    url: `${SITE_URL}${paths[locale]}`,
+    inLanguage: locale,
+    isPartOf: { '@type': 'WebSite', name: 'QR Word Generator', url: SITE_URL },
+  },
+];
+
 const email = CONTACT_EMAIL ? `<a href="mailto:${CONTACT_EMAIL}">${CONTACT_EMAIL}</a>` : '';
 const fill = (text: string) => text.replaceAll('{contact}', infoPath(locale, 'contact')).replaceAll('{email}', email);
 ---
 
-<Base locale={locale} title={`${page.title} | QR Word Generator`} description={page.description} paths={paths}>
+<Base locale={locale} title={brandTitle(page.title)} description={page.description} paths={paths} jsonLd={jsonLd}>
   <article class="info container">
     <h1>{page.title}</h1>
     {

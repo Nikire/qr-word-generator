@@ -29,6 +29,9 @@ jobs:
 
       - run: npm run build
 
+      # Revisión de SEO: si alguna página tiene errores, no se publica.
+      - run: npm run seo
+
       # Clave del panel de estadísticas (/panel/): al servidor solo va su huella.
       - name: Configurar el panel de estadísticas
         env:

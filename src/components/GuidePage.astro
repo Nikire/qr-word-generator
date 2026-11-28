@@ -1,5 +1,6 @@
 ---
 // Guía por caso de uso. Sin `guideId` muestra el índice con todas las guías.
+import { brandTitle } from '../lib/seo';
 import Base from '../layouts/Base.astro';
 import NetworkBadge from './NetworkBadge.astro';
 import AdSlot from './AdSlot.astro';
@@ -90,7 +91,7 @@ if (guide) {
 }
 ---
 
-<Base locale={locale} title={`${title} | QR Word Generator`} description={description} paths={paths} jsonLd={jsonLd}>
+<Base locale={locale} title={brandTitle(title)} description={description} paths={paths} jsonLd={jsonLd}>
   <article class="guide container" data-guide={guideId ?? 'index'}>
     <nav class="crumbs" aria-label="Breadcrumb">
       <a href={networkPath(locale, DEFAULT_NETWORK)}>QR Word Generator</a>

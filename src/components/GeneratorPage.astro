@@ -1,6 +1,7 @@
 ---
 // Página completa de una plantilla: título, generador, pasos, preguntas
 // frecuentes y enlaces al resto de las plantillas.
+import { brandTitle } from '../lib/seo';
 import Base from '../layouts/Base.astro';
 import Generator from './Generator.astro';
 import NetworkBadge from './NetworkBadge.astro';
@@ -22,7 +23,7 @@ const name = networkName(network, locale);
 const subtitle = network.subtitle[locale];
 
 const heading = network.title?.[locale] ?? t('hero.title', { name });
-const pageTitle = `${network.title?.[locale] ?? t('meta.title', { name })} | QR Word Generator`;
+const pageTitle = brandTitle(network.title?.[locale] ?? t('meta.title', { name }));
 const description = `${subtitle} ${t('meta.descriptionTail')}`;
 
 const paths = Object.fromEntries(locales.map((code) => [code, networkPath(code, network.id)])) as Record<Locale, string>;
