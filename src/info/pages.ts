@@ -33,7 +33,7 @@ export const info: Record<Locale, Record<InfoId, InfoPage>> = {
       sections: [
         {
           p: [
-            'Última actualización: 23 de noviembre de 2026.',
+            'Última actualización: 28 de noviembre de 2026.',
             'Esta política explica qué pasa con tus datos cuando usas QR Word Generator (qrwordgenerator.com).',
           ],
         },
@@ -47,6 +47,13 @@ export const info: Record<Locale, Record<InfoId, InfoPage>> = {
         {
           h: 'Lo que se guarda en tu dispositivo',
           p: ['Guardamos en tu navegador el tema elegido (claro u oscuro) para recordarlo en tu próxima visita. Ese dato no sale de tu dispositivo.'],
+        },
+        {
+          h: 'Estadísticas de uso',
+          p: [
+            'Para saber cuánto se usa el sitio y qué plantillas son las más útiles, contamos de forma anónima algunas acciones: que se abrió una página, que se creó un código, que se descargó (y en qué formato) o que se copió el enlace.',
+            'Con cada acción guardamos solo la fecha y la hora, la plantilla, el idioma del sitio y el del navegador, el tipo de dispositivo (móvil o de escritorio) y si el código llevaba un logo propio. No guardamos lo que escribes, el contenido del código, el logo, tu dirección IP ni ningún identificador, y para esto no usamos cookies. Con esos datos no podemos saber quién eres ni reconocerte en otra visita.',
+          ],
         },
         {
           h: 'Registros del servidor',
@@ -124,7 +131,7 @@ export const info: Record<Locale, Record<InfoId, InfoPage>> = {
       sections: [
         {
           p: [
-            'Last updated: 23 November 2026.',
+            'Last updated: 28 November 2026.',
             'This policy explains what happens to your data when you use QR Word Generator (qrwordgenerator.com).',
           ],
         },
@@ -138,6 +145,13 @@ export const info: Record<Locale, Record<InfoId, InfoPage>> = {
         {
           h: 'What is stored on your device',
           p: ['We store your chosen theme (light or dark) in your browser so it is remembered on your next visit. It never leaves your device.'],
+        },
+        {
+          h: 'Usage statistics',
+          p: [
+            'To understand how much the site is used and which templates are most useful, we anonymously count a few actions: a page being opened, a code being created, a download (and its format) or the link being copied.',
+            'With each action we store only the date and time, the template, the site language and the browser language, the type of device (mobile or desktop) and whether the code had a custom logo. We do not store what you type, the content of the code, the logo, your IP address or any identifier, and we use no cookies for this. This data cannot tell us who you are or recognise you on another visit.',
+          ],
         },
         {
           h: 'Server logs',
@@ -215,7 +229,7 @@ export const info: Record<Locale, Record<InfoId, InfoPage>> = {
       sections: [
         {
           p: [
-            'Última atualização: 23 de novembro de 2026.',
+            'Última atualização: 28 de novembro de 2026.',
             'Esta política explica o que acontece com os seus dados quando você usa o QR Word Generator (qrwordgenerator.com).',
           ],
         },
@@ -229,6 +243,13 @@ export const info: Record<Locale, Record<InfoId, InfoPage>> = {
         {
           h: 'O que fica salvo no seu dispositivo',
           p: ['Salvamos no seu navegador o tema escolhido (claro ou escuro) para lembrá-lo na próxima visita. Esse dado não sai do seu dispositivo.'],
+        },
+        {
+          h: 'Estatísticas de uso',
+          p: [
+            'Para saber quanto o site é usado e quais modelos são mais úteis, contamos de forma anônima algumas ações: a abertura de uma página, a criação de um código, o download (e o formato) ou a cópia do link.',
+            'Em cada ação guardamos apenas a data e a hora, o modelo, o idioma do site e o do navegador, o tipo de dispositivo (celular ou computador) e se o código tinha um logo próprio. Não guardamos o que você digita, o conteúdo do código, o logo, o seu endereço IP nem qualquer identificador, e não usamos cookies para isso. Com esses dados não é possível saber quem você é nem reconhecer você em outra visita.',
+          ],
         },
         {
           h: 'Registros do servidor',
@@ -306,7 +327,7 @@ export const info: Record<Locale, Record<InfoId, InfoPage>> = {
       sections: [
         {
           p: [
-            'Dernière mise à jour : 23 novembre 2026.',
+            'Dernière mise à jour : 28 novembre 2026.',
             'Cette politique explique ce qu’il advient de vos données lorsque vous utilisez QR Word Generator (qrwordgenerator.com).',
           ],
         },
@@ -320,6 +341,13 @@ export const info: Record<Locale, Record<InfoId, InfoPage>> = {
         {
           h: 'Ce qui est enregistré sur votre appareil',
           p: ['Nous enregistrons dans votre navigateur le thème choisi (clair ou sombre) pour le retrouver à votre prochaine visite. Cette information ne quitte pas votre appareil.'],
+        },
+        {
+          h: 'Statistiques d’utilisation',
+          p: [
+            'Pour savoir à quel point le site est utilisé et quels modèles sont les plus utiles, nous comptons de manière anonyme quelques actions : l’ouverture d’une page, la création d’un code, le téléchargement (et son format) ou la copie du lien.',
+            'Pour chaque action, nous enregistrons uniquement la date et l’heure, le modèle, la langue du site et celle du navigateur, le type d’appareil (mobile ou ordinateur) et la présence éventuelle d’un logo personnalisé. Nous n’enregistrons ni ce que vous saisissez, ni le contenu du code, ni le logo, ni votre adresse IP, ni aucun identifiant, et nous n’utilisons pas de cookies pour cela. Ces données ne permettent ni de savoir qui vous êtes ni de vous reconnaître lors d’une autre visite.',
+          ],
         },
         {
           h: 'Journaux du serveur',
@@ -397,7 +425,7 @@ export const info: Record<Locale, Record<InfoId, InfoPage>> = {
       sections: [
         {
           p: [
-            'Ultimo aggiornamento: 23 novembre 2026.',
+            'Ultimo aggiornamento: 28 novembre 2026.',
             'Questa informativa spiega cosa succede ai tuoi dati quando usi QR Word Generator (qrwordgenerator.com).',
           ],
         },
@@ -411,6 +439,13 @@ export const info: Record<Locale, Record<InfoId, InfoPage>> = {
         {
           h: 'Cosa viene salvato sul tuo dispositivo',
           p: ['Salviamo nel tuo browser il tema scelto (chiaro o scuro) per ricordarlo alla prossima visita. Questo dato non lascia il tuo dispositivo.'],
+        },
+        {
+          h: 'Statistiche di utilizzo',
+          p: [
+            'Per capire quanto viene usato il sito e quali modelli sono più utili, contiamo in forma anonima alcune azioni: l’apertura di una pagina, la creazione di un codice, il download (e il formato) o la copia del link.',
+            'Per ogni azione salviamo solo la data e l’ora, il modello, la lingua del sito e quella del browser, il tipo di dispositivo (mobile o computer) e se il codice aveva un logo personalizzato. Non salviamo ciò che scrivi, il contenuto del codice, il logo, il tuo indirizzo IP né alcun identificativo, e per questo non usiamo cookie. Con questi dati non possiamo sapere chi sei né riconoscerti in un’altra visita.',
+          ],
         },
         {
           h: 'Log del server',

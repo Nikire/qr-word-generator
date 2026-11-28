@@ -29,6 +29,16 @@ jobs:
 
       - run: npm run build
 
+      # Clave del panel de estadísticas (/panel/): al servidor solo va su huella.
+      - name: Configurar el panel de estadísticas
+        env:
+          STATS_KEY: ${{ secrets.STATS_KEY }}
+        run: |
+          if [ -n "$STATS_KEY" ]; then
+            huella=$(printf '%s' "$STATS_KEY" | sha256sum | cut -d' ' -f1)
+            printf "<?php\nreturn ['key_sha256' => '%s'];\n" "$huella" > dist/api/config.php
+          fi
+
       # Según la cuenta FTP, la sesión arranca dentro de public_html o un nivel arriba.
       - name: Detectar carpeta de destino
         id: destino

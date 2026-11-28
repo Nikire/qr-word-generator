@@ -191,6 +191,7 @@ const inputMode = { trim: 'text', handle: 'text', digits: 'numeric', url: 'url' 
 <script>
   import { buildLink, phoneDigits, type EngineMode } from '../lib/engine';
   import { buildQrSvg, type QrLogo } from '../lib/qr';
+  import { track } from '../lib/stats';
 
   interface Config {
     id: string;
@@ -202,6 +203,7 @@ const inputMode = { trim: 'text', handle: 'text', digits: 'numeric', url: 'url' 
   const MAX_LOGO_BYTES = 5 * 1024 * 1024;
   const LOGO_PIXELS = 512; // lado máximo del logo PNG dentro del QR
   const PLACEHOLDER_DATA = 'https://qr.example/placeholder';
+  const CREATE_DELAY = 2000; // un código cuenta como creado si queda en pantalla este tiempo
 
   const root = document.querySelector<HTMLElement>('[data-generator]')!;
   const config: Config = JSON.parse(root.querySelector('[data-config]')!.textContent!);
@@ -220,6 +222,9 @@ const inputMode = { trim: 'text', handle: 'text', digits: 'numeric', url: 'url' 
   let customLogo: string | undefined;
   let logoError = false;
   let current: { svg: string; url: string; name: string } | undefined;
+  let touched = false; // la persona ya escribió o eligió algo
+  let createTimer: number | undefined;
+  const created = new Set<string>(); // modos con un código ya contado en esta visita
 
   const activeMode = () => {
     const id = modeInputs.find((input) => input.checked)?.value ?? config.modes[0].id;
@@ -227,6 +232,14 @@ const inputMode = { trim: 'text', handle: 'text', digits: 'numeric', url: 'url' 
   };
   const panelOf = (modeId: string) => panels.find((panel) => panel.dataset.modePanel === modeId)!;
   const logo = (): QrLogo | undefined => (customLogo ? { image: customLogo } : (config.logo ?? undefined));
+
+  /** Cuenta, una vez por visita y por modo, que se creó un código válido. */
+  function countCreated(modeId: string) {
+    window.clearTimeout(createTimer);
+    if (created.has(modeId)) return;
+    created.add(modeId);
+    track('create', config.id, { mode: modeId });
+  }
 
   /** Nombre de archivo a partir del primer dato: qr-instagram-mitienda */
   function fileName(values: Record<string, string>, mode: EngineMode): string {
@@ -292,6 +305,11 @@ const inputMode = { trim: 'text', handle: 'text', digits: 'numeric', url: 'url' 
       linkUrl.textContent = current.url;
     }
     for (const button of downloads) button.disabled = !current;
+
+    window.clearTimeout(createTimer);
+    if (current && touched && !created.has(mode.id)) {
+      createTimer = window.setTimeout(() => countCreated(mode.id), CREATE_DELAY);
+    }
   }
 
   function save(blob: Blob, extension: string) {
@@ -333,11 +351,15 @@ const inputMode = { trim: 'text', handle: 'text', digits: 'numeric', url: 'url' 
   for (const button of downloads) {
     button.addEventListener('click', async () => {
       if (!current) return;
-      if (button.dataset.download === 'svg') {
+      const mode = activeMode().id;
+      const format = button.dataset.download === 'svg' ? 'svg' : 'png';
+      if (format === 'svg') {
         save(new Blob([current.svg], { type: 'image/svg+xml' }), 'svg');
       } else {
         save(await toPng(current.svg), 'png');
       }
+      countCreated(mode);
+      track('download', config.id, { mode, format, logo: Boolean(customLogo) });
     });
   }
 
@@ -345,6 +367,8 @@ const inputMode = { trim: 'text', handle: 'text', digits: 'numeric', url: 'url' 
     if (!current) return;
     try {
       await navigator.clipboard.writeText(current.url);
+      countCreated(activeMode().id);
+      track('copy', config.id, { mode: activeMode().id });
       copyButton.textContent = root.dataset.copied!;
       setTimeout(() => (copyButton.textContent = root.dataset.copy!), 1800);
     } catch {
@@ -407,9 +431,13 @@ const inputMode = { trim: 'text', handle: 'text', digits: 'numeric', url: 'url' 
   }
 
   root.querySelector('form')!.addEventListener('submit', (event) => event.preventDefault());
-  root.querySelector('form')!.addEventListener('input', render);
+  root.querySelector('form')!.addEventListener('input', () => {
+    touched = true;
+    render();
+  });
   root.addEventListener('countrychange', render);
   render();
+  track('view', config.id);
 </script>
 
 <style>

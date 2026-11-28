@@ -91,7 +91,7 @@ if (guide) {
 ---
 
 <Base locale={locale} title={`${title} | QR Word Generator`} description={description} paths={paths} jsonLd={jsonLd}>
-  <article class="guide container">
+  <article class="guide container" data-guide={guideId ?? 'index'}>
     <nav class="crumbs" aria-label="Breadcrumb">
       <a href={networkPath(locale, DEFAULT_NETWORK)}>QR Word Generator</a>
       {
@@ -184,6 +184,13 @@ if (guide) {
     }
   </section>
 </Base>
+
+<script>
+  import { track } from '../lib/stats';
+
+  const guide = document.querySelector<HTMLElement>('[data-guide]');
+  if (guide) track('read', guide.dataset.guide!);
+</script>
 
 <style>
   .guide,
